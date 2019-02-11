@@ -1,11 +1,15 @@
-# ECSE321 Project Group _number_
+# ECSE321 Project Group 8
+CO-OP-ERATOR
 
-_This README.md is a fillable template for the project submissions. Use the table provided below to document the hours and the responsibilities of team members individually. Create a separate table for each deliverable. Remove this comment before the first submission._
+McGill University has a number of co-op programs that are administered by individual faculties. The number of co-op programs is likely to grow in the near future. This software development project aims to build a software system that will manage these co-op programs and the many different facets associated with them thereby streamlining the process. 
 
-## Deliverable _number_
+
+## Deliverable 1
 
 |Team member's name|Total hours|Responsibility         |
 |------------------|-----------|-----------------------|
-|Team Member 1     |  _x_ hours|Mobile frontend lead   |
-|Team Member 2     |  _y_ hours|Project management lead|
-|...               |...        |                       |
+|Mashood Ahmed     |  4 hours  |Mobile frontend lead   |
+|Irmak Pakis       |  5 hours  |Testing lead           |
+|Ege Odaci         |  5 hours  |Backend lead           |
+|Jason Pierre Ra   |  4 hours  |Project management lead|
+|Edgar Chang       |  4 hours  |Integration lead       |
