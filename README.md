@@ -11,5 +11,5 @@ McGill University has a number of co-op programs that are administered by indivi
 |Mashood Ahmed     |  4 hours  |Mobile frontend lead   |
 |Irmak Pakis       |  5 hours  |Testing lead           |
 |Ege Odaci         |  5 hours  |Backend lead           |
-|Jason Pierre Ra   |  4 hours  |Project management lead|
+|Jason Rahal       |  4 hours  |Project management lead|
 |Edgar Chang       |  4 hours  |Integration lead       |
