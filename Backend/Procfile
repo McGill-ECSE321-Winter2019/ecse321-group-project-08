@@ -1,2 +1,1 @@
-web: java -jar Backend/build/libs/Cooperator-Backend-0.0.1-SNAPSHOTS.jar
-
+web: java -jar Backend/build/libs/Backend-0.0.1-SNAPSHOTS.jar
