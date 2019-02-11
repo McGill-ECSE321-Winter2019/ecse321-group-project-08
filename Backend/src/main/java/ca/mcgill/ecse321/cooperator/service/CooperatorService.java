@@ -29,7 +29,6 @@ import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 @Service
 public class CooperatorService {
 	
-	
 	@Autowired
 	CoopPlacementFormRepository  coopPlacementFormRepository;
 	
@@ -58,6 +57,9 @@ public class CooperatorService {
 	
 	@Transactional
 	public CoopPlacementForm createCoopPlacementForm(int ID) {
+		if (ID == 0) {
+			throw new IllegalArgumentException("Coop Placement Form ID can't be 0");
+		}
 		CoopPlacementForm p = new CoopPlacementForm();
 		p.setCoopPlacementFormID(ID);
 		coopPlacementFormRepository.save(p);
@@ -68,7 +70,6 @@ public class CooperatorService {
 	public CoopPlacementForm getCoopPlacementForm(int ID) {
 		return coopPlacementFormRepository.findCoopPlacementFormByID(ID);	
 	}
-	
 	
 	@Transactional
 	public List<CoopPlacementForm> getAllCoopPlacementForms() {
@@ -98,7 +99,6 @@ public class CooperatorService {
 	public List<CoopPosition> getAllCoopPositions() {
 		return toList(coopPositionRepository.findAll());
 	}
-	
 	
 //	Employer
 	
@@ -207,6 +207,7 @@ public class CooperatorService {
 	}
 	
 //	Student
+	
 	@Transactional
 	public Student createStudent(int ID, String name ) {
 		Student p = new Student();
@@ -218,8 +219,7 @@ public class CooperatorService {
 
 	@Transactional
 	public Student getStudent(int ID) {
-		Student p = studentRepository.findStudentByID(ID);
-		return p;
+		return studentRepository.findStudentByID(ID);
 	}
 	
 	@Transactional
@@ -227,7 +227,7 @@ public class CooperatorService {
 		return toList(studentRepository.findAll());
 	}
 	
-	//toList method
+//	toList method
 	
 	private <T> List<T> toList(Iterable<T> iterable){
 		List<T> resultList = new ArrayList<T>();
@@ -235,8 +235,6 @@ public class CooperatorService {
 			resultList.add(t);
 		}
 		return resultList;
-	}
-	
-	
+	}	
 
 }
