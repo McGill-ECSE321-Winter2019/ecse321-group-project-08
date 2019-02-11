@@ -1,77 +1,66 @@
 package ca.mcgill.ecse321.cooperator.model;
 
 import javax.persistence.Entity;
-import java.util.Set;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Id;
 import java.sql.Date;
 
 @Entity
 public class CoopPosition{
-private Set<Student> student;
+private Student student;
 
-@ManyToMany
-public Set<Student> getStudent() {
+@ManyToOne(optional=false)
+public Student getStudent() {
    return this.student;
 }
 
-public void setStudent(Set<Student> students) {
-   this.student = students;
+public void setStudent(Student student) {
+   this.student = student;
 }
 
-private Set<CoopPlacementForm> coopPlacementForm;
+private CoopPlacementForm coopPlacementForm;
 
-@ManyToMany(mappedBy="coopPosition")
-public Set<CoopPlacementForm> getCoopPlacementForm() {
+@OneToOne(mappedBy="coopPosition", optional=false)
+public CoopPlacementForm getCoopPlacementForm() {
    return this.coopPlacementForm;
 }
 
-public void setCoopPlacementForm(Set<CoopPlacementForm> coopPlacementForms) {
-   this.coopPlacementForm = coopPlacementForms;
+public void setCoopPlacementForm(CoopPlacementForm coopPlacementForm) {
+   this.coopPlacementForm = coopPlacementForm;
 }
 
-private Set<TaxCreditForm> taxCreditForm;
+private TaxCreditForm taxCreditForm;
 
-@ManyToMany(mappedBy="coopPosition")
-public Set<TaxCreditForm> getTaxCreditForm() {
+@OneToOne(mappedBy="coopPosition", optional=false)
+public TaxCreditForm getTaxCreditForm() {
    return this.taxCreditForm;
 }
 
-public void setTaxCreditForm(Set<TaxCreditForm> taxCreditForms) {
-   this.taxCreditForm = taxCreditForms;
+public void setTaxCreditForm(TaxCreditForm taxCreditForm) {
+   this.taxCreditForm = taxCreditForm;
 }
 
-private Set<EvaluationForm> evaluationForm;
+private EvaluationForm evaluationForm;
 
-@ManyToMany(mappedBy="coopPosition")
-public Set<EvaluationForm> getEvaluationForm() {
+@OneToOne(mappedBy="coopPosition", optional=false)
+public EvaluationForm getEvaluationForm() {
    return this.evaluationForm;
 }
 
-public void setEvaluationForm(Set<EvaluationForm> evaluationForms) {
-   this.evaluationForm = evaluationForms;
+public void setEvaluationForm(EvaluationForm evaluationForm) {
+   this.evaluationForm = evaluationForm;
 }
 
-private Set<StartConfirmation> startConfirmation;
+private StartConfirmation startConfirmation;
 
-@ManyToMany(mappedBy="coopPosition")
-public Set<StartConfirmation> getStartConfirmation() {
+@OneToOne(mappedBy="coopPosition", optional=false)
+public StartConfirmation getStartConfirmation() {
    return this.startConfirmation;
 }
 
-public void setStartConfirmation(Set<StartConfirmation> startConfirmations) {
-   this.startConfirmation = startConfirmations;
-}
-
-private Set<EvaluationForm> evaluationForm1;
-
-@ManyToMany
-public Set<EvaluationForm> getEvaluationForm1() {
-   return this.evaluationForm1;
-}
-
-public void setEvaluationForm1(Set<EvaluationForm> evaluationForm1s) {
-   this.evaluationForm1 = evaluationForm1s;
+public void setStartConfirmation(StartConfirmation startConfirmation) {
+   this.startConfirmation = startConfirmation;
 }
 
 private int positionID;

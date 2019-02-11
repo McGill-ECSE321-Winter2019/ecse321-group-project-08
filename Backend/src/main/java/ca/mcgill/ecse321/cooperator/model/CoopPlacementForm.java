@@ -1,21 +1,20 @@
 package ca.mcgill.ecse321.cooperator.model;
 
 import javax.persistence.Entity;
-import java.util.Set;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Id;
 
 @Entity
 public class CoopPlacementForm extends Document{
-private Set<CoopPosition> coopPosition;
+private CoopPosition coopPosition;
 
-@ManyToMany
-public Set<CoopPosition> getCoopPosition() {
+@OneToOne(optional=false)
+public CoopPosition getCoopPosition() {
    return this.coopPosition;
 }
 
-public void setCoopPosition(Set<CoopPosition> coopPositions) {
-   this.coopPosition = coopPositions;
+public void setCoopPosition(CoopPosition coopPosition) {
+   this.coopPosition = coopPosition;
 }
 
 private int coopPlacementFormID;

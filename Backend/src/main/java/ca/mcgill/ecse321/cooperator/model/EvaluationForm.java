@@ -1,43 +1,32 @@
 package ca.mcgill.ecse321.cooperator.model;
 
 import javax.persistence.Entity;
-import java.util.Set;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 
 @Entity
 public class EvaluationForm extends Document{
-private Set<CoopPosition> coopPosition;
+private CoopPosition coopPosition;
 
-@ManyToMany
-public Set<CoopPosition> getCoopPosition() {
+@OneToOne(optional=false)
+public CoopPosition getCoopPosition() {
    return this.coopPosition;
 }
 
-public void setCoopPosition(Set<CoopPosition> coopPositions) {
-   this.coopPosition = coopPositions;
+public void setCoopPosition(CoopPosition coopPosition) {
+   this.coopPosition = coopPosition;
 }
 
-private Set<Employer> employer;
+private Employer employer;
 
-@ManyToMany
-public Set<Employer> getEmployer() {
+@ManyToOne(optional=false)
+public Employer getEmployer() {
    return this.employer;
 }
 
-public void setEmployer(Set<Employer> employers) {
-   this.employer = employers;
-}
-
-private Set<CoopPosition> coopPosition1;
-
-@ManyToMany(mappedBy="evaluationForm1")
-public Set<CoopPosition> getCoopPosition1() {
-   return this.coopPosition1;
-}
-
-public void setCoopPosition1(Set<CoopPosition> coopPosition1s) {
-   this.coopPosition1 = coopPosition1s;
+public void setEmployer(Employer employer) {
+   this.employer = employer;
 }
 
 private int evaluationFormID;

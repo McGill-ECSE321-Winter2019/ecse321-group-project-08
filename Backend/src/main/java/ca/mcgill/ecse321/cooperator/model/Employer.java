@@ -3,6 +3,7 @@ package ca.mcgill.ecse321.cooperator.model;
 import javax.persistence.Entity;
 import java.util.Set;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Id;
 
 @Entity
@@ -42,7 +43,7 @@ public void setStartConfirmation(Set<StartConfirmation> startConfirmations) {
 
 private Set<EvaluationForm> evaluationForm;
 
-@ManyToMany(mappedBy="employer")
+@OneToMany(mappedBy="employer")
 public Set<EvaluationForm> getEvaluationForm() {
    return this.evaluationForm;
 }
