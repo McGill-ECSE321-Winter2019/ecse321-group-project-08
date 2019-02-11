@@ -26,8 +26,6 @@ import ca.mcgill.ecse321.cooperator.model.StartConfirmation;
 import ca.mcgill.ecse321.cooperator.model.Student;
 import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 
-
-
 @Service
 public class CooperatorService {
 	
@@ -55,8 +53,6 @@ public class CooperatorService {
 	
 	@Autowired
 	TaxCreditFormRepository taxCreditFormRepository;
-		
-	
 	
 //	CoopPlacementForm
 	
@@ -64,16 +60,20 @@ public class CooperatorService {
 	public CoopPlacementForm createCoopPlacementForm(int ID) {
 		CoopPlacementForm p = new CoopPlacementForm();
 		p.setCoopPlacementFormID(ID);
-		CoopPlacementFormRepository.save(ID);
+		coopPlacementFormRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public CoopPlacementForm getCoopPlacementForm(int ID) {
-		CoopPlacementForm p = entityManager.find(CoopPlacementForm.class, ID);
-		return p;
+		return coopPlacementFormRepository.findCoopPlacementFormByID(ID);	
 	}
 	
+	
+	@Transactional
+	public List<CoopPlacementForm> getAllCoopPlacementForms() {
+		return toList(coopPlacementFormRepository.findAll());
+	}
 	
 // CoopPosition
 	
@@ -85,88 +85,104 @@ public class CooperatorService {
 		p.setCompanyName(compName);
 		p.setStartDate(startDate);
 		p.setEndDate(endDate);
-		entityManager.persist(p);
+		coopPositionRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public CoopPosition getCoopPositiontForm(int ID,String PosName, String compName, Date startDate, Date endDate) {
-		CoopPosition p = entityManager.find(CoopPosition.class, ID);
-		return p;
+		return coopPositionRepository.findCoopPositionByID(ID);	
+	}
+	
+	@Transactional
+	public List<CoopPosition> getAllCoopPositions() {
+		return toList(coopPositionRepository.findAll());
 	}
 	
 	
-	
 //	Employer
+	
 	@Transactional
 	public Employer createEmployer(String userName, String password,int ID ) {
 		Employer p = new Employer();
 		p.setUserName(userName);
 		p.setPassword(password);
 		p.setEmployeeID(ID);
-
-		entityManager.persist(p);
+		employerRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public Employer getEmployer(String userName, String password,int ID) {
-		Employer p = entityManager.find(Employer.class, ID);
-		return p;
+		return employerRepository.findEmployerbyID(ID);
+		
+	}
+	
+	@Transactional
+	public List<Employer> getAllEmployers() {
+		return toList(employerRepository.findAll());
 	}
 	
 //	Events
+	
 	@Transactional
 	public Event createEvents(String eventName ) {
 		Event p = new Event();
 		p.setName(eventName);
-		entityManager.persist(p);
+		eventRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public Event getEvents(String eventName ) {
-		Event p = entityManager.find(Event.class, eventName);
-		return p;
+		return eventRepository.findEventbyName(eventName);
 	}
 	
-	
-	
+	@Transactional
+	public List<Event> getAllEvents() {
+		return toList(eventRepository.findAll());
+	}
 	
 //	EvaluationForm
+	
 	@Transactional
 	public EvaluationForm createEvaluationForm(int ID ) {
 		EvaluationForm p = new EvaluationForm();
 		p.setEvaluationFormID(ID);
-		entityManager.persist(p);
+		evaluationFormRepository.save(p);
 		return p;
 	}
 
 	@Transactional
-	public EvaluationForm getEvaluationForm(int ID ) {
-		EvaluationForm p = entityManager.find(EvaluationForm.class, ID);
-		return p;
+	public EvaluationForm getEvaluationForm(int ID) {
+		return evaluationFormRepository.findEvaluationFormByID(ID);
+		
 	}
 	
-	
+	@Transactional
+	public List<EvaluationForm> EvaluationForm() {
+		return toList(evaluationFormRepository.findAll());
+	}
 	
 //	TaxCreditForm
+	
 	@Transactional
 	public TaxCreditForm createTaxCreditForm(int ID ) {
 		TaxCreditForm p = new TaxCreditForm();
 		p.setTaxCreditFormID(ID);
-		entityManager.persist(p);
+		taxCreditFormRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public TaxCreditForm getTaxCreditForm(int ID ) {
-		TaxCreditForm p = entityManager.find(TaxCreditForm.class, ID);
-		return p;
+		return taxCreditFormRepository.findTaxCreditFormByID(ID);	
 	}
 	
-	
-	
+	@Transactional
+	public List<TaxCreditForm> getAllTaxCreditForm() {
+		return toList(taxCreditFormRepository.findAll());
+	}
 	
 //	StartConfirmation
 	
@@ -175,16 +191,20 @@ public class CooperatorService {
 		StartConfirmation p = new StartConfirmation();
 		p.setConfirmationID(ID);
 		p.setEvaluationDate(date);
-		entityManager.persist(p);
+		startConfirmationRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public StartConfirmation getStartConfirmation(int ID) {
-		StartConfirmation p = entityManager.find(StartConfirmation.class, ID);
-		return p;
+		return startConfirmationRepository.findStartConfirmationByID(ID);
+		
 	}
 	
+	@Transactional
+	public List<StartConfirmation> getAllStartConfirmations() {
+		return toList(startConfirmationRepository.findAll());
+	}
 	
 //	Student
 	@Transactional
@@ -192,17 +212,30 @@ public class CooperatorService {
 		Student p = new Student();
 		p.setStudentID(ID);
 		p.setStudentName(name);
-		entityManager.persist(p);
+		studentRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public Student getStudent(int ID) {
-		Student p = entityManager.find(Student.class, ID);
+		Student p = studentRepository.findStudentByID(ID);
 		return p;
 	}
 	
+	@Transactional
+	public List<Student> getAllStudents() {
+		return toList(studentRepository.findAll());
+	}
 	
+	//toList method
+	
+	private <T> List<T> toList(Iterable<T> iterable){
+		List<T> resultList = new ArrayList<T>();
+		for (T t : iterable) {
+			resultList.add(t);
+		}
+		return resultList;
+	}
 	
 	
 
