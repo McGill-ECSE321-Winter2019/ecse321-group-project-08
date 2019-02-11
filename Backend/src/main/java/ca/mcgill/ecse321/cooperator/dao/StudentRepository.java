@@ -1,5 +1,11 @@
 package ca.mcgill.ecse321.cooperator.dao;
 
-public interface StudentRepository {
+import org.springframework.data.repository.CrudRepository;
 
+import ca.mcgill.ecse321.cooperator.model.Student;
+
+public interface StudentRepository extends CrudRepository<Student, Integer>{
+
+	Student findStudentByID(Integer ID);
+	
 }

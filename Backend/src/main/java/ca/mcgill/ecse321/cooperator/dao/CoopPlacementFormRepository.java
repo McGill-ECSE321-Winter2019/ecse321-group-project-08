@@ -1,5 +1,11 @@
 package ca.mcgill.ecse321.cooperator.dao;
 
-public interface CoopPlacementFormRepository {
+import org.springframework.data.repository.CrudRepository;
 
+import ca.mcgill.ecse321.cooperator.model.CoopPlacementForm;
+
+public interface CoopPlacementFormRepository extends CrudRepository<CoopPlacementForm, Integer>{
+
+	CoopPlacementForm findCoopPlacementFormByID(Integer ID);
+	
 }

@@ -6,4 +6,6 @@ import ca.mcgill.ecse321.cooperator.model.EvaluationForm;
 
 public interface EvaluationFormRepository extends CrudRepository<EvaluationForm, Integer>{
 
+	EvaluationForm findEvaluationFormByID(Integer ID);
+	
 }

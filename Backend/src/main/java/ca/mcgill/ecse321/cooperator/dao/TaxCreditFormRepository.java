@@ -6,4 +6,6 @@ import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 
 public interface TaxCreditFormRepository extends CrudRepository<TaxCreditForm, Integer>{
 
+	TaxCreditForm findTaxCreditFormByID(Integer ID);
+	
 }
