@@ -1,15 +1,9 @@
 
 /*
  * This class is commented because we didn't decide if we are going to use Hibernate or Crud
- * 
  * Crud seems more reasonable, but we can still change it
- * 
  * Therefore we are keeping this class. 
- *
  */
-
-
-
 
 
 package ca.mcgill.ecse321.cooperator.dao;

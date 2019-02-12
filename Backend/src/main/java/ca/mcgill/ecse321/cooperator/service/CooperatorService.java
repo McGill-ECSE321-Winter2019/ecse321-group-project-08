@@ -160,7 +160,7 @@ public class CooperatorService {
 	}
 	
 	@Transactional
-	public List<EvaluationForm> EvaluationForm() {
+	public List<EvaluationForm> getAllEvaluationForm() {
 		return toList(evaluationFormRepository.findAll());
 	}
 	

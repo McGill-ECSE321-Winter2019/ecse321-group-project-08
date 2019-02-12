@@ -18,4 +18,5 @@ public class CooperatorAppApplication {
 	public String greeting() {
 		return "Hello world!";
 	}
+	
 }
