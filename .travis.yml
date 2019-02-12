@@ -1,6 +1,4 @@
 language: java
 script:
-- gradle build
-
 ./gradlew build -x test
 
