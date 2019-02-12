@@ -5,7 +5,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Id;
 
 @Entity
-public class CoopPlacementForm extends Document{
+public class CoopPlacementForm{
 private CoopPosition coopPosition;
 
 @OneToOne(optional=false)

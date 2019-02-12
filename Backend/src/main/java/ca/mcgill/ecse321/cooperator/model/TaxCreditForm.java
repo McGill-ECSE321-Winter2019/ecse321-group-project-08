@@ -5,7 +5,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Id;
 
 @Entity
-public class TaxCreditForm extends Document{
+public class TaxCreditForm{
 private CoopPosition coopPosition;
 
 @OneToOne(optional=false)

@@ -6,6 +6,6 @@ import ca.mcgill.ecse321.cooperator.model.Employer;
 
 public interface EmployerRepository extends CrudRepository<Employer, Integer> {
 
-	Employer findEmployerbyID(Integer ID);
+	Employer findByEmployeeID(Integer ID);
 	
 }

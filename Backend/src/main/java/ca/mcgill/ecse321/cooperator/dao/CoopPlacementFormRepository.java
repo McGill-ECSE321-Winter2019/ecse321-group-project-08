@@ -6,6 +6,6 @@ import ca.mcgill.ecse321.cooperator.model.CoopPlacementForm;
 
 public interface CoopPlacementFormRepository extends CrudRepository<CoopPlacementForm, Integer>{
 
-	CoopPlacementForm findCoopPlacementFormByID(Integer ID);
+	CoopPlacementForm findByCoopPlacementFormID(Integer ID);
 	
 }

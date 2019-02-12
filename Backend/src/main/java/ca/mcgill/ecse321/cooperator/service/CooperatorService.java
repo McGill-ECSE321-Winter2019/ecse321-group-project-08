@@ -68,7 +68,7 @@ public class CooperatorService {
 
 	@Transactional
 	public CoopPlacementForm getCoopPlacementForm(int ID) {
-		return coopPlacementFormRepository.findCoopPlacementFormByID(ID);	
+		return coopPlacementFormRepository.findByCoopPlacementFormID(ID);	
 	}
 	
 	@Transactional
@@ -92,7 +92,7 @@ public class CooperatorService {
 
 	@Transactional
 	public CoopPosition getCoopPositiontForm(int ID,String PosName, String compName, Date startDate, Date endDate) {
-		return coopPositionRepository.findCoopPositionByID(ID);	
+		return coopPositionRepository.findByPositionID(ID);	
 	}
 	
 	@Transactional
@@ -114,7 +114,7 @@ public class CooperatorService {
 
 	@Transactional
 	public Employer getEmployer(String userName, String password,int ID) {
-		return employerRepository.findEmployerbyID(ID);
+		return employerRepository.findByEmployeeID(ID);
 		
 	}
 	
@@ -135,7 +135,7 @@ public class CooperatorService {
 
 	@Transactional
 	public Event getEvents(String eventName ) {
-		return eventRepository.findEventbyName(eventName);
+		return eventRepository.findByName(eventName);
 	}
 	
 	@Transactional
@@ -155,7 +155,7 @@ public class CooperatorService {
 
 	@Transactional
 	public EvaluationForm getEvaluationForm(int ID) {
-		return evaluationFormRepository.findEvaluationFormByID(ID);
+		return evaluationFormRepository.findByEvaluationFormID(ID);
 		
 	}
 	
@@ -176,7 +176,7 @@ public class CooperatorService {
 
 	@Transactional
 	public TaxCreditForm getTaxCreditForm(int ID ) {
-		return taxCreditFormRepository.findTaxCreditFormByID(ID);	
+		return taxCreditFormRepository.findByTaxCreditFormID(ID);	
 	}
 	
 	@Transactional
@@ -197,7 +197,7 @@ public class CooperatorService {
 
 	@Transactional
 	public StartConfirmation getStartConfirmation(int ID) {
-		return startConfirmationRepository.findStartConfirmationByID(ID);
+		return startConfirmationRepository.findByConfirmationID(ID);
 		
 	}
 	
@@ -219,7 +219,7 @@ public class CooperatorService {
 
 	@Transactional
 	public Student getStudent(int ID) {
-		return studentRepository.findStudentByID(ID);
+		return studentRepository.findByStudentID(ID);
 	}
 	
 	@Transactional

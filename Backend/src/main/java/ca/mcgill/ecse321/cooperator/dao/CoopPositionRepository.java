@@ -6,6 +6,6 @@ import ca.mcgill.ecse321.cooperator.model.CoopPosition;
 
 public interface CoopPositionRepository extends CrudRepository<CoopPosition, Integer>{
 
-	CoopPosition findCoopPositionByID(Integer ID);
+	CoopPosition findByPositionID(Integer ID);
 	
 }

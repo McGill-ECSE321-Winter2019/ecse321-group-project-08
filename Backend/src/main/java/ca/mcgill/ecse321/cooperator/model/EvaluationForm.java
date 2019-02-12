@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 
 @Entity
-public class EvaluationForm extends Document{
+public class EvaluationForm{
 private CoopPosition coopPosition;
 
 @OneToOne(optional=false)
