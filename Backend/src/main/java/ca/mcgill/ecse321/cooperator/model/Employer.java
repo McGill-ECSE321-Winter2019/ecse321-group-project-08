@@ -32,7 +32,7 @@ public void setInvitedTo(Set<Event> invitedTos) {
 
 private Set<StartConfirmation> startConfirmation;
 
-@ManyToMany
+@OneToMany(mappedBy="employer")
 public Set<StartConfirmation> getStartConfirmation() {
    return this.startConfirmation;
 }

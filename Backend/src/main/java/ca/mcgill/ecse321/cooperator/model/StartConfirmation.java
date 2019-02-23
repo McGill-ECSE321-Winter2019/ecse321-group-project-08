@@ -2,8 +2,7 @@ package ca.mcgill.ecse321.cooperator.model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import java.util.Set;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.sql.Date;
 import javax.persistence.Id;
 
@@ -20,15 +19,15 @@ public void setCoopPosition(CoopPosition coopPosition) {
    this.coopPosition = coopPosition;
 }
 
-private Set<Employer> employer;
+private Employer employer;
 
-@ManyToMany(mappedBy="startConfirmation")
-public Set<Employer> getEmployer() {
+@ManyToOne(optional=false)
+public Employer getEmployer() {
    return this.employer;
 }
 
-public void setEmployer(Set<Employer> employers) {
-   this.employer = employers;
+public void setEmployer(Employer employer) {
+   this.employer = employer;
 }
 
 private Date evaluationDate;
