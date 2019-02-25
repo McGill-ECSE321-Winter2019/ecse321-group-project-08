@@ -1,39 +1,34 @@
 package ca.mcgill.ecse321.cooperator.dto;
-import java.util.Collections;
+
 import java.util.List;
 
 public class EventDto {
 	private String name;
 	private List<EmployerDto> employers;
 
-	
-	
+//Constructor
+
 	public EventDto() {
 	}
-	@SuppressWarnings("unchecked")
-	
-	
-	
-	
-	
-	public EventDto(String name,List<EmployerDto> employers) {
+
+	public EventDto(String name, List<EmployerDto> employers) {
 		this.name = name;
 		this.employers = employers;
-
 	}
-	//Getter
+
+//Get methods
+
 	public String getName() {
 		return name;
 	}
-	
-	//Getter
-	public List<EmployerDto> getEmployers(){
+
+	public List<EmployerDto> getEmployers() {
 		return employers;
 	}
-	
+
 //Set methods
-	
+
 	public void setEmployers(List<EmployerDto> employers) {
-		this.employers=employers;
+		this.employers = employers;
 	}
 }

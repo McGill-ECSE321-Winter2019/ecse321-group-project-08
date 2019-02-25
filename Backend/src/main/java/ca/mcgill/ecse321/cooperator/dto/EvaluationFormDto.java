@@ -4,8 +4,6 @@ public class EvaluationFormDto {
 	
 	public int id;
 	public String name;
-	
-	//get and set methods needed
 	public CoopPositionDto coopPosition;
 	public EmployerDto employer;
 

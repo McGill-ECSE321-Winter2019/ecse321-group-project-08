@@ -12,10 +12,10 @@ public class CoopPlacementFormDto {
 		
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	public CoopPlacementFormDto(int ID) {
+	@SuppressWarnings("unchecked")
+	public CoopPlacementFormDto(int ID) {
 //		this(coopPlacementFormID, Collections.EMPTY_LIST);  
-//	}
+	}
 
 	public CoopPlacementFormDto(int ID, CoopPositionDto coopPosition) {
 		this.coopPosition=coopPosition;

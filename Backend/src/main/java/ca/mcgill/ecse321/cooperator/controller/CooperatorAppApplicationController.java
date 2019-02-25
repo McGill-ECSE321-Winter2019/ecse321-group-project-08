@@ -2,6 +2,7 @@ package ca.mcgill.ecse321.cooperator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,24 +22,28 @@ public class CooperatorAppApplicationController {
 //CoopPlacementForm
 
 	//create CoopPlacementForm
-//	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })	
-//	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
-//		// @formatter:on
-//		CoopPlacementForm coopPlacementForm = cooperatorService.createCoopPlacementForm(id);
-//		return convertToDto(coopPlacementForm);
-//	}
+	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })	
+	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
+		// @formatter:on
+		CoopPlacementForm coopPlacementForm = cooperatorService.createCoopPlacementForm(id);
+		return convertToDto(coopPlacementForm);
+	}
+	
+	//get a CoopPlacementForm by ID
+	@GetMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })
+	public CoopPlacementFormDto getCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
+		return convertToDto(cooperatorService.getCoopPlacementForm(id));
+	}
 	
 	
-	
-	
-//	private CoopPlacementFormDto convertToDto(CoopPlacementForm p) {
-//		if (p == null) {
-//			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
-//		}
-//		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementForm(p.getCoopPlacementFormID());
-//		return coopPlacementFormDto;
-//	}
-//	
+	private CoopPlacementFormDto convertToDto(CoopPlacementForm p) {
+		if (p == null) {
+			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
+		}
+		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementFormDto(p.getCoopPlacementFormID());
+		return coopPlacementFormDto;
+	}
+
 	
 	
 }

@@ -7,20 +7,21 @@ public class StudentDto {
 	private int ID;
 	private String name;
 	private List<CoopPositionDto> coopPosition;
-
+	
+//Constructor
 	
 	public StudentDto() {
 
 	}
-	//Constructor
+	
 	public StudentDto(int ID, String name,List<CoopPositionDto> coopPosition) {
 		this.ID = ID;
 		this.name = name;
 		this.coopPosition = coopPosition;
-
 	}
 	
-	//Getter
+//Get Methods
+	
 	public int getID() {
 		return ID;
 	}
@@ -29,12 +30,15 @@ public class StudentDto {
 		return name;
 	}
 	
+	public List<CoopPositionDto> getCoopPosition() {
+		return coopPosition;
+	}
 	
-	//Setter
+//Set Methods
+	
 	public void setCoopPosition(List<CoopPositionDto> coopPosition) {
 		this.coopPosition= coopPosition;
 	}
-	
 	
 	
 	
