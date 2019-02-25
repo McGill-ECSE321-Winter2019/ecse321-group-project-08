@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,32 +27,33 @@ import ca.mcgill.ecse321.cooperator.model.StartConfirmation;
 import ca.mcgill.ecse321.cooperator.model.Student;
 import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 
+
 @Service
 public class CooperatorService {
 	
 	@Autowired
-	CoopPlacementFormRepository  coopPlacementFormRepository;
+	private CoopPlacementFormRepository  coopPlacementFormRepository;
 	
 	@Autowired
-	CoopPositionRepository coopPositionRepository;
+	private CoopPositionRepository coopPositionRepository;
 	
 	@Autowired
-	EmployerRepository employerRepository;
+	private EmployerRepository employerRepository;
 	
 	@Autowired
-	EvaluationFormRepository evaluationFormRepository;
+	private EvaluationFormRepository evaluationFormRepository;
 	
 	@Autowired
-	EventRepository eventRepository;
+	private EventRepository eventRepository;
 	
 	@Autowired 
-	StartConfirmationRepository startConfirmationRepository;
+	private StartConfirmationRepository startConfirmationRepository;
 	
 	@Autowired
-	StudentRepository studentRepository;
+	private StudentRepository studentRepository;
 	
 	@Autowired
-	TaxCreditFormRepository taxCreditFormRepository;
+	private TaxCreditFormRepository taxCreditFormRepository;
 	
 //	CoopPlacementForm
 	
@@ -62,12 +64,16 @@ public class CooperatorService {
 		}
 		CoopPlacementForm p = new CoopPlacementForm();
 		p.setCoopPlacementFormID(ID);
+	
 		coopPlacementFormRepository.save(p);
 		return p;
 	}
 
 	@Transactional
 	public CoopPlacementForm getCoopPlacementForm(int ID) {
+		if (ID == 0) {
+			throw new IllegalArgumentException("Coop Placement Form ID can't be 0");
+		}
 		 return coopPlacementFormRepository.findByCoopPlacementFormID(ID);	
 	}
 	
@@ -148,9 +154,10 @@ public class CooperatorService {
 //	EvaluationForm
 	
 	@Transactional
-	public EvaluationForm createEvaluationForm(int ID ) {
+	public EvaluationForm createEvaluationForm(int ID, String name) {
 		EvaluationForm p = new EvaluationForm();
 		p.setEvaluationFormID(ID);
+		p.setName(name);
 		evaluationFormRepository.save(p);
 		return p;
 	}
@@ -189,7 +196,7 @@ public class CooperatorService {
 //	StartConfirmation
 	
 	@Transactional
-	public StartConfirmation createStartConfirmation(Date date ,int ID ) {
+	public StartConfirmation createStartConfirmation(Date date, int ID ) {
 		StartConfirmation p = new StartConfirmation();
 		p.setConfirmationID(ID);
 		p.setEvaluationDate(date);

@@ -5,11 +5,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,15 +64,16 @@ public class ServiceTests {
 
 
 	@After
-	public void clearDatabase() {		
-		coopPlacementFormRepository.deleteAll();		
-		coopPositionRepository.deleteAll();		
-		employerRepository.deleteAll();		
-		evaluationFormRepository.deleteAll();		
+	public void clearDatabase() {	
 		eventRepository.deleteAll();	
 		startConfirmationRepository.deleteAll();	
 		studentRepository.deleteAll();	
 		taxCreditFormRepository.deleteAll();
+		coopPlacementFormRepository.deleteAll();		
+		coopPositionRepository.deleteAll();		
+		employerRepository.deleteAll();		
+		evaluationFormRepository.deleteAll();		
+
 	}
 	
 	
@@ -146,20 +142,20 @@ public class ServiceTests {
 		List<CoopPosition> allCoopPositions = cooperatorService.getAllCoopPositions();	
 		
 		assertEquals(1, allCoopPositions.size());	
-	
-		assertEquals(id, allCoopPositions.get(0).getCompanyName());		
+
+		assertEquals(id.intValue(), allCoopPositions.get(0).getCompanyName());		
 		
 	}
 	
 //	Tests for Employer 	
-//fail	
+
 	@Test
 	public void testCreateEmployer() {                      
 		assertEquals(0, cooperatorService.getAllEmployers().size());       
 
 		Integer id = 22;
 		String userName= "Ege";
-		String password= "iLoveVarro";
+		String password= "ecse";
 														
 		try {
 			cooperatorService.createEmployer(userName, password, id);						
@@ -173,7 +169,7 @@ public class ServiceTests {
 		
 		
 		assertEquals(1, allEmployers.size());						
-		assertEquals(id, allEmployers.get(0).getUserName());
+		assertEquals(id.intValue(), allEmployers.get(0).getEmployeeID());
 	
 		
 	}
@@ -184,10 +180,11 @@ public class ServiceTests {
 	public void testCreateEvaluationForm() {                       
 		assertEquals(0, cooperatorService.getAllEvaluationForm().size());       
 
-		Integer id = 22;													
+		Integer id = 22;	
+		String name ="form1";
 															
 		try {
-			cooperatorService.createEvaluationForm(id);							
+			cooperatorService.createEvaluationForm(id,name);							
 			
 		} catch (IllegalArgumentException e) {
 			// Check that no error occurred

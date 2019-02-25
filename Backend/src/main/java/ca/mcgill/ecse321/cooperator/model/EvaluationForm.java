@@ -37,5 +37,13 @@ this.evaluationFormID = value;
 @Id
 public int getEvaluationFormID() {
 return this.evaluationFormID;
+    }
+private String name;
+
+public void setName(String value) {
+this.name = value;
+    }
+public String getName() {
+return this.name;
        }
    }
