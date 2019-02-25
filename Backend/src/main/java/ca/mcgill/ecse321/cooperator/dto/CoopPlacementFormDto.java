@@ -7,19 +7,22 @@ public class CoopPlacementFormDto {
 	private static int coopPlacementFormID;
 	private CoopPositionDto coopPosition;
 
+//Constructors
 	public CoopPlacementFormDto() {
 		
 	}
 	
 //	@SuppressWarnings("unchecked")
 //	public CoopPlacementFormDto(int ID) {
-//		this(coopPlacementFormID, EMPTY);   <-- 
+//		this(coopPlacementFormID, Collections.EMPTY_LIST);  
 //	}
 
 	public CoopPlacementFormDto(int ID, CoopPositionDto coopPosition) {
 		this.coopPosition=coopPosition;
-		this.coopPlacementFormID=ID;
+		CoopPlacementFormDto.coopPlacementFormID=ID;
 	}
+	
+//Get Methods	
 	
 	public int getID() {
 		return coopPlacementFormID;
@@ -29,6 +32,8 @@ public class CoopPlacementFormDto {
 		return coopPosition;
 	}
 	
+	
+//Set Methods	
 	public void setCoopPosition(CoopPositionDto coopPosition) {
 		this.coopPosition = coopPosition;
 	}

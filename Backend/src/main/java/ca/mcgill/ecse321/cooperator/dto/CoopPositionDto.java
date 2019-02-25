@@ -9,7 +9,15 @@ public class CoopPositionDto {
 	private String companyName;
 	private Date startDate;
 	private Date endDate;
+	private EvaluationFormDto evaluationForm;
+	private StartConfirmationDto startConfirmation;
+	private TaxCreditFormDto taxCreditForm;
+	private CoopPlacementFormDto coopPlacementForm;
+	private StudentDto student;
 
+	
+// Constructors	
+	
 	public CoopPositionDto() {
 
 	}
@@ -20,9 +28,10 @@ public class CoopPositionDto {
 		this.companyName = companyName;
 		this.startDate = startDate;
 		this.endDate = endDate;
-
 	}
-
+	
+//Get Methods
+	
 	public int getID() {
 		return coopPositionID;
 	}
@@ -42,5 +51,45 @@ public class CoopPositionDto {
 	public Date getEndDate() {
 		return endDate;
 	}
+	
+	public EvaluationFormDto getEvaluationForm(){
+		return evaluationForm;
+	}
+	
+	public StartConfirmationDto getStartConfirmation() {
+		return startConfirmation;
+	}
+	public TaxCreditFormDto getTaxCreditForm() {
+		return taxCreditForm;
+	}
+	public CoopPlacementFormDto getCoopPlacementForm() {
+		return coopPlacementForm;
+	}
+	public StudentDto getStudent() {
+		return student;
+	}
+
+//Set Methods
+	
+	public void setEvaluationForm(EvaluationFormDto evaluationForm) {
+		this.evaluationForm=evaluationForm;
+	}
+	
+	public void setStartConfirmation(StartConfirmationDto startConfirmation) {
+		this.startConfirmation=startConfirmation;
+	}
+	
+	public void setTaxCreditForm(TaxCreditFormDto taxCreditForm) {
+		this.taxCreditForm=taxCreditForm;
+	}
+	
+	public void setCoopPlacementForm(CoopPlacementFormDto coopPlacementForm) {
+		this.coopPlacementForm=coopPlacementForm;
+	}
+	
+	public void setStudent(StudentDto student) {
+		this.student=student;
+	}
+	
 
 }
