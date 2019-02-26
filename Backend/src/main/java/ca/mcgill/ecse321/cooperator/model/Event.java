@@ -7,17 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Event{
-private Set<Employer> attendee;
-
-@ManyToMany
-public Set<Employer> getAttendee() {
-   return this.attendee;
-}
-
-public void setAttendee(Set<Employer> attendees) {
-   this.attendee = attendees;
-}
-
 private Set<Employer> invited;
 
 @ManyToMany(mappedBy="invitedTo")

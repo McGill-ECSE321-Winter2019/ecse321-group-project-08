@@ -22,12 +22,12 @@ public class CooperatorAppApplicationController {
 //CoopPlacementForm
 
 	//create CoopPlacementForm
-	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })	
-	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
-		// @formatter:on
-		CoopPlacementForm coopPlacementForm = cooperatorService.createCoopPlacementForm(id);
-		return convertToDto(coopPlacementForm);
-	}
+//	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })	
+//	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
+//		// @formatter:on
+//		CoopPlacementForm coopPlacementForm = cooperatorService.createCoopPlacementForm(id);
+//		return convertToDto(coopPlacementForm);
+//	}
 	
 	//get a CoopPlacementForm by ID
 	@GetMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })

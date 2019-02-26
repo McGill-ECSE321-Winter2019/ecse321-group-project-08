@@ -76,41 +76,42 @@ public class ServiceTests {
 
 	}
 	
-	
 // Tests for CoopPlacementForm	
 	
-//fail
 	@Test
 	public void testCreateCoopPlacementForm() {
+		
+		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
 
 		assertEquals(0, cooperatorService.getAllCoopPlacementForms().size());   
 		
 		Integer id = 22;
 
 		try {
-			cooperatorService.createCoopPlacementForm(id);
+			cooperatorService.createCoopPlacementForm(id,c);
 		} catch (IllegalArgumentException e) {
-			
 			fail();
 		}
 
 		List<CoopPlacementForm> allCoopPlacementForms = cooperatorService.getAllCoopPlacementForms();
-
+		
 		assertEquals(1, allCoopPlacementForms.size());
 		assertEquals(id.intValue(), allCoopPlacementForms.get(0).getCoopPlacementFormID());
 	}
 	
 	
-//success	
 	@Test
 	public void testCreateCreateCoopPlacementFormZero() {
+		
+		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
+
 		assertEquals(0, cooperatorService.getAllCoopPlacementForms().size());
 		
 		Integer ID = 0;
 		String error= null;
 
 		try {
-			cooperatorService.createCoopPlacementForm(ID);
+			cooperatorService.createCoopPlacementForm(ID,c);
 		} catch (IllegalArgumentException e) {
 			error = e.getMessage();
 		}
@@ -121,7 +122,7 @@ public class ServiceTests {
 	}
 	
 //Tests for CoopPosition 
-//fail	
+
 	@Test
 	public void testCreateCoopPosition(){                      
 		assertEquals(0, cooperatorService.getAllCoopPositions().size());       
@@ -135,7 +136,6 @@ public class ServiceTests {
 		try {
 			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);							
 		} catch (IllegalArgumentException e) {
-			// Check that no error occurred
 			fail();
 		}
 
@@ -143,7 +143,7 @@ public class ServiceTests {
 		
 		assertEquals(1, allCoopPositions.size());	
 
-		assertEquals(id.intValue(), allCoopPositions.get(0).getCompanyName());		
+		assertEquals(id.intValue(), allCoopPositions.get(0).getPositionID());
 		
 	}
 	
@@ -170,14 +170,13 @@ public class ServiceTests {
 		
 		assertEquals(1, allEmployers.size());						
 		assertEquals(id.intValue(), allEmployers.get(0).getEmployeeID());
-	
-		
 	}
 	
 //	EvaluationForm
-//fail	
+
 	@Test
-	public void testCreateEvaluationForm() {                       
+	public void testCreateEvaluationForm() {   
+
 		assertEquals(0, cooperatorService.getAllEvaluationForm().size());       
 
 		Integer id = 22;	
@@ -193,12 +192,12 @@ public class ServiceTests {
 
 		List<EvaluationForm> allEvaluationForms = cooperatorService.getAllEvaluationForm();
 		
-		assertEquals(1, allEvaluationForms.size());								
-	
-		
+		assertEquals(1, allEvaluationForms.size());									
 		
 	}
-	//Event
+	
+	
+//	//Event
 	
 	@Test
 	public void testCreateEvent() {                       
@@ -218,41 +217,37 @@ public class ServiceTests {
 		List<Event> allEvents = cooperatorService.getAllEvents();		
 		
 		assertEquals(1, allEvents.size());						
-		assertEquals(name, allEvents.get(0).getName());		
-		
-		
+		assertEquals(name, allEvents.get(0).getName());			
 	}
 	
+	
 	//StartConfirmation
+	
 	@Test
-	public void testCreateStartConfirmation() {                       
+	public void testCreateStartConfirmation() {     
+		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
+		Employer em=  cooperatorService.createEmployer("Mary", "1234", 123);
 		assertEquals(0, cooperatorService.getAllStartConfirmations().size());       
 
 		Integer id = 22;		
 		Date date= new Date(01-10-2019);
 															
 		try {
-			cooperatorService.createStartConfirmation(date, id);							
+			cooperatorService.createStartConfirmation(date,id,em,c);							
 			
 		} catch (IllegalArgumentException e) {
-			// Check that no error occurred
+	
 			fail();
 		}
 
-		List<StartConfirmation> allStartConfirmations = cooperatorService.getAllStartConfirmations();		
-															
-		
-		
-		
+		List<StartConfirmation> allStartConfirmations = cooperatorService.getAllStartConfirmations();																	
 		assertEquals(1, allStartConfirmations.size());						
-		assertEquals(id.intValue(), allStartConfirmations.get(0).getConfirmationID());		
-		
-		
+		assertEquals(id.intValue(), allStartConfirmations.get(0).getConfirmationID());				
 		
 	}
-	
-	//Student
-	//success 
+
+//Student
+
 	@Test
 	public void testCreateStudent() {                      
 		assertEquals(0, cooperatorService.getAllStudents().size());       
@@ -279,14 +274,15 @@ public class ServiceTests {
 	//TaxCreditForm
 	
 	@Test
-	public void testCreateTaxCreditForm() {                       
+	public void testCreateTaxCreditForm() {    
+		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
 		assertEquals(0, cooperatorService.getAllTaxCreditForm().size());       
 
 		Integer id = 22;
 															 
 															
 		try {
-			cooperatorService.createTaxCreditForm(id);							
+			cooperatorService.createTaxCreditForm(id,c);							
 			
 		} catch (IllegalArgumentException e) {
 			// Check that no error occurred

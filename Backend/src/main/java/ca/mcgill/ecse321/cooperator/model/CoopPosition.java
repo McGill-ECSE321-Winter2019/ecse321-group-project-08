@@ -10,7 +10,7 @@ import java.sql.Date;
 public class CoopPosition{
 private Student student;
 
-@ManyToOne(optional=false)
+@ManyToOne
 public Student getStudent() {
    return this.student;
 }
@@ -21,7 +21,7 @@ public void setStudent(Student student) {
 
 private CoopPlacementForm coopPlacementForm;
 
-@OneToOne(mappedBy="coopPosition", optional=false)
+@OneToOne(mappedBy="coopPosition")
 public CoopPlacementForm getCoopPlacementForm() {
    return this.coopPlacementForm;
 }
@@ -32,7 +32,7 @@ public void setCoopPlacementForm(CoopPlacementForm coopPlacementForm) {
 
 private TaxCreditForm taxCreditForm;
 
-@OneToOne(mappedBy="coopPosition", optional=false)
+@OneToOne(mappedBy="coopPosition")
 public TaxCreditForm getTaxCreditForm() {
    return this.taxCreditForm;
 }
@@ -43,7 +43,7 @@ public void setTaxCreditForm(TaxCreditForm taxCreditForm) {
 
 private EvaluationForm evaluationForm;
 
-@OneToOne(mappedBy="coopPosition", optional=false)
+@OneToOne(mappedBy="coopPosition")
 public EvaluationForm getEvaluationForm() {
    return this.evaluationForm;
 }
@@ -54,7 +54,7 @@ public void setEvaluationForm(EvaluationForm evaluationForm) {
 
 private StartConfirmation startConfirmation;
 
-@OneToOne(mappedBy="coopPosition", optional=false)
+@OneToOne(mappedBy="coopPosition")
 public StartConfirmation getStartConfirmation() {
    return this.startConfirmation;
 }
