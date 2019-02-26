@@ -21,28 +21,6 @@ public class CooperatorAppApplicationController {
 		
 //CoopPlacementForm
 
-	//create CoopPlacementForm
-//	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })	
-//	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
-//		// @formatter:on
-//		CoopPlacementForm coopPlacementForm = cooperatorService.createCoopPlacementForm(id);
-//		return convertToDto(coopPlacementForm);
-//	}
-	
-	//get a CoopPlacementForm by ID
-	@GetMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })
-	public CoopPlacementFormDto getCoopPlacementForm(@PathVariable("id") int id) throws IllegalArgumentException {
-		return convertToDto(cooperatorService.getCoopPlacementForm(id));
-	}
-	
-	
-	private CoopPlacementFormDto convertToDto(CoopPlacementForm p) {
-		if (p == null) {
-			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
-		}
-		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementFormDto(p.getCoopPlacementFormID());
-		return coopPlacementFormDto;
-	}
 
 	
 	
