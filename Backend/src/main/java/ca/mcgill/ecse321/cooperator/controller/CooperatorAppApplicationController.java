@@ -171,11 +171,16 @@ public class CooperatorAppApplicationController {
 	}
 	
 	
-// EventDto --> Event
+// getEventByName
 @GetMapping(value = { "/events/{name}", "/events/{name}/" })
-public EventDto getEventByName(@PathVariable("name")
-String name) throws IllegalArgumentException {
+public EventDto getEventByName(@PathVariable("name") String name) throws IllegalArgumentException {
 return convertToDto(service.getEvents(name));
 }
 
+
+
+
+
+//end of main class
 }
+
