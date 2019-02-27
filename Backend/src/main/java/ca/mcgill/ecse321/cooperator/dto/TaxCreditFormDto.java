@@ -18,12 +18,6 @@ public class TaxCreditFormDto {
 //		this.taxCreditFormID=id;
 //	}
 	
-	public TaxCreditFormDto(int taxCreditFormID, CoopPositionDto coopPosition) {
-		this.taxCreditFormID = taxCreditFormID;
-		this.coopPosition = coopPosition;
-
-	}
-	
 	
 	public TaxCreditFormDto(int ID) {
 		this.taxCreditFormID = ID;

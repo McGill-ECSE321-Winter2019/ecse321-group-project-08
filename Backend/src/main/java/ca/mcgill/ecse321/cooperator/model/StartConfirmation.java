@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class StartConfirmation{
 private CoopPosition coopPosition;
 
-@OneToOne(optional=false)
+@OneToOne
 public CoopPosition getCoopPosition() {
    return this.coopPosition;
 }
@@ -21,7 +21,7 @@ public void setCoopPosition(CoopPosition coopPosition) {
 
 private Employer employer;
 
-@ManyToOne(optional=false)
+@ManyToOne
 public Employer getEmployer() {
    return this.employer;
 }

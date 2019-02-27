@@ -13,11 +13,9 @@ public class StartConfirmationDto {
 
 	}
 
-	public StartConfirmationDto(int confirmationID, Date evaluationDate,EmployerDto employer,CoopPositionDto coopPosition ) {
+	public StartConfirmationDto(int confirmationID, Date evaluationDate ) {
 		this.confirmationID = confirmationID;
 		this.evaluationDate = evaluationDate;
-		this.employer=employer;
-		this.coopPosition=coopPosition;
 	}
 
 //Get Methods

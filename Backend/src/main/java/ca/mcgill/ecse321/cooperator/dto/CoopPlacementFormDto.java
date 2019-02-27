@@ -12,8 +12,7 @@ public class CoopPlacementFormDto {
 		
 	}
 
-	public CoopPlacementFormDto(int ID, CoopPositionDto coopPosition) {
-		this.coopPosition=coopPosition;
+	public CoopPlacementFormDto(int ID) {
 		CoopPlacementFormDto.coopPlacementFormID=ID;
 	}
 	

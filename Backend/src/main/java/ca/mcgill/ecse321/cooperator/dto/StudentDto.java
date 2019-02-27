@@ -14,10 +14,9 @@ public class StudentDto {
 
 	}
 	
-	public StudentDto(int ID, String name,List<CoopPositionDto> coopPosition) {
+	public StudentDto(int ID, String name) {
 		this.ID = ID;
 		this.name = name;
-		this.coopPosition = coopPosition;
 	}
 	
 //Get Methods

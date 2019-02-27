@@ -58,13 +58,12 @@ public class CooperatorService {
 //	CoopPlacementForm
 	
 	@Transactional
-	public CoopPlacementForm createCoopPlacementForm(int ID, CoopPosition coopPosition) {
+	public CoopPlacementForm createCoopPlacementForm(int ID) {
 		if (ID == 0) {
 			throw new IllegalArgumentException("Coop Placement Form ID can't be 0");
 		}
 		CoopPlacementForm p = new CoopPlacementForm();
 		p.setCoopPlacementFormID(ID);
-		p.setCoopPosition(coopPosition);
 		coopPlacementFormRepository.save(p);
 		return p;
 	}
@@ -175,10 +174,9 @@ public class CooperatorService {
 //	TaxCreditForm
 	
 	@Transactional
-	public TaxCreditForm createTaxCreditForm(int ID, CoopPosition coopPosition ) {
+	public TaxCreditForm createTaxCreditForm(int ID ) {
 		TaxCreditForm p = new TaxCreditForm();
 		p.setTaxCreditFormID(ID);
-		p.setCoopPosition(coopPosition);
 		taxCreditFormRepository.save(p);
 		return p;
 	}
@@ -196,12 +194,10 @@ public class CooperatorService {
 //	StartConfirmation
 	
 	@Transactional
-	public StartConfirmation createStartConfirmation(Date date, int ID, Employer employer, CoopPosition coopPosition ) {
+	public StartConfirmation createStartConfirmation(Date date, int ID ) {
 		StartConfirmation p = new StartConfirmation();
 		p.setConfirmationID(ID);
 		p.setEvaluationDate(date);
-		p.setEmployer(employer);
-		p.setCoopPosition(coopPosition);
 		startConfirmationRepository.save(p);
 		return p;
 	}

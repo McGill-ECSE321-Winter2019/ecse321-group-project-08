@@ -17,12 +17,14 @@ import ca.mcgill.ecse321.cooperator.dto.EmployerDto;
 import ca.mcgill.ecse321.cooperator.dto.EvaluationFormDto;
 import ca.mcgill.ecse321.cooperator.dto.EventDto;
 import ca.mcgill.ecse321.cooperator.dto.StartConfirmationDto;
+import ca.mcgill.ecse321.cooperator.dto.StudentDto;
 import ca.mcgill.ecse321.cooperator.model.CoopPlacementForm;
 import ca.mcgill.ecse321.cooperator.model.CoopPosition;
 import ca.mcgill.ecse321.cooperator.model.Employer;
 import ca.mcgill.ecse321.cooperator.model.EvaluationForm;
 import ca.mcgill.ecse321.cooperator.model.Event;
 import ca.mcgill.ecse321.cooperator.model.StartConfirmation;
+import ca.mcgill.ecse321.cooperator.model.Student;
 import ca.mcgill.ecse321.cooperator.service.CooperatorService;
 
 
@@ -33,15 +35,13 @@ public class CooperatorAppApplicationController {
 	@Autowired
 	CooperatorService service;
 	
-	
+//Successs
 	
 //CoopPlacementFormDto Creation
-	//localhost:8080/CoopPlacementForm/123?coopPosition=133
+	//localhost:8080/CoopPlacementForm/123
 	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })
-	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id, 
-			@RequestParam(name = "coopPosition") CoopPositionDto cDto ) throws IllegalArgumentException {
-		CoopPosition c = service.createCoopPosition(cDto.getID(), cDto.getPositionName(), cDto.getCompanyName(), cDto.getStartDate(), cDto.getEndDate());
-		CoopPlacementForm f = service.createCoopPlacementForm(id,c);
+	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id ) {
+		CoopPlacementForm f = service.createCoopPlacementForm(id);
 		return convertToDto(f);
 	}
 	
@@ -58,13 +58,15 @@ public class CooperatorAppApplicationController {
 		CoopPosition cp = service.createCoopPosition(id, PosName, compName, startDate, endDate);
 	   return convertToDto(cp);		
 	}
-
+	
+//Success
+	
 //EmployerDto creation
-	//localhost:8080/Employer/Irmak/1234/2607
-	@PostMapping(value= {"/Employer","/Employer/"})
-	public String createEmployer(
-			@RequestBody EmployerDto e) {
-		return e.getPassword();
+	//localhost:8080/Employer/111?username=person1&password=123
+	@PostMapping(value= {"/Employer/{id}","/Employer/{id}/"})
+	public EmployerDto createEmployer(@PathVariable("id") int id, @RequestParam(name = "username") String username, @RequestParam(name ="password") String password) {
+		Employer e = service.createEmployer(username, password, id);
+		return convertToDto(e);
 	}
 
 //Success	
@@ -77,30 +79,34 @@ public class CooperatorAppApplicationController {
 		return covertToDto(e);
 	}	
 	
-	
+//Success
 	
 //EventDto Creation
 	//localhost:8080/Event/birthday
 	@PostMapping(value = { "/Event/{name}", "/Event/{name}/" })
 		public EventDto createEvent(@PathVariable("name") String name) {
-		System.out.println("hello I am here");
 		Event E = service.createEvents(name);
 		return convertToDto(E);
 		}
 	
 //StartConfirmation Creation
-	//localhost:8080/StartConfirmation/10001?evaluationDate=02.02.2020?coopPosition=0101?employer=8932"
+	//localhost:8080/StartConfirmation/10001?evaluationDate=2020-12-12
 	@PostMapping(value= {"/StartConfirmation/{id}","/StartConfirmation/{id}/"})
 	public StartConfirmationDto createStartConfirmation(@PathVariable("id") int id, 
-			@RequestParam(name = "evaluationDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date evaluationDate,
-			@RequestParam(name = "coopPosition") CoopPositionDto cDto,
-			@RequestParam(name = "employer") EmployerDto eDto){
-		Employer e= service.createEmployer(eDto.getUserName(),eDto.getPassword(),eDto.getID());
-		CoopPosition c= service.createCoopPosition(cDto.getID(), cDto.getPositionName(), cDto.getCompanyName(), cDto.getStartDate(), cDto.getEndDate());
-		StartConfirmation s = service.createStartConfirmation(evaluationDate, id, e, c);
+			@RequestParam(name = "evaluationDate") Date evaluationDate){
+		StartConfirmation s = service.createStartConfirmation(evaluationDate, id);
 		return convertToDto(s);
 	}
 
+//Student Creation
+	//localhost:8080/Student/2607?name=Irmak
+	 @PostMapping(value = { "/Student/{id}", "/Student/{id}/" })
+	        public StudentDto createStudentDto(@PathVariable("id") int id,
+	        		@RequestParam("name") String name) {
+	        Student I = service.createStudent(id, name); 
+	        return convertToDto(I);
+	        }  
+	
 
 	
 	
@@ -110,8 +116,7 @@ public class CooperatorAppApplicationController {
 		if (form == null) {
 			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
 		}
-		CoopPositionDto coopPositionDto = convertToDto(form.getCoopPosition());
-		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementFormDto(form.getCoopPlacementFormID(),coopPositionDto);
+		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementFormDto(form.getCoopPlacementFormID());
 		return coopPlacementFormDto;
 	}
 	
@@ -119,10 +124,9 @@ public class CooperatorAppApplicationController {
 	
 	private CoopPositionDto convertToDto(CoopPosition position) {
 		if (position == null) {
-			throw new IllegalArgumentException("There is no such CoopPlacement!");
+			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
 		}
-		CoopPositionDto coopPositionDto = new CoopPositionDto(position.getPositionID(),
-				position.getPositionName(),position.getCompanyName(),position.getStartDate(),position.getEndDate());
+		CoopPositionDto coopPositionDto= new CoopPositionDto(position.getPositionID(),position.getPositionName(),position.getCompanyName(),position.getStartDate(),position.getEndDate());
 		return coopPositionDto;
 	}
 	
@@ -163,10 +167,18 @@ public class CooperatorAppApplicationController {
 		if (start == null) {
 			throw new IllegalArgumentException("There is no such StartConfirmation!");
 		}
-		EmployerDto employerDto = convertToDto(start.getEmployer());
-		CoopPositionDto coopPositionDto = convertToDto(start.getCoopPosition());
-		StartConfirmationDto sDto= new StartConfirmationDto(start.getConfirmationID(),start.getEvaluationDate(),employerDto,coopPositionDto);
+		StartConfirmationDto sDto= new StartConfirmationDto(start.getConfirmationID(),start.getEvaluationDate());
 		return sDto;
+	}
+	
+//	Event ---> EventDto
+	
+	private StudentDto convertToDto(Student e) {
+		if (e == null) {
+			throw new IllegalArgumentException("There is no such Student!");
+		}
+		StudentDto eDto= new StudentDto(e.getStudentID(),e.getStudentName());
+		return eDto;
 	}
 	
 	

@@ -22,14 +22,6 @@ public class CoopPositionDto {
 
 	}
 
-	public CoopPositionDto(int coopPositionID) {
-		this.coopPositionID = coopPositionID;
-		this.positionName = "Position";
-		this.companyName = "Company";
-		this.startDate = new Date(00-00-0000);
-		this.endDate = new Date(99-99-9999);
-	}
-	
 
 	public CoopPositionDto(int coopPositionID, String positionName, String companyName, Date startDate, Date endDate) {
 		this.coopPositionID = coopPositionID;

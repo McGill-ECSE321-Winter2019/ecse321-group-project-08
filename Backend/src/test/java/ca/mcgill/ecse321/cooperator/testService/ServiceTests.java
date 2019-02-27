@@ -88,7 +88,7 @@ public class ServiceTests {
 		Integer id = 22;
 
 		try {
-			cooperatorService.createCoopPlacementForm(id,c);
+			cooperatorService.createCoopPlacementForm(id);
 		} catch (IllegalArgumentException e) {
 			fail();
 		}
@@ -111,7 +111,7 @@ public class ServiceTests {
 		String error= null;
 
 		try {
-			cooperatorService.createCoopPlacementForm(ID,c);
+			cooperatorService.createCoopPlacementForm(ID);
 		} catch (IllegalArgumentException e) {
 			error = e.getMessage();
 		}
@@ -233,7 +233,7 @@ public class ServiceTests {
 		Date date= new Date(01-10-2019);
 															
 		try {
-			cooperatorService.createStartConfirmation(date,id,em,c);							
+			cooperatorService.createStartConfirmation(date,id);							
 			
 		} catch (IllegalArgumentException e) {
 	
@@ -282,7 +282,7 @@ public class ServiceTests {
 															 
 															
 		try {
-			cooperatorService.createTaxCreditForm(id,c);							
+			cooperatorService.createTaxCreditForm(id);							
 			
 		} catch (IllegalArgumentException e) {
 			// Check that no error occurred

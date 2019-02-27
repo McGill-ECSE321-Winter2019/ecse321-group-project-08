@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class CoopPlacementForm{
 private CoopPosition coopPosition;
 
-@OneToOne(optional=false)
+@OneToOne
 public CoopPosition getCoopPosition() {
    return this.coopPosition;
 }
