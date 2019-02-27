@@ -13,10 +13,11 @@ public class StartConfirmationDto {
 
 	}
 
-	public StartConfirmationDto(int confirmationID, Date evaluationDate) {
+	public StartConfirmationDto(int confirmationID, Date evaluationDate,EmployerDto employer,CoopPositionDto coopPosition ) {
 		this.confirmationID = confirmationID;
 		this.evaluationDate = evaluationDate;
-
+		this.employer=employer;
+		this.coopPosition=coopPosition;
 	}
 
 //Get Methods

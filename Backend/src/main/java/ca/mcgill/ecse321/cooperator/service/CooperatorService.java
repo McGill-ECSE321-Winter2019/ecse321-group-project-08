@@ -154,10 +154,9 @@ public class CooperatorService {
 //	EvaluationForm
 	
 	@Transactional
-	public EvaluationForm createEvaluationForm(int ID, String name) {
+	public EvaluationForm createEvaluationForm(int ID) {
 		EvaluationForm p = new EvaluationForm();
 		p.setEvaluationFormID(ID);
-		p.setName(name);
 		evaluationFormRepository.save(p);
 		return p;
 	}

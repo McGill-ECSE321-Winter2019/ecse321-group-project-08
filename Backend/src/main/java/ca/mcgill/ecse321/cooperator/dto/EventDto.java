@@ -11,9 +11,8 @@ public class EventDto {
 	public EventDto() {
 	}
 
-	public EventDto(String name, List<EmployerDto> employers) {
+	public EventDto(String name) {
 		this.name = name;
-		this.employers = employers;
 	}
 
 //Get methods

@@ -180,10 +180,10 @@ public class ServiceTests {
 		assertEquals(0, cooperatorService.getAllEvaluationForm().size());       
 
 		Integer id = 22;	
-		String name ="form1";
+
 															
 		try {
-			cooperatorService.createEvaluationForm(id,name);							
+			cooperatorService.createEvaluationForm(id);							
 			
 		} catch (IllegalArgumentException e) {
 			// Check that no error occurred

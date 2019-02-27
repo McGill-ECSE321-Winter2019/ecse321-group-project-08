@@ -3,7 +3,6 @@ package ca.mcgill.ecse321.cooperator.dto;
 public class EvaluationFormDto {
 	
 	public int id;
-	public String name;
 	public CoopPositionDto coopPosition;
 	public EmployerDto employer;
 
@@ -12,19 +11,14 @@ public class EvaluationFormDto {
 	public EvaluationFormDto() {
 		
 	}
-	public EvaluationFormDto(int id, String name) {
+	public EvaluationFormDto(int id) {
 		this.id=id;
-		this.name=name;
 	}
 	
 //Get Methods
 	
 	public int getID() {
 		return id;
-	}
-	
-	public String getName() {
-		return name;
 	}
 	
 	public  CoopPositionDto getCoopPosition() {

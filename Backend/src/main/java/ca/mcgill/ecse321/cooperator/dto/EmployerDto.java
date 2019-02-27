@@ -1,30 +1,26 @@
 package ca.mcgill.ecse321.cooperator.dto;
 
-import java.util.Collections;
 import java.util.List;
+
+import ca.mcgill.ecse321.cooperator.model.Event;
 
 public class EmployerDto {
 
 	private int id;
 	private String username;
 	private String password;
-	private List<EmployerDto> employers;
+	private List<Event> events;
 
 //Constructors
 	
 	public EmployerDto() {	
 	}
 	
-	@SuppressWarnings("unchecked")
-	public EmployerDto(int id ,String name, String password) {
-		this(id, name, password, Collections.EMPTY_LIST);
-	}
 	
-	public EmployerDto(int id, String username, String password, List<EmployerDto> employers) {
+	public EmployerDto(int id, String username, String password) {
 		this.id=id;
 		this.username=username;
 		this.password=password;
-		this.employers=employers;
 	}
 	
 //Get methods
@@ -41,14 +37,14 @@ public class EmployerDto {
 		return username;
 	}
 	
-	public List<EmployerDto> getEmployers(){
-		return employers;
+	public List<Event> getEvents(){
+		return events;
 	}
 	
 //Set methods
 	
-	public void setEmployers(List<EmployerDto> employers) {
-		this.employers=employers;
+	public void setEvents(List<Event> events) {
+		this.events=events;
 	}
 	
 	
