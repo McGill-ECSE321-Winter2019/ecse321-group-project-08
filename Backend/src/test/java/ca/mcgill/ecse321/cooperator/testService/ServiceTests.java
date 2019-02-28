@@ -81,8 +81,6 @@ public class ServiceTests {
 	@Test
 	public void testCreateCoopPlacementForm() {
 		
-		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
-
 		assertEquals(0, cooperatorService.getAllCoopPlacementForms().size());   
 		
 		Integer id = 22;
@@ -103,7 +101,6 @@ public class ServiceTests {
 	@Test
 	public void testCreateCreateCoopPlacementFormZero() {
 		
-		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
 
 		assertEquals(0, cooperatorService.getAllCoopPlacementForms().size());
 		
@@ -225,8 +222,7 @@ public class ServiceTests {
 	
 	@Test
 	public void testCreateStartConfirmation() {     
-		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
-		Employer em=  cooperatorService.createEmployer("Mary", "1234", 123);
+
 		assertEquals(0, cooperatorService.getAllStartConfirmations().size());       
 
 		Integer id = 22;		
@@ -275,7 +271,7 @@ public class ServiceTests {
 	
 	@Test
 	public void testCreateTaxCreditForm() {    
-		CoopPosition c = cooperatorService.createCoopPosition(11, "intern", "google", new Date(01-02-1997), new Date(02-05-1997));
+		
 		assertEquals(0, cooperatorService.getAllTaxCreditForm().size());       
 
 		Integer id = 22;

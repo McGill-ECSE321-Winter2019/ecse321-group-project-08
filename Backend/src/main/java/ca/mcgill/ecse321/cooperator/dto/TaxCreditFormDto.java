@@ -13,17 +13,12 @@ public class TaxCreditFormDto {
 		
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	public taxCreditFormDto(int id) {
-//		this.taxCreditFormID=id;
-//	}
-	
-	
 	public TaxCreditFormDto(int ID) {
 		this.taxCreditFormID = ID;
 	}
 	
 //Get Methods
+	
 	public int getID() {
 		return taxCreditFormID;
 	}
@@ -32,6 +27,7 @@ public class TaxCreditFormDto {
 		return this.coopPosition;
 	}
 //Set Methods	
+	
 	public void setCoopPosition(CoopPositionDto coopPosition) {
 		this.coopPosition= coopPosition;
 	}

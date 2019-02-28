@@ -19,6 +19,7 @@ public class StartConfirmationDto {
 	}
 
 //Get Methods
+	
 	public int getID() {
 		return confirmationID;
 	}

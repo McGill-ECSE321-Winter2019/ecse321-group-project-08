@@ -60,12 +60,15 @@ public class CoopPositionDto {
 	public StartConfirmationDto getStartConfirmation() {
 		return startConfirmation;
 	}
+	
 	public TaxCreditFormDto getTaxCreditForm() {
 		return taxCreditForm;
 	}
+	
 	public CoopPlacementFormDto getCoopPlacementForm() {
 		return coopPlacementForm;
 	}
+	
 	public StudentDto getStudent() {
 		return student;
 	}

@@ -2,7 +2,9 @@ package ca.mcgill.ecse321.cooperator.dto;
 
 import java.util.List;
 
+import ca.mcgill.ecse321.cooperator.model.EvaluationForm;
 import ca.mcgill.ecse321.cooperator.model.Event;
+import ca.mcgill.ecse321.cooperator.model.StartConfirmation;
 
 public class EmployerDto {
 
@@ -10,6 +12,8 @@ public class EmployerDto {
 	private String username;
 	private String password;
 	private List<Event> events;
+	private List<EvaluationForm> evaluationForms;
+	private List<StartConfirmation> startConfirmations;
 
 //Constructors
 	
@@ -41,10 +45,26 @@ public class EmployerDto {
 		return events;
 	}
 	
+	public List<EvaluationForm> getEvaluationForms(){
+		return evaluationForms;
+	}
+	
+	public List<StartConfirmation> getStartConfirmations(){
+		return startConfirmations;
+	}
+	
 //Set methods
 	
 	public void setEvents(List<Event> events) {
 		this.events=events;
+	}
+	
+	public void setEvaluationForms(List<EvaluationForm> EvaluationForm) {
+		this.evaluationForms=EvaluationForm;
+	}
+	
+	public void setStartConfirmations(List<StartConfirmation> StartConfirmation) {
+		this.startConfirmations=StartConfirmation;
 	}
 	
 	

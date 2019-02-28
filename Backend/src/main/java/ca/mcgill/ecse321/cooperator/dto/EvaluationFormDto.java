@@ -31,12 +31,12 @@ public class EvaluationFormDto {
 	
 //Set Methods
 	
-	public CoopPositionDto setCoopPosition() {
-		return coopPosition;
+	public void setCoopPosition(CoopPositionDto coopPosition) {
+		this.coopPosition=coopPosition;
 	}
 
-	public EmployerDto setEmployer() {
-		return employer;
+	public void setEmployer(EmployerDto employer) {
+		this.employer=employer;
 	}	
 	
 }

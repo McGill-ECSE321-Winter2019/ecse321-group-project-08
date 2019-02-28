@@ -98,7 +98,7 @@ public class CooperatorService {
 	}
 
 	@Transactional
-	public CoopPosition getCoopPositiontForm(int ID,String PosName, String compName, Date startDate, Date endDate) {
+	public CoopPosition getCoopPosition(int ID) {
 		return coopPositionRepository.findByPositionID(ID);	
 	}
 	
@@ -120,7 +120,7 @@ public class CooperatorService {
 	}
 
 	@Transactional
-	public Employer getEmployer(String userName, String password,int ID) {
+	public Employer getEmployer(int ID) {
 		return employerRepository.findByEmployeeID(ID);
 		
 	}
@@ -141,7 +141,7 @@ public class CooperatorService {
 	}
 
 	@Transactional
-	public Event getEvents(String eventName ) {
+	public Event getEvent(String eventName) {
 		return eventRepository.findByName(eventName);
 	}
 	
