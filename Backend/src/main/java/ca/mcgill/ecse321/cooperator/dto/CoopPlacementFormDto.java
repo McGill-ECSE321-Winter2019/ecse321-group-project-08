@@ -1,10 +1,8 @@
 package ca.mcgill.ecse321.cooperator.dto;
 
-import java.util.Collections;
-
 public class CoopPlacementFormDto {
 
-	private static int coopPlacementFormID;
+	private int coopPlacementFormID;
 	private int coopPositionID;
 
 //Constructors
@@ -13,7 +11,7 @@ public class CoopPlacementFormDto {
 	}
 
 	public CoopPlacementFormDto(int ID) {
-		CoopPlacementFormDto.coopPlacementFormID=ID;
+		this.coopPlacementFormID=ID;
 	}
 	
 //Get Methods	

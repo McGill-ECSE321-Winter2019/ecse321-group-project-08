@@ -46,6 +46,12 @@ public class CooperatorAppApplicationController {
 	 */
 	
 	
+	/**
+	 * Receive POST endpoint for creating a new CoopPlacementForm with provided parametres.
+	 * @param id - ID assinged to the CoopPlacement
+	 * @return - 
+	 */
+	
 //CoopPlacementFormDto Creation
 	//localhost:8080/CoopPlacementForm/123
 	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })
@@ -106,6 +112,13 @@ public class CooperatorAppApplicationController {
 
 //Student Creation
 	//localhost:8080/Student/2607?name=Irmak
+	/**
+	 * Receive POST endpoint for creating a new Student with provided parametres.
+	 * @param id - ID to be assigned to the student
+	 * @param name - Student name 
+	 * @return - Newly created student DTO
+	 * @throws InvalidInputException - InvalidInputException thrown if ID is not unique. 
+	 */
 	 @PostMapping(value = { "/Student/{id}", "/Student/{id}/" })
 	        public StudentDto createStudentDto(@PathVariable("id") int id,
 	        		@RequestParam("name") String name) throws InvalidInputException{
