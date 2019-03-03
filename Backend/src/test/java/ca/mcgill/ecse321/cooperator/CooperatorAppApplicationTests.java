@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import ca.mcgill.ecse321.cooperator.controller.CooperatorAppApplicationController;
 import ca.mcgill.ecse321.cooperator.dao.CoopPlacementFormRepository;
 import ca.mcgill.ecse321.cooperator.dao.CoopPositionRepository;
 import ca.mcgill.ecse321.cooperator.dao.EmployerRepository;
@@ -47,7 +48,9 @@ public class CooperatorAppApplicationTests {
 	
 	@InjectMocks
 	CooperatorService service;
-
+	
+	@InjectMocks
+	CooperatorAppApplicationController controller;
 
 	@Mock
 	CoopPlacementFormRepository  coopPlacementFormRepositoryDao;
@@ -73,10 +76,7 @@ public class CooperatorAppApplicationTests {
 	@Mock
 	TaxCreditFormRepository taxCreditFormRepositoryDao;
 
-	@Test
-    public void contextLoads() {
-    }
-	
+
 	private Event event;
 	private static final String EVENT_KEY = "TestEvent";
 	private static final String NONEXISTING_KEY = "NotAnEvent";
