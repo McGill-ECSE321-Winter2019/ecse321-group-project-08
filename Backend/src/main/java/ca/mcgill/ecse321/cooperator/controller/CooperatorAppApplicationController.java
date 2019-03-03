@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +29,7 @@ import ca.mcgill.ecse321.cooperator.model.StartConfirmation;
 import ca.mcgill.ecse321.cooperator.model.Student;
 import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 import ca.mcgill.ecse321.cooperator.service.CooperatorService;
+import ca.mcgill.ecse321.cooperator.service.InvalidInputException;
 
 
 @CrossOrigin(origins = "*")
@@ -108,10 +108,13 @@ public class CooperatorAppApplicationController {
 	//localhost:8080/Student/2607?name=Irmak
 	 @PostMapping(value = { "/Student/{id}", "/Student/{id}/" })
 	        public StudentDto createStudentDto(@PathVariable("id") int id,
-	        		@RequestParam("name") String name) {
+	        		@RequestParam("name") String name) throws InvalidInputException{
+		 	if(service.getStudent(id) != null) throw new InvalidInputException("Student with that ID already exists!");
 	        Student I = service.createStudent(id, name); 
 	        return convertToDto(I);
 	        }  
+	 
+	 
 //TaxCreditForm Creation
 	 //localhost:8080/TaxCreditForm/222
 	 @PostMapping(value= {"/TaxCreditForm/{id}","/TaxCreditForm/{id}/" })
