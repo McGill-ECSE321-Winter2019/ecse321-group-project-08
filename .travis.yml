@@ -1,4 +1,6 @@
 language: java
 script:
-- ./gradlew build -x test
-
+- "./gradlew build -x test"
+deploy:
+  api_key:
+    secure: l9B4kmNhRcXc0Q4tVYFnRzoDwi6SlNDibDfMCbQe5XOE3/RjYPyAK7DSmP8h5cZgLGUQqvS+kThmCIWgARlUg3CaBnP0474TAysb/pxIOYcjS2WsXFlPAhNunRXmRoCEcWyd14ArTtShtWzUK5nqBM9M5Az3nKZBJKU/gUbr8HHTwhuCZLJscsSEDQeU9EAcETMFh37vFtOalF1jHxqJ7AaUPENBYAHS3ru5pBHuUx9H+GwQ0nWn3zZ9yRFgUu7/yJMWBtaXKY9NPItKgaL5KR7fbFURpILFB9nKuqHcL36MahegWchB9i3iR6RDqGXkRA6C83h3zQp4MktwaQoNwQtC3t63qqlQGNxi9az96kLbW/WiWPBCc4B/XfOhQYQqEtWA+ePskSMyKWhU4D2KUj+/6bKrtEGb5Oj9zDH3zTnGoepIbUgfhhr+yGipO2Twi4/gfPLlMcwO9e3h2k6l8xOLIOdIDzIV1jLtEKWgVgqj1r7tRzLRPS5pWH0T3wpPj7eOwqzu5BbFXYL8n+Q41+1OeM/gmm+BgfG8MSF1J71pnP1AXq+pOv+b1ep77nJn0Bx2UAzC31CXPSd8TyLSa8lmpw7BMr8+UqDNmvivDcFP/yFE5Ad3AJDC3yZBAB1dUjdlw16uFfzmlx3tN1TZZlNW8feu/xoOZPm92G3KxmM=
