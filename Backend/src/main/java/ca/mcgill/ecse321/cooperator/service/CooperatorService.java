@@ -3,8 +3,10 @@ package ca.mcgill.ecse321.cooperator.service;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +66,7 @@ public class CooperatorService {
 		}
 		CoopPlacementForm p = new CoopPlacementForm();
 		p.setCoopPlacementFormID(ID);
-		coopPlacementFormRepository.save(p);
+		coopPlacementFormRepository.save(p);	
 		return p;
 	}
 
@@ -107,6 +109,56 @@ public class CooperatorService {
 		return toList(coopPositionRepository.findAll());
 	}
 	
+	//Add CoopPosition in CoopPlacementForm and CoopPlacementForm in CoopPosition
+	@Transactional 
+	public void updateCoopPositionAndCoopPlacementForm(CoopPosition c, CoopPlacementForm cf) {
+		c.setCoopPlacementForm(cf);
+		cf.setCoopPosition(c);
+		coopPositionRepository.save(c);
+		coopPlacementFormRepository.save(cf);
+	}
+	
+	//Add CoopPosition in StartConfirmation and StartConfirmation in CoopPosition
+	@Transactional 
+	public void updateCoopPositionAndStartConfirmation(CoopPosition c, StartConfirmation s) {
+		c.setStartConfirmation(s);
+		s.setCoopPosition(c);
+		coopPositionRepository.save(c);
+		startConfirmationRepository.save(s);
+	}
+	
+	//Add CoopPosition in EvaluationForm and EvaluationForm in CoopPosition
+	@Transactional 
+	public void updateCoopPositionAndEvaluationForm(CoopPosition c, EvaluationForm s) {
+		c.setEvaluationForm(s);;
+		s.setCoopPosition(c);
+		coopPositionRepository.save(c);
+		evaluationFormRepository.save(s);
+	}
+	
+	//Add CoopPosition in Student and Student in CoopPosition
+	@Transactional 
+	public void updateCoopPositionAndStudent(CoopPosition c, Student s) {
+		List<CoopPosition> CoopPositionList = new ArrayList<>();
+		CoopPositionList = s.getCoopPosition();
+		CoopPositionList.add(CoopPositionList.size(), c);
+		c.setStudent(s);
+		s.setCoopPosition(CoopPositionList);
+		coopPositionRepository.save(c);
+		studentRepository.save(s);
+	}
+	
+	//Add CoopPosition in TaxCreditForm and TaxCreditForm in CoopPosition
+	@Transactional 
+	public void updateCoopPositionAndTaxCreditForm(CoopPosition c, TaxCreditForm s) {
+		c.setTaxCreditForm(s);
+		s.setCoopPosition(c);
+		coopPositionRepository.save(c);
+		taxCreditFormRepository.save(s);
+	}
+	
+	
+	
 //	Employer
 	
 	@Transactional
@@ -129,6 +181,30 @@ public class CooperatorService {
 	public List<Employer> getAllEmployers() {
 		return toList(employerRepository.findAll());
 	}
+	
+	
+	@Transactional
+	public void updateEmployerAndStartConfirmation(Employer e, StartConfirmation s) {
+		List<StartConfirmation> startConfirmationList = new ArrayList<>();
+		startConfirmationList= e.getStartConfirmation();
+		startConfirmationList.add(startConfirmationList.size(), s);
+		e.setStartConfirmation(startConfirmationList);
+		s.setEmployer(e);
+		employerRepository.save(e);
+		startConfirmationRepository.save(s);
+	}
+	
+	@Transactional
+	public void updateEmployerAndEvaluationForm(Employer e, EvaluationForm f) {
+		List<EvaluationForm> EvaluationFormList = new ArrayList<>();
+		EvaluationFormList= e.getEvaluationForm();
+		EvaluationFormList.add(EvaluationFormList.size(), f );
+		e.setEvaluationForm(EvaluationFormList);
+		f.setEmployer(e);
+		employerRepository.save(e);
+		evaluationFormRepository.save(f);
+	}
+	
 	
 //	Events
 	

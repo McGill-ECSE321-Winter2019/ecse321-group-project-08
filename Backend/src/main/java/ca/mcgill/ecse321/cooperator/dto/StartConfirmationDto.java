@@ -5,8 +5,8 @@ import java.sql.Date;
 public class StartConfirmationDto {
 	private int confirmationID;
 	private Date evaluationDate;
-	private EmployerDto employer;
-	private CoopPositionDto coopPosition;
+	private int employerID;
+	private int coopPositionID;
 
 //Controller	
 	public StartConfirmationDto() {
@@ -28,22 +28,22 @@ public class StartConfirmationDto {
 		return evaluationDate;
 	}
 	
-	public EmployerDto getEmployer() {
-		return employer;
+	public int getEmployer() {
+		return employerID;
 	}
 	
-	public CoopPositionDto getCoopPosition() {
-		return coopPosition;
+	public int getCoopPosition() {
+		return coopPositionID;
 	}
 	
 //Set Methods
 	
-	public void setCoopPosition(CoopPositionDto coopPosition) {
-		this.coopPosition=coopPosition;
+	public void setCoopPositionID(int coopPositionID) {
+		this.coopPositionID=coopPositionID;
 	}
 	
-	public void setEmployer(EmployerDto employer) {
-		this.employer=employer;
+	public void setEmployerID(int employer) {
+		this.employerID=employer;
 	}
 	
 

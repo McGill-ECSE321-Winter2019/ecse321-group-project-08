@@ -3,8 +3,8 @@ package ca.mcgill.ecse321.cooperator.dto;
 public class EvaluationFormDto {
 	
 	public int id;
-	public CoopPositionDto coopPosition;
-	public EmployerDto employer;
+	public int coopPositionID;
+	public int employer;
 
 //Constructor
 	
@@ -21,21 +21,21 @@ public class EvaluationFormDto {
 		return id;
 	}
 	
-	public  CoopPositionDto getCoopPosition() {
-		return coopPosition;
+	public  int getCoopPosition() {
+		return coopPositionID;
 	}
 		
-	public EmployerDto getEmployer() {
+	public int getEmployer() {
 		return employer;
 	}
 	
 //Set Methods
 	
-	public void setCoopPosition(CoopPositionDto coopPosition) {
-		this.coopPosition=coopPosition;
+	public void setCoopPositionID(int coopPositionID) {
+		this.coopPositionID=coopPositionID;
 	}
 
-	public void setEmployer(EmployerDto employer) {
+	public void setEmployerID(int employer) {
 		this.employer=employer;
 	}	
 	

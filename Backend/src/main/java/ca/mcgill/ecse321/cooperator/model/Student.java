@@ -1,20 +1,22 @@
 package ca.mcgill.ecse321.cooperator.model;
 
 import javax.persistence.Entity;
+
+import java.util.List;
 import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.Id;
 
 @Entity
 public class Student{
-private Set<CoopPosition> coopPosition;
+private List<CoopPosition> coopPosition;
 
 @OneToMany(mappedBy="student")
-public Set<CoopPosition> getCoopPosition() {
+public List<CoopPosition> getCoopPosition() {
    return this.coopPosition;
 }
 
-public void setCoopPosition(Set<CoopPosition> coopPositions) {
+public void setCoopPosition(List<CoopPosition> coopPositions) {
    this.coopPosition = coopPositions;
 }
 

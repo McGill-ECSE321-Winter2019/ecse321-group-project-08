@@ -5,7 +5,7 @@ import java.util.List;
 public class TaxCreditFormDto {
 	
 	private int taxCreditFormID;
-	private CoopPositionDto coopPosition;
+	private int coopPositionID;
 
 //	Constructor	
 	
@@ -23,13 +23,13 @@ public class TaxCreditFormDto {
 		return taxCreditFormID;
 	}
 	
-	public CoopPositionDto getCoopPosition(){
-		return this.coopPosition;
+	public int getCoopPositionID(){
+		return this.coopPositionID;
 	}
 //Set Methods	
 	
-	public void setCoopPosition(CoopPositionDto coopPosition) {
-		this.coopPosition= coopPosition;
+	public void setCoopPositionID(int coopPositionID) {
+		this.coopPositionID= coopPositionID;
 	}
 	
 }

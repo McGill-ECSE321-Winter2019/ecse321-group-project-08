@@ -1,17 +1,18 @@
 package ca.mcgill.ecse321.cooperator.dto;
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class StudentDto {
 	private int ID;
 	private String name;
-	private List<CoopPositionDto> coopPosition;
+	private List<CoopPositionDto> coopPositionDtos;
+
 	
 //Constructor
 	
 	public StudentDto() {
-
 	}
 	
 	public StudentDto(int ID, String name) {
@@ -29,14 +30,20 @@ public class StudentDto {
 		return name;
 	}
 	
-	public List<CoopPositionDto> getCoopPosition() {
-		return coopPosition;
+	public List<CoopPositionDto> getCoopPositionIDs() {
+		return coopPositionDtos;
 	}
 	
 //Set Methods
 	
-	public void setCoopPosition(List<CoopPositionDto> coopPosition) {
-		this.coopPosition= coopPosition;
+	public void setCoopPosition(List<CoopPositionDto> coopPositionIDs) {
+		this.coopPositionDtos= coopPositionIDs;
+	}
+	
+//Add to coopPositions
+	
+	public void addCoopPosition(CoopPositionDto coopPositionDto) {
+		this.coopPositionDtos.add(coopPositionDto);
 	}
 	
 	

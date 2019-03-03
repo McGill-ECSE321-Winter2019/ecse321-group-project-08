@@ -38,6 +38,7 @@ public class CooperatorAppApplicationController {
 
 	@Autowired
 	CooperatorService service;
+	private ArrayList<Integer> list;
 
 	
 	/*
@@ -103,7 +104,7 @@ public class CooperatorAppApplicationController {
 	}
 
 
-	//Student Creation
+//Student Creation
 	//localhost:8080/Student/2607?name=Irmak
 	 @PostMapping(value = { "/Student/{id}", "/Student/{id}/" })
 	        public StudentDto createStudentDto(@PathVariable("id") int id,
@@ -175,6 +176,7 @@ public class CooperatorAppApplicationController {
 	 } 
 	 
 //TaxCreditForm get by id
+	 //localhost:8080/TaxCreditForm/222
 	 @GetMapping(value= {"/TaxCreditForm/{id}","/TaxCreditForm/{id}/"})
 	 public TaxCreditFormDto getTaxCreditFormById(@PathVariable("id") int id) {
 		 return convertToDto(service.getTaxCreditForm(id));		 
@@ -279,33 +281,143 @@ public class CooperatorAppApplicationController {
 	 * UPDATE INFORMATION
 	 */
 	
+	
+	
 //Update CoopPlacementForm in CoopPosition
-	//localhost:8080/update?coopPosition=133
-	@PostMapping(value = { "/update", "/update/" })
-	public CoopPositionDto setCoopPlacementFormOfCoopPosition(@ModelAttribute("coopPosition") CoopPositionDto CoopPositionDto) {
-		//CoopPositionDto.setCoopPlacementForm(CoopPlacementFormDto);
-		return CoopPositionDto;
+	//localhost:8080/CoopPlacementForm/123
+	//localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	//localhost:8080/updateCoopPosition?coopPositionId=133&coopPlacementFormId=123
+	@PostMapping(value = { "/updateCoopPosition", "/updateCoopPosition/" })
+	public CoopPositionDto updateCoopPositionAndCoopPlacementForm(
+			@RequestParam(name="coopPositionId") int cID,
+			@RequestParam(name="coopPlacementFormId") int fID){
+		//find the objects
+		CoopPosition coopPosition= service.getCoopPosition(cID);
+		CoopPlacementForm coopPlacementForm= service.getCoopPlacementForm(fID);
+		//update the objects in database
+		service.updateCoopPositionAndCoopPlacementForm(coopPosition, coopPlacementForm);
+		//convert them to DTOs
+		CoopPositionDto coopPositionDto= convertToDto(coopPosition);
+		//Return the Dto
+		return coopPositionDto;
 	}
-	
-//		
-////Update EvaluationForm in CoopPosition
-//	//localhost:8080/CoopPosition/133?evaluationFormId=01010
-//	@PutMapping(value = { "/CoopPosition/{cid}", "/CoopPosition/{cid}/" })
-//	public CoopPositionDto setEvaluationFormOfCoopPosition(@PathVariable("cid") int cID,
-//			@RequestParam("coopPlacementFormId") int id) {
-//		EvaluationFormDto EvaluationFormDto = convertToDto(service.getEvaluationForm(id));
-//		CoopPositionDto CoopPositionDto = convertToDto(service.getCoopPosition(cID));
-//		EvaluationFormDto.setCoopPosition(CoopPositionDto);
-//		CoopPositionDto.setEvaluationForm(EvaluationFormDto);
-//		return CoopPositionDto;
-//	}
-	
 	
 	
 //Update StartConfirmation in CoopPosition
+	//localhost:8080/StartConfirmation/10001?evaluationDate=2020-12-12
+	//localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	//localhost:8080/updateCP?coopPositionID=133&startConfirmationId=10001
+	@PostMapping(value = { "/updateCP", "/updateCP/" })
+	public StartConfirmationDto updateCoopPositionAndStartConfirmation(
+			@RequestParam(name = "coopPositionID") int cID,
+			@RequestParam(name = "startConfirmationId") int sID) {
+		// find the objects
+		CoopPosition coopPosition = service.getCoopPosition(cID);
+		StartConfirmation startConfirmation= service.getStartConfirmation(sID);
+		// update the objects in database
+		service.updateCoopPositionAndStartConfirmation(coopPosition, startConfirmation);
+		// convert them to DTOs
+		CoopPositionDto coopPositionDto = convertToDto(coopPosition);
+		// Return the Dto
+		return convertToDto(startConfirmation);
+	}
+	
+	
 //Update TaxCredit in CoopPosition
+	//localhost:8080/TaxCreditForm/222
+	//localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	//localhost:8080/updateCoop?coopPositionID=133&taxCreditFormID=222
+	@PostMapping(value = { "/updateCoop", "/updateCoop/" })
+	public TaxCreditFormDto updateCoopPositionAndTaxCreditForm(
+			@RequestParam(name = "coopPositionID") int cID,
+			@RequestParam(name = "taxCreditFormID") int sID) {
+		// find the objects
+		CoopPosition coopPosition = service.getCoopPosition(cID);
+		TaxCreditForm taxCreditForm= service.getTaxCreditForm(sID);
+		// update the objects in database
+		service.updateCoopPositionAndTaxCreditForm(coopPosition, taxCreditForm);
+		// convert them to DTOs
+		CoopPositionDto coopPositionDto = convertToDto(coopPosition);
+		// Return the Dto
+		return convertToDto(taxCreditForm);
+	}
+	
+	
+//Update EvaluationForm in CoopPosition	
+	//localhost:8080/EvaluationForm/01010
+	//localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	//localhost:8080/updateCoopP?coopPositionID=133&evaluationFormID=01010
+	@PostMapping(value = { "/updateCoopP", "/updateCoopP/" })
+	public EvaluationFormDto updateCoopPositionAndEvaluationForm(
+			@RequestParam(name = "coopPositionID") int cID,
+			@RequestParam(name = "evaluationFormID") int sID) {
+		// find the objects
+		CoopPosition coopPosition = service.getCoopPosition(cID);
+		EvaluationForm evaluationForm= service.getEvaluationForm(sID);
+		// update the objects in database
+		service.updateCoopPositionAndEvaluationForm(coopPosition, evaluationForm);
+		// convert them to DTOs
+		CoopPositionDto coopPositionDto = convertToDto(coopPosition);
+		// Return the Dto
+		return convertToDto(evaluationForm);
+	}
+	
+	
 //Update Student in CoopPosition
-
+	//localhost:8080/Student/2607?name=Irmak
+	//localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	//localhost:8080/updateCoopStudent?coopPositionID=133&studentID=2607
+	@PostMapping(value = { "/updateCoopStudent", "/updateCoopStudent/" })
+	public StudentDto updateCoopPositionAndStudent(
+			@RequestParam(name = "coopPositionID") int cID,
+			@RequestParam(name = "studentID") int sID) {
+		// find the objects
+		CoopPosition coopPosition = service.getCoopPosition(cID);
+		Student student= service.getStudent(sID);
+		// update the objects in database
+		service.updateCoopPositionAndStudent(coopPosition, student);
+		// convert them to DTOs
+		// Return the Dto
+		return convertToDto(student);
+	}
+	
+	
+//Update StartConfirmation in Employer
+	//localhost:8080/Employer/111?username=person1&password=123
+	//localhost:8080/StartConfirmation/10001?evaluationDate=2020-12-12
+	//localhost:8080/updateEmployer?employerID=111&startConfirmationID=10001
+	@PostMapping(value = { "/updateEmployer", "/updateEmployer/" })
+	public EmployerDto updateEmployerAndStartConfirmation(
+			@RequestParam(name = "employerID") int cID,
+			@RequestParam(name = "startConfirmationID") int sID) {
+		// find the objects
+		Employer employer = service.getEmployer(cID);
+		StartConfirmation startConfirmation= service.getStartConfirmation(sID);
+		// update the objects in database
+		service.updateEmployerAndStartConfirmation(employer, startConfirmation);
+		// convert them to DTOs
+		// Return the Dto
+		return convertToDto(employer);
+	}	
+	
+	
+//Update EvaluationForm in Employer
+	//localhost:8080/Employer/111?username=person1&password=123
+	//localhost:8080/EvaluationForm/01010
+	//localhost:8080/updateEmployerEvaluationForm?employerID=111&evaluationFormID=01010
+	@PostMapping(value = { "/updateEmployerEvaluationForm", "/updateEmployerEvaluationForm/" })
+	public EmployerDto updateEmployerAndEvaluationForm(
+			@RequestParam(name = "employerID") int cID,
+			@RequestParam(name = "evaluationFormID") int sID) {
+		// find the objects
+		Employer employer = service.getEmployer(cID);
+		EvaluationForm evaluationForm= service.getEvaluationForm(sID);
+		// update the objects in database
+		service.updateEmployerAndEvaluationForm(employer, evaluationForm);
+		// convert them to DTOs
+		// Return the Dto
+		return convertToDto(employer);
+	}	
 	
 	
 	
@@ -316,17 +428,39 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
 		}
 		CoopPlacementFormDto coopPlacementFormDto = new CoopPlacementFormDto(form.getCoopPlacementFormID());
+		if(form.getCoopPosition() != null)
+			coopPlacementFormDto.setCoopPositionID(form.getCoopPosition().getPositionID());
 		return coopPlacementFormDto;
 	}
 	
-// CoopPosition ----> CoopPositionForm
-	
+
+// CoopPosition ----> CoopPositionDto
+
+
 	private CoopPositionDto convertToDto(CoopPosition position) {
 		if (position == null) {
 			throw new IllegalArgumentException("There is no such CoopPlacementForm!");
 		}
-		CoopPositionDto coopPositionDto= new CoopPositionDto(position.getPositionID(),position.getPositionName(),position.getCompanyName(),position.getStartDate(),position.getEndDate());
+		CoopPositionDto coopPositionDto= new CoopPositionDto(position.getPositionID(),
+				position.getPositionName(),position.getCompanyName(),position.getStartDate(),position.getEndDate());
+		//Check if there is CoopPlacementForm
+		if(position.getCoopPlacementForm() !=  null) 
+			coopPositionDto.setCoopPlacementForm(convertToDto(position.getCoopPlacementForm())); 
+		//Check if there is StartConfirmation
+		if(position.getStartConfirmation() !=  null) 
+			coopPositionDto.setStartConfirmation(convertToDto(position.getStartConfirmation())); 
+		//Check if there is Student
+		if(position.getStudent() !=  null) 
+			coopPositionDto.setStudentID(position.getStudent().getStudentID());
+		//Check if there is TaxCreditForm
+		if(position.getTaxCreditForm() !=  null) 
+			coopPositionDto.setTaxCreditForm(convertToDto(position.getTaxCreditForm())); 
+		//Check if there is EvaluationForm
+		if(position.getEvaluationForm() !=  null) 
+			coopPositionDto.setEvaluationForm(convertToDto(position.getEvaluationForm())); 
+	
 		return coopPositionDto;
+		
 	}
 	
 //	Employer ----> EmployerDto
@@ -336,6 +470,20 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such Employer!");
 		}
 		EmployerDto eDto= new EmployerDto(e.getEmployeeID(),e.getUserName(),e.getPassword());
+		if(e.getStartConfirmation() != null) {
+			List<StartConfirmationDto> startConfirmationDtosList = new ArrayList<>();
+			for(StartConfirmation startConfirmation : e.getStartConfirmation()) {
+				startConfirmationDtosList.add(startConfirmationDtosList.size(),convertToDto(startConfirmation));
+			}
+			eDto.setStartConfirmations(startConfirmationDtosList);
+		}
+		if(e.getEvaluationForm() != null) {
+			List<EvaluationFormDto> EvaluationFormDtosList = new ArrayList<>();
+			for(EvaluationForm EvaluationForm : e.getEvaluationForm()) {
+				EvaluationFormDtosList.add(EvaluationFormDtosList.size(),convertToDto(EvaluationForm));
+			}
+			eDto.setEvaluationForms(EvaluationFormDtosList);
+		}
 		return eDto;
 	}
 	
@@ -347,6 +495,10 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such EvaluationForm!");
 		}
 		EvaluationFormDto eDto= new EvaluationFormDto(e.getEvaluationFormID());
+		if(e.getCoopPosition() != null)
+			eDto.setCoopPositionID(e.getCoopPosition().getPositionID());
+		if(e.getEmployer() != null)
+			eDto.setEmployerID(e.getEmployer().getEmployeeID());
 		return eDto;	
 	}
 		
@@ -367,6 +519,10 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such StartConfirmation!");
 		}
 		StartConfirmationDto sDto = new StartConfirmationDto(start.getConfirmationID(), start.getEvaluationDate());
+		if(start.getCoopPosition() != null)
+			sDto.setCoopPositionID(start.getCoopPosition().getPositionID());
+		if(start.getEmployer()!= null)
+			sDto.setEmployerID(start.getEmployer().getEmployeeID());
 		return sDto;
 	}
 	
@@ -377,9 +533,17 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such Student!");
 		}
 		StudentDto eDto= new StudentDto(e.getStudentID(),e.getStudentName());
+		if(e.getCoopPosition() != null) {
+			List<CoopPositionDto> CoopPositionDtosList = new ArrayList<>();
+			for(CoopPosition CoopPosition : e.getCoopPosition()) {
+				CoopPositionDtosList.add(CoopPositionDtosList.size(),convertToDto(CoopPosition));
+			}
+			eDto.setCoopPosition(CoopPositionDtosList);
+		}
 		return eDto;
 	}
-	
+
+
 //	TaxCreditForm ---> 	TaxCreditFormDto
 	
 	private TaxCreditFormDto convertToDto(TaxCreditForm e) {
@@ -387,6 +551,8 @@ public class CooperatorAppApplicationController {
 			throw new IllegalArgumentException("There is no such TaxCreditForm!");
 		}
 		TaxCreditFormDto tDto= new TaxCreditFormDto(e.getTaxCreditFormID());
+		if(e.getCoopPosition() != null)
+			tDto.setCoopPositionID(e.getCoopPosition().getPositionID());
 		return tDto;
 	}
 

@@ -5,7 +5,7 @@ import java.util.Collections;
 public class CoopPlacementFormDto {
 
 	private static int coopPlacementFormID;
-	private CoopPositionDto coopPosition;
+	private int coopPositionID;
 
 //Constructors
 	public CoopPlacementFormDto() {
@@ -22,14 +22,14 @@ public class CoopPlacementFormDto {
 		return coopPlacementFormID;
 	}
 	
-	public CoopPositionDto getCoopPosition() {
-		return coopPosition;
+	public int getCoopPositionID() {
+		return coopPositionID;
 	}
 	
 	
 //Set Methods	
-	public void setCoopPosition(CoopPositionDto coopPosition) {
-		this.coopPosition = coopPosition;
+	public void setCoopPositionID(int coopPositionID) {
+		this.coopPositionID = coopPositionID;
 	}
 	
 }

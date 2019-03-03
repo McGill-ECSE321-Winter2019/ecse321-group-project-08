@@ -11,9 +11,9 @@ public class EmployerDto {
 	private int id;
 	private String username;
 	private String password;
-	private List<Event> events;
-	private List<EvaluationForm> evaluationForms;
-	private List<StartConfirmation> startConfirmations;
+	private List<EventDto> events;
+	private List<EvaluationFormDto> evaluationForms;
+	private List<StartConfirmationDto> startConfirmations;
 
 //Constructors
 	
@@ -41,29 +41,29 @@ public class EmployerDto {
 		return username;
 	}
 	
-	public List<Event> getEvents(){
+	public List<EventDto> getEvents(){
 		return events;
 	}
 	
-	public List<EvaluationForm> getEvaluationForms(){
+	public List<EvaluationFormDto> getEvaluationForms(){
 		return evaluationForms;
 	}
 	
-	public List<StartConfirmation> getStartConfirmations(){
+	public List<StartConfirmationDto> getStartConfirmations(){
 		return startConfirmations;
 	}
 	
 //Set methods
 	
-	public void setEvents(List<Event> events) {
+	public void setEvents(List<EventDto> events) {
 		this.events=events;
 	}
 	
-	public void setEvaluationForms(List<EvaluationForm> EvaluationForm) {
+	public void setEvaluationForms(List<EvaluationFormDto> EvaluationForm) {
 		this.evaluationForms=EvaluationForm;
 	}
 	
-	public void setStartConfirmations(List<StartConfirmation> StartConfirmation) {
+	public void setStartConfirmations(List<StartConfirmationDto> StartConfirmation) {
 		this.startConfirmations=StartConfirmation;
 	}
 	

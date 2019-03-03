@@ -13,7 +13,7 @@ public class CoopPositionDto {
 	private StartConfirmationDto startConfirmation;
 	private TaxCreditFormDto taxCreditForm;
 	private CoopPlacementFormDto coopPlacementForm;
-	private StudentDto student;
+	private int studentID;
 
 	
 // Constructors	
@@ -69,8 +69,8 @@ public class CoopPositionDto {
 		return coopPlacementForm;
 	}
 	
-	public StudentDto getStudent() {
-		return student;
+	public int getStudent() {
+		return studentID;
 	}
 
 //Set Methods
@@ -91,8 +91,8 @@ public class CoopPositionDto {
 		this.coopPlacementForm=coopPlacementForm;
 	}
 	
-	public void setStudent(StudentDto student) {
-		this.student=student;
+	public void setStudentID(int studentID) {
+		this.studentID=studentID;
 	}
 	
 
