@@ -119,6 +119,34 @@ public class ServiceTests {
 
 	}
 	
+	@Test
+	public void testGetCoopPlacementForm() {
+		Integer ID = 2;
+		
+		CoopPlacementForm cp= cooperatorService.createCoopPlacementForm(ID);
+		
+		try {
+			cooperatorService.getCoopPlacementForm(ID);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+		
+	}
+	
+	@Test
+	public void testGetAllCoopPlacementForms() {
+		Integer ID = 2;
+		
+		CoopPlacementForm cp= cooperatorService.createCoopPlacementForm(ID);
+		
+		try {
+			cooperatorService.getAllCoopPlacementForms();
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+		
+	}
+	
 //Tests for CoopPosition 
 
 	@Test
@@ -145,13 +173,49 @@ public class ServiceTests {
 		
 	}
 	
+	@Test
+	public void testGetCoopPosition() {
+		Integer id = 22;
+		String PosName= "Intern";
+		String compName= "Google";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+		
+		CoopPosition cp= cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);
+		
+		try {
+			cooperatorService.getCoopPosition(id);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+		
+	}
+	
+	@Test
+	public void testGetAllCoopPositions() {
+		Integer id = 22;
+		String PosName= "Intern";
+		String compName= "Google";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+		
+		CoopPosition cp= cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);
+		
+		try {
+			cooperatorService.getAllCoopPositions();
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+		
+	}
+	
 //	Tests for Employer 	
 
 	@Test
 	public void testCreateEmployer() {                      
 		assertEquals(0, cooperatorService.getAllEmployers().size());       
 
-		Integer id = 22;
+		int id = 1;
 		String userName= "Ege";
 		String password= "ecse";
 														
@@ -165,9 +229,43 @@ public class ServiceTests {
 
 		List<Employer> allEmployers = cooperatorService.getAllEmployers();		
 		assertEquals(1, allEmployers.size());						
-		assertEquals(id.intValue(), allEmployers.get(0).getEmployeeID());
+		assertEquals(id, allEmployers.get(0).getEmployeeID());
 	}
 	
+	
+	@Test
+	public void testGetEmployer() {
+		int id = 1;
+		String userName= "Ege";
+		String password= "ecse";
+									
+		
+		Employer employer= cooperatorService.createEmployer(userName, password, id);	
+		
+		try {
+			cooperatorService.getEmployer(1);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+	}
+	
+	@Test
+	public void testGetAllEmployers() {
+		int id = 1;
+		String userName= "Ege";
+		String password= "ecse";
+									
+		
+		Employer employer= cooperatorService.createEmployer(userName, password, id);	
+		
+		try {
+			cooperatorService.getAllEmployers();
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+	}
+	
+
 //	EvaluationForm
 
 	@Test
@@ -191,6 +289,20 @@ public class ServiceTests {
 		assertEquals(1, allEvaluationForms.size());									
 		
 	}
+	
+	@Test
+	public void testEvaluationForm() {
+		Integer id = 22;	
+									
+		
+		EvaluationForm ef = cooperatorService.createEvaluationForm(id);	
+		try {
+			cooperatorService.getEvaluationForm(id);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+	}
+
 	
 	
 //	//Event
@@ -216,6 +328,18 @@ public class ServiceTests {
 		assertEquals(name, allEvents.get(0).getName());			
 	}
 	
+	@Test
+	public void testEvent() {
+		String name = "Oscar";	
+									
+		
+		Event event= cooperatorService.createEvents(name);
+		try {
+			cooperatorService.getEvent(name);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
+	}
 	
 	//StartConfirmation
 	
@@ -264,6 +388,21 @@ public class ServiceTests {
 		assertEquals(1, allStudents.size());						
 		assertEquals(id.intValue(), allStudents.get(0).getStudentID());			
 		
+	}
+	
+
+	@Test
+	public void testStudent() {
+		String name = "Oscar";								
+		Integer id = 22;		
+									
+		
+		Student student= cooperatorService.createStudent(id, name);	
+		try {
+			cooperatorService.getStudent(id);
+		}catch(IllegalArgumentException e){
+			fail();
+		}
 	}
 	
 	//TaxCreditForm
@@ -349,63 +488,7 @@ public class ServiceTests {
 		assertEquals(cooperatorService.getStartConfirmation(ID).getCoopPosition().getPositionID(),id.intValue());
 	}
 
-	@Test
-	public void testUpdateCoopPositionAndStudent() {
-		assertEquals(0, cooperatorService.getAllCoopPositions().size());
-		assertEquals(0, cooperatorService.getAllStudents().size());
-		
-		Integer ID = 1;
-		String studentName = "Edgar";
-		String error= null;
 
-		Integer id = 27;
-		String PosName= "Developer";
-		String compName= "Dell";
-		Date startDate= new Date(01-02-2019);
-		Date endDate= new Date(01-05-2019);
-															
-		try {
-			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
-			cooperatorService.createStudent(ID,studentName);
-		} catch (IllegalArgumentException e) {
-			error = e.getMessage();
-			fail();
-		}
-		
-		cooperatorService.updateCoopPositionAndStudent(cooperatorService.getCoopPosition(id),cooperatorService.getStudent(ID));
-		
-		assertEquals(cooperatorService.getCoopPosition(id).getStudent().getStudentID(), ID.intValue());
-		assertEquals(cooperatorService.getStudent(ID).getCoopPosition().get(0).getPositionID(),id.intValue());
-	}
-	
-	@Test
-	public void testUpdateCoopPositionAndEvaluationForm() {
-		assertEquals(0, cooperatorService.getAllCoopPositions().size());
-		assertEquals(0, cooperatorService.getAllEvaluationForm().size());
-		
-		Integer ID = 3;
-		String error= null;
-
-		Integer id = 26;
-		String PosName= "Developer";
-		String compName= "Deloitte";
-		Date startDate= new Date(01-02-2019);
-		Date endDate= new Date(01-05-2019);
-															
-		try {
-			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
-			cooperatorService.createEvaluationForm(ID);
-		} catch (IllegalArgumentException e) {
-			error = e.getMessage();
-			fail();
-		}
-		
-		cooperatorService.updateCoopPositionAndEvaluationForm(cooperatorService.getCoopPosition(id),cooperatorService.getEvaluationForm(ID));
-	
-		
-		assertEquals(cooperatorService.getCoopPosition(id).getEvaluationForm().getEvaluationFormID(), ID.intValue());
-		assertEquals(cooperatorService.getEvaluationForm(ID).getCoopPosition().getPositionID(),id.intValue());
-	}
 	
 	@Test
 	public void testUpdateCoopPositionAndTaxCreditForm() {
