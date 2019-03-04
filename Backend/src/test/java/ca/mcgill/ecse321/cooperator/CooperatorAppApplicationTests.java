@@ -39,7 +39,7 @@ import org.junit.After;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CooperatorAppApplicationTests {
+public class CooperatorAppApplicationTests{
 	
 	@Mock
 	CooperatorService serviceMock;

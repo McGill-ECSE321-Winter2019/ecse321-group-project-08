@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.cooperator.testService;
 
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -163,8 +164,6 @@ public class ServiceTests {
 		}
 
 		List<Employer> allEmployers = cooperatorService.getAllEmployers();		
-		
-		
 		assertEquals(1, allEmployers.size());						
 		assertEquals(id.intValue(), allEmployers.get(0).getEmployeeID());
 	}
@@ -293,9 +292,149 @@ public class ServiceTests {
 		
 		
 	}
+	
+	@Test
+	public void testUpdateCoopPositionAndCoopPlacementForm() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllCoopPlacementForms().size());
+		
+		int ID = 2;
+		String error= null;
 
+		int id = 28;
+		String PosName= "Developer";
+		String compName= "Google";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createCoopPlacementForm(ID);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndCoopPlacementForm(cooperatorService.getCoopPosition(id),cooperatorService.getCoopPlacementForm(ID));
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getCoopPlacementForm().getCoopPlacementFormID(), ID);
+		assertEquals(cooperatorService.getCoopPlacementForm(ID).getCoopPosition().getPositionID(),id);
+	}
 	
+	@Test
+	public void testUpdateCoopPositionAndStartConfirmation() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllStartConfirmations().size());
+		
+		Integer ID = 3;
+		String error= null;
+
+		Integer id = 26;
+		String PosName= "Developer";
+		String compName= "Amazon";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createStartConfirmation(startDate,ID);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndStartConfirmation(cooperatorService.getCoopPosition(id),cooperatorService.getStartConfirmation(ID));
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getStartConfirmation().getConfirmationID(), ID.intValue());
+		assertEquals(cooperatorService.getStartConfirmation(ID).getCoopPosition().getPositionID(),id.intValue());
+	}
+
+	@Test
+	public void testUpdateCoopPositionAndStudent() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllStudents().size());
+		
+		Integer ID = 1;
+		String studentName = "Edgar";
+		String error= null;
+
+		Integer id = 27;
+		String PosName= "Developer";
+		String compName= "Dell";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createStudent(ID,studentName);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndStudent(cooperatorService.getCoopPosition(id),cooperatorService.getStudent(ID));
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getStudent().getStudentID(), ID.intValue());
+		assertEquals(cooperatorService.getStudent(ID).getCoopPosition().get(0).getPositionID(),id.intValue());
+	}
 	
+	@Test
+	public void testUpdateCoopPositionAndEvaluationForm() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllEvaluationForm().size());
+		
+		Integer ID = 3;
+		String error= null;
+
+		Integer id = 26;
+		String PosName= "Developer";
+		String compName= "Deloitte";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createEvaluationForm(ID);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndEvaluationForm(cooperatorService.getCoopPosition(id),cooperatorService.getEvaluationForm(ID));
+	
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getEvaluationForm().getEvaluationFormID(), ID.intValue());
+		assertEquals(cooperatorService.getEvaluationForm(ID).getCoopPosition().getPositionID(),id.intValue());
+	}
+	
+	@Test
+	public void testUpdateCoopPositionAndTaxCreditForm() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllTaxCreditForm().size());
+		
+		Integer ID = 7;
+
+		String error= null;
+
+		Integer id = 27;
+		String PosName= "Developer";
+		String compName= "Dell";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createTaxCreditForm(ID);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndTaxCreditForm(cooperatorService.getCoopPosition(id),cooperatorService.getTaxCreditForm(ID));
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getTaxCreditForm().getTaxCreditFormID(), ID.intValue());
+		assertEquals(cooperatorService.getTaxCreditForm(ID).getCoopPosition().getPositionID(),id.intValue());
+	}
 }
 
 
