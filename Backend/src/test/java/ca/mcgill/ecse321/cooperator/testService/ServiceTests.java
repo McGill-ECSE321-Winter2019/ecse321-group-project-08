@@ -407,6 +407,34 @@ public class ServiceTests {
 		assertEquals(cooperatorService.getEvaluationForm(ID).getCoopPosition().getPositionID(),id.intValue());
 	}
 	
+	@Test
+	public void testUpdateCoopPositionAndTaxCreditForm() {
+		assertEquals(0, cooperatorService.getAllCoopPositions().size());
+		assertEquals(0, cooperatorService.getAllTaxCreditForm().size());
+		
+		Integer ID = 7;
+
+		String error= null;
+
+		Integer id = 27;
+		String PosName= "Developer";
+		String compName= "Dell";
+		Date startDate= new Date(01-02-2019);
+		Date endDate= new Date(01-05-2019);
+															
+		try {
+			cooperatorService.createCoopPosition(id, PosName, compName, startDate, endDate);	
+			cooperatorService.createTaxCreditForm(ID);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+			fail();
+		}
+		
+		cooperatorService.updateCoopPositionAndTaxCreditForm(cooperatorService.getCoopPosition(id),cooperatorService.getTaxCreditForm(ID));
+		
+		assertEquals(cooperatorService.getCoopPosition(id).getTaxCreditForm().getTaxCreditFormID(), ID.intValue());
+		assertEquals(cooperatorService.getTaxCreditForm(ID).getCoopPosition().getPositionID(),id.intValue());
+	}
 }
 
 
