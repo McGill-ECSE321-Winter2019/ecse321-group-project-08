@@ -1,6 +1,6 @@
 language: java
 script:
-- "./gradlew build "
+- "./gradlew build -x test "
 deploy:
   provider: heroku
   api_key:
