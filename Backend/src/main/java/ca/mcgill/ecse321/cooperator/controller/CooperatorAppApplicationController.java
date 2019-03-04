@@ -38,8 +38,132 @@ public class CooperatorAppApplicationController {
 
 	@Autowired
 	CooperatorService service;
-	private ArrayList<Integer> list;
+	
+/*
+ * PROCESS
+ * 
+ * CREATE COOP PLACEMENT FORM, COOP POSITION, EMPLOYER, STUDENT, TAX CREDIT FORM	
+	
+	localhost:8080/CoopPosition/133?PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15
+	localhost:8080/Employer/111?username=person1&password=123
+	localhost:8080/Student/2607?name=Irmak
+	localhost:8080/TaxCreditForm/222
+	localhost:8080/CoopPlacementForm/123
+	
+	USE CASE 1- CONFIRM STUDENT'S EMPLOYMENT
+	
+	localhost:8080/StartConfirmation/10001?evaluationDate=2020-12-12&employerID=111&coopPositionID=133&studentID=2607
+	
+	USE CASE 2- COMPLETE EVALUATION FORM 
 
+	localhost:8080/EvaluationForm/01010?employerID=111&coopPositionID=133
+	
+	USE CASE 3- DOWNLOAD COOP PLACEMENT FORM
+	
+	Assign Coop Placement Form to Coop Position: 
+	localhost:8080/updateCoopPosition?coopPositionId=133&coopPlacementFormId=123
+
+	Get it:
+	localhost:8080/CoopPlacement?coopPositionID=133&employerID=111
+	
+	USE CASE 4- DOWNLOAD TAX CREDIT FORM
+	
+	Assign Coop Placement Form to Coop Position:
+	localhost:8080/updateCoop?coopPositionID=133&taxCreditFormID=222
+	
+	Get it:
+	localhost:8080/TaxCreditForm?coopPositionID=133&employerID=111
+	
+ */
+
+	
+	
+	
+	/*
+	 *  USE CASE 1 - CONFIRM STUDENT'S EMPLOYMENT
+	 */
+	
+	@PostMapping(value= {"/StartConfirmation/{id}","/StartConfirmation/{id}/"})
+	public StartConfirmationDto createStartConfirmation(@PathVariable("id") int id, 
+			@RequestParam(name = "evaluationDate") Date evaluationDate,
+			@RequestParam(name= "employerID") int eid,
+			@RequestParam(name= "coopPositionID") int cid, 
+			@RequestParam(name= "studentID") int sid
+			){
+		StartConfirmation s = service.createStartConfirmation(evaluationDate, id);
+		Employer e = service.getEmployer(eid);
+		CoopPosition c =service.getCoopPosition(cid);
+		Student st = service.getStudent(sid);
+		service.updateEmployerAndStartConfirmation(e, s);
+		service.updateCoopPositionAndStartConfirmation(c, s);
+		service.updateCoopPositionAndStudent(c, st);
+		return convertToDto(s);
+	}
+	
+	/*
+	 *  USE CASE 2- COMPLETE EVALUATION FORM 
+	 */
+	
+	@PostMapping(value= {"/EvaluationForm/{id}","/EvaluationForm/{id}/"})
+	public EvaluationFormDto createEvalutionForm(@PathVariable("id") int id, 
+			@RequestParam(name= "employerID") int eid,
+			@RequestParam(name= "coopPositionID") int cid) throws InvalidInputException{
+		EvaluationForm f = service.createEvaluationForm(id);
+		Employer e = service.getEmployer(eid);
+		CoopPosition c =service.getCoopPosition(cid);
+		if(c.getStartConfirmation() == null) throw new InvalidInputException("Coop Position is not confirmed yet!");		
+		service.updateEmployerAndEvaluationForm(e, f);
+		service.updateCoopPositionAndEvaluationForm(c, f);
+		return convertToDto(f);
+	}
+	
+	/*
+	 * 	USE CASE 3-  DOWNLOAD COOP PLACEMENT FORM
+	 */
+	
+	@GetMapping(value= {"/CoopPlacement","/CoopPlacement/"})
+	public CoopPlacementFormDto downloadCoopPlacementForm(
+			@RequestParam(name= "employerID") int eid,
+			@RequestParam(name= "coopPositionID") int cid)throws InvalidInputException {
+		Employer e = service.getEmployer(eid);
+		CoopPosition c = service.getCoopPosition(cid);
+		CoopPlacementForm cf = c.getCoopPlacementForm();
+		if (cf==null) throw new InvalidInputException("No Coop Placement Form assigned to specified Coop Position!");
+		return convertToDto(cf); 
+	}
+	
+	
+	/*
+	 * 	USE CASE 4-  DOWNLOAD TAX CREDIT FORM
+	 */
+
+	@GetMapping(value= {"/TaxCreditForm","/TaxCreditForm/"})
+	public TaxCreditFormDto getTaxCreditForm(
+			@RequestParam(name= "employerID") int eid,
+			@RequestParam(name= "coopPositionID") int cid) throws InvalidInputException {
+		Employer e = service.getEmployer(eid);
+		CoopPosition c = service.getCoopPosition(cid);
+		TaxCreditForm cf = c.getTaxCreditForm();
+		if (cf==null) throw new InvalidInputException("No Tax Credit Form assigned to specified Coop Position!");
+		return convertToDto(cf); 
+	}
+	
+	
+	/*
+	 * 	USE CASE 5- LIST ALL COOP POSITIONS THAT ARE NOT ASSIGNED TO ANY STUDENT
+	 */
+	
+	@GetMapping(value = { "/CoopPositionsWithoutStudents", "/CoopPositionsWithoutStudents/" })
+	public List<CoopPositionDto> getAllCoopPositionsWithOutStudents() {
+		List<CoopPositionDto> coopPositionDtos = new ArrayList<>();
+		for (CoopPosition CoopPosition : service.getAllCoopPositions()) {
+			if(CoopPosition.getStudent()==null)
+			coopPositionDtos.add(convertToDto(CoopPosition));
+		}
+		return coopPositionDtos;
+	}
+	
+	
 	
 	/*
 	 * CREATE
@@ -83,13 +207,6 @@ public class CooperatorAppApplicationController {
 	}
 
 	
-//EvaluationFormDto creation
-	//localhost:8080/EvaluationForm/01010
-	@PostMapping(value= {"/EvaluationForm/{id}","/EvaluationForm/{id}/"})
-	public EvaluationFormDto createEvaluationForm(@PathVariable("id") int id) {
-		EvaluationForm e= service.createEvaluationForm(id);
-		return convertToDto(e);
-	}	
 	
 	
 //EventDto Creation
@@ -100,15 +217,6 @@ public class CooperatorAppApplicationController {
 		return convertToDto(E);
 		}
 	
-//StartConfirmation Creation
-	//localhost:8080/StartConfirmation/10001?evaluationDate=2020-12-12
-	@PostMapping(value= {"/StartConfirmation/{id}","/StartConfirmation/{id}/"})
-	public StartConfirmationDto createStartConfirmation(@PathVariable("id") int id, 
-			@RequestParam(name = "evaluationDate") Date evaluationDate){
-		StartConfirmation s = service.createStartConfirmation(evaluationDate, id);
-		return convertToDto(s);
-	}
-
 
 //Student Creation
 	//localhost:8080/Student/2607?name=Irmak
@@ -149,12 +257,6 @@ public class CooperatorAppApplicationController {
 		 return convertToDto(service.getCoopPlacementForm(id));
 	 }
 	 
-//CoopPosition get by ID
-	//localhost:8080/CoopPosition/133
-	 @GetMapping(value= {"/CoopPosition/{id}","/CoopPosition/{id}/"})
-	 public CoopPositionDto getCoopPositionById(@PathVariable("id") int id) {
-		 return convertToDto(service.getCoopPosition(id));
-	 }
 	 
 //Employer get by ID
 	 //localhost:8080/Employer/111
@@ -179,7 +281,7 @@ public class CooperatorAppApplicationController {
 	 
 //StartConfirmation get by id
 	//localhost:8080/EvaluationForm/10001
-	 @GetMapping(value= {"/StartConfirmation/{id}","/StartConfirmation/{id}/"})
+	 @GetMapping(value= {"/StartConfirmationGet/{id}","/StartConfirmationGet/{id}/"})
 	 public StartConfirmationDto getStartConfirmationById(@PathVariable("id") int id) {
 		 return convertToDto(service.getStartConfirmation(id));		 
 	 }
