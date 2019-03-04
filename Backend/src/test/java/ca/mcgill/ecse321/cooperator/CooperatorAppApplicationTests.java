@@ -1,24 +1,13 @@
 package ca.mcgill.ecse321.cooperator;
 
 
-import java.util.List;
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
-
-
-import java.sql.Date;
-
-import java.sql.Time;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 

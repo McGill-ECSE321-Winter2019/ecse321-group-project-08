@@ -152,6 +152,8 @@ public class CooperatorAppApplicationController {
 	 * 	USE CASE 5- LIST ALL COOP POSITIONS THAT ARE NOT ASSIGNED TO ANY STUDENT
 	 */
 	
+	
+	//localhost:8080/CoopPositionsWithoutStudents
 	@GetMapping(value = { "/CoopPositionsWithoutStudents", "/CoopPositionsWithoutStudents/" })
 	public List<CoopPositionDto> getAllCoopPositionsWithOutStudents() {
 		List<CoopPositionDto> coopPositionDtos = new ArrayList<>();
@@ -214,18 +216,6 @@ public class CooperatorAppApplicationController {
 		Employer e = service.createEmployer(username, password, id);
 		return convertToDto(e);
 	}
-
-	// /**
-	//  * Receive POST end point for creating a new Evaluation Form with provided parameters.
-	//  * @param id - ID assigned to Evaluation Form
-	//  * @return - Newly created Evaluation Form DTO
-	//  */
-	// //localhost:8080/EvaluationForm/01010
-	// @PostMapping(value= {"/EvaluationForm/{id}","/EvaluationForm/{id}/"})
-	// public EvaluationFormDto createEvaluationForm(@PathVariable("id") int id) {
-	// 	EvaluationForm e= service.createEvaluationForm(id);
-	// 	return convertToDto(e);
-	// }	
 	
 
 
@@ -319,17 +309,6 @@ public class CooperatorAppApplicationController {
 		 return convertToDto(service.getStudent(id));		 
 	 } 
 	 
-	 /**
-	  * Receive GET endpoint for getting a Tax Credit Form with provided parameters.
-	  * @param id - ID assigned to the Tax Credit Form
-	  * @return - Tax Credit Form DTO
-	  */
-	 //localhost:8080/TaxCreditForm/222
-	 // @GetMapping(value= {"/TaxCreditForm/{id}","/TaxCreditForm/{id}/"})
-	 // public TaxCreditFormDto getTaxCreditFormById(@PathVariable("id") int id) {
-		//  return convertToDto(service.getTaxCreditForm(id));		 
-	 // } 
-	 
 	 
 	 /*
 	  * GET ALL
@@ -349,19 +328,6 @@ public class CooperatorAppApplicationController {
 			return coopPlacementFormDtos;
 		}
 	 
-	 /**
-	  * Receive GET endpoint for getting all Coop Positions.
-	  * @return - All Coop Position DTOs
-	  */
-	//localhost:8080/CoopPosition
-	// @GetMapping(value = { "/CoopPosition", "/CoopPosition/" })
-	// public List<CoopPositionDto> getAllCoopPositions() {
-	// 	List<CoopPositionDto> coopPositionDtos = new ArrayList<>();
-	// 	for (CoopPosition CoopPosition : service.getAllCoopPositions()) {
-	// 		coopPositionDtos.add(convertToDto(CoopPosition));
-	// 	}
-	// 	return coopPositionDtos;
-	// }
 	
 	/**
 	 * Receive GET endpoint for getting all Employers
