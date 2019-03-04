@@ -65,7 +65,7 @@ public class CooperatorAppApplicationController {
 	localhost:8080/updateCoopPosition?coopPositionId=133&coopPlacementFormId=123
 
 	Get it:
-	localhost:8080/CoopPlacement?coopPositionID=133&employerID=111
+	localhost:8080/CoopPlacementForm?coopPositionID=133&employerID=111
 	
 	USE CASE 4- DOWNLOAD TAX CREDIT FORM
 	
@@ -76,8 +76,6 @@ public class CooperatorAppApplicationController {
 	localhost:8080/TaxCreditForm?coopPositionID=133&employerID=111
 	
  */
-
-	
 	
 	
 	/*
@@ -122,7 +120,7 @@ public class CooperatorAppApplicationController {
 	 * 	USE CASE 3-  DOWNLOAD COOP PLACEMENT FORM
 	 */
 	
-	@GetMapping(value= {"/CoopPlacement","/CoopPlacement/"})
+	@GetMapping(value= {"/CoopPlacementForm","/CoopPlacementForm/"})
 	public CoopPlacementFormDto downloadCoopPlacementForm(
 			@RequestParam(name= "employerID") int eid,
 			@RequestParam(name= "coopPositionID") int cid)throws InvalidInputException {
@@ -265,8 +263,6 @@ public class CooperatorAppApplicationController {
 	  * GET BY PRIMARY KEY
 	  */
 	  
-
-
 	 
 	 /**
 	  * Receive GET endpoint for getting a Employer with provided parameters.
@@ -344,7 +340,7 @@ public class CooperatorAppApplicationController {
 	  * @return- All Coop Placement Form DTOs.
 	  */
 	//localhost:8080/CoopPlacementForm
-	 @GetMapping(value = { "/CoopPlacementForm", "/CoopPlacementForm/" })
+	 @GetMapping(value = { "/CoopPlacementForms", "/CoopPlacementForms/" })
 		public List<CoopPlacementFormDto> getAllCoopPlacementForms() {
 		 List<CoopPlacementFormDto> coopPlacementFormDtos = new ArrayList<>();
 			for (CoopPlacementForm CoopPlacementForm : service.getAllCoopPlacementForms()) {
@@ -442,7 +438,7 @@ public class CooperatorAppApplicationController {
 	 * @return - All Tax Credit Form DTOs
 	 */
 	//localhost:8080/TaxCreditForm
-	@GetMapping(value = { "/TaxCreditForm", "/TaxCreditForm/" })
+	@GetMapping(value = { "/TaxCreditFormAll", "/TaxCreditFormAll/" })
 	public List<TaxCreditFormDto> getAllTaxCreditForms() {
 		List<TaxCreditFormDto> TaxCreditFormDtos = new ArrayList<>();
 		for (TaxCreditForm TaxCreditForm : service.getAllTaxCreditForm()) {
