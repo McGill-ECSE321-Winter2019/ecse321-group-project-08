@@ -69,7 +69,7 @@ public class CooperatorAppApplicationController {
 	
 	USE CASE 4- DOWNLOAD TAX CREDIT FORM
 	
-	Assign Coop Placement Form to Coop Position:
+	Assign Tax Credit Form to Coop Position:
 	localhost:8080/updateCoop?coopPositionID=133&taxCreditFormID=222
 	
 	Get it:
@@ -110,7 +110,8 @@ public class CooperatorAppApplicationController {
 		EvaluationForm f = service.createEvaluationForm(id);
 		Employer e = service.getEmployer(eid);
 		CoopPosition c =service.getCoopPosition(cid);
-		if(c.getStartConfirmation() == null) throw new InvalidInputException("Coop Position is not confirmed yet!");		
+		if(c.getStartConfirmation() == null) throw new InvalidInputException("Coop Position is not confirmed yet!");
+		if(c.getStartConfirmation().getEmployer() != e) throw new InvalidInputException("This Employer didn't start the Coop Position");
 		service.updateEmployerAndEvaluationForm(e, f);
 		service.updateCoopPositionAndEvaluationForm(c, f);
 		return convertToDto(f);

@@ -20,15 +20,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class IntegrationTests {
 	
 	private final String BASE_URL = "https://coop-backend-g8.herokuapp.com";
-    private final String STUDENT_NAME = "nirmak";
+	
+	private final String OTHER_URL = "https://cooperation-backend-g5.herokuapp.com";
+	
+	
     private JSONObject response;
 
-    private JSONObject sendRequest(String requestType, String baseUrl, String path, String parameters) {
-        try {
-            URL url = new URL(baseUrl + path + ((parameters==null)?"":("?" + parameters)));
+    private JSONObject requestURL(String typeOfRequest, String url, String path, String parameters) {
+        try {    
+        	URL urll = new URL(url + path + ((parameters==null)?"":("?" + parameters)));
             System.out.println("Sending: "+url.toString());
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod(requestType);
+            HttpURLConnection connection = (HttpURLConnection) urll.openConnection();
+            connection.setRequestMethod(typeOfRequest);
             connection.setRequestProperty("Accept", "application/json");
             if (connection.getResponseCode() != 200) {
                 throw new RuntimeException(url.toString() + " failed : HTTP error code : "
@@ -48,17 +51,15 @@ public class IntegrationTests {
         return null;
     }
 
-    private JSONObject sendRequest(String requestType, String baseUrl, String path) {
-        return sendRequest(requestType,baseUrl,path,null);
-    }
+ 
     
     
     @Test
     public void TestCreatingStudent() {
         try {
-            response = sendRequest("POST", BASE_URL, "/Student/1", "name=" + STUDENT_NAME);
+            response = requestURL("POST", BASE_URL, "/Student/1", "name=irmak");
             System.out.println("Received: "+response.toString());
-            assertEquals(STUDENT_NAME, response.getString("name"));
+            assertEquals("irmak", response.getString("name"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +68,7 @@ public class IntegrationTests {
     @Test
 	public void TestCreatingCoopPlacementForm() {
 		try {
-			response = sendRequest("POST", BASE_URL, "/CoopPlacementForm/1");
+			response = requestURL("POST", BASE_URL, "/CoopPlacementForm/1");
 			System.out.println("Received: " + response.toString());
 			assertEquals(1, response.getInt("coopPlacementFormID"));
 		} catch (Exception e) {
@@ -78,7 +79,7 @@ public class IntegrationTests {
 	@Test
 	public void TestCreatingCoopPosition() {
 			try {
-				response = sendRequest("POST", BASE_URL, "/CoopPosition/1", "PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15");
+				response = requestURL("POST", BASE_URL, "/CoopPosition/1", "PositionName=Intern&CompanyName=Mcgill&startDate=2020-12-12&endDate=2020-12-15");
 				System.out.println("Received: " + response.toString());
 				assertEquals("Intern", response.getString("PositionName"));
 			} catch (Exception e) {
@@ -89,7 +90,7 @@ public class IntegrationTests {
 	@Test
 	public void TestCreatingEmployer() {
 			try {
-				response = sendRequest("POST", BASE_URL, "/Employer/1", "username=person1&password=123s");
+				response = requestURL("POST", BASE_URL, "/Employer/1", "username=person1&password=123s");
 				System.out.println("Received: " + response.toString());
 				assertEquals(1, response.getInt("id"));
 			} catch (Exception e) {
@@ -98,19 +99,130 @@ public class IntegrationTests {
 	}
 	
 	@Test
-	public void TestCreatingStartConfirmation() {
+	public void TestCreatingTaxCreditForm() {
 			try {
-				response = sendRequest("POST", BASE_URL, "/Employer/1", "evaluationDate=2020-12-12&employerID=1s&coopPositionID=1&studentID=1");
+				response = requestURL("POST", BASE_URL, "/TaxCreditForm/1");
 				System.out.println("Received: " + response.toString());
-				assertEquals(1, response.getInt("id"));
+				assertEquals(1, response.getInt("taxCreditFormID"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			
+		/*
+		 * USE CASE 1
+		 */
 	}
-         
-    
-    
-    
+	@Test
+	public void TestCreatingStartConfirmation() {
+		try {
+			response = requestURL("POST", BASE_URL, "/StartConfirmation/1", "evaluationDate=2020-12-12&employerID=111&coopPositionID=133&studentID=2607");
+			System.out.println("Received: " + response.toString());
+			assertEquals(1, response.getInt("confirmationID"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+		/*
+		 * USE CASE 2
+		 */
+	
+	@Test
+	public void TestCreatingEvaluationForm() {
+		try {
+			response = requestURL("POST", BASE_URL, "/EvaluationForm/1", "employerID=1&coopPositionID=1");
+			System.out.println("Received: " + response.toString());
+			assertEquals(1, response.getInt("id"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+    	/*
+    	 * Assign Coop Position
+    	 */
+	
+	@Test
+	public void TestAssigningCoopPosition() {
+		try {
+			response = requestURL("POST", BASE_URL, "/updateCoopPosition", "coopPositionId=1&coopPlacementFormId=1");
+			System.out.println("Received: " + response.toString());
+			assertEquals(1, response.getInt("coopPositionID"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/*
+	 * USE CASE 3
+	 */
+	
+	@Test
+	public void TestGetCoopPlacementForm() {
+		try {
+			response = requestURL("POST", BASE_URL, "/CoopPlacementForm", "coopPositionID=1&employerID=1");
+			System.out.println("Received: " + response.toString());
+			assertEquals(1, response.getInt("coopPlacementFormID"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * Assign Tax Credit Form
+	 */
+	
+	@Test
+	public void TestAssigningTaxCreditForm() {
+		try {
+			response = requestURL("POST", BASE_URL, "/updateCoop", "coopPositionID=1&taxCreditFormID=1");
+			System.out.println("Received: " + response.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * USE CASE 4
+	 */
+	
+	@Test
+	public void TestGetTaxCreditForm() {
+		try {
+			response = requestURL("POST", BASE_URL, "/TaxCreditForm", "coopPositionID=1&employerID=1");
+			System.out.println("Received: " + response.toString());
+			assertEquals(1, response.getInt("taxCreditFormID"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * USE CASE 5
+	 */
+	
+	@Test
+	public void TestCoopPositionsWithoutStudent() {
+		try {
+			response = requestURL("POST", BASE_URL, "/CoopPositionsWithoutStudents");
+			System.out.println("Received: " + response.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	 private JSONObject requestURL(String requestType, String baseUrl, String path) {
+	        return requestURL(requestType,baseUrl,path,null);
+	    }
+	
+	
     
 
 }
