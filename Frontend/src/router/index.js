@@ -9,6 +9,7 @@ import ConfirmStudentCompletion from '@/components/ConfirmStudentCompletion'
 import DownloadCoopForm from '@/components/DownloadCoopForm'
 import TaxCreditForm from '@/components/TaxCreditForm'
 import DownloadTaxCreditForm from '@/components/DownloadTaxCreditForm'
+import LoginPage from '@/components/LoginPage'
 
 Vue.use(Router)
 
@@ -66,6 +67,12 @@ export default new Router({
       path: '/DownloadTaxCreditForm',
       name: 'DownloadTaxCreditForm',
       component: DownloadTaxCreditForm
+    }
+    ,
+    {
+      path: '/LoginPage',
+      name: 'LoginPage',
+      component: LoginPage
     }
     
   ]
