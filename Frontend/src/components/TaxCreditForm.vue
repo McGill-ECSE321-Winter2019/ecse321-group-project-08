@@ -5,10 +5,20 @@ Create Tax Credit Form
 </h2>
 <table align=center>
 <tr>
-<td>Select Coop Position</td>
 </td>
+
+<div class="col-md-4">
+    <form>
+    <h4>Select Coop Position</h4>
+    <select class="form-control"  id='firstList' name='firstList' onClick="getFoodItem()">
+    </select>
+     
+    
+    </select>
+     
+    </form>
+    </div>
 <td>
-<input type="number" placeholder="Coop Position" v-model="coopPosition">
 </td>
 </tr>
 <tr>
