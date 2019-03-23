@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-Welcome",
+      "appliesTo": "src/components/Welcome.vue",
+      "type": "launch"
+    }
+  ]
+}
