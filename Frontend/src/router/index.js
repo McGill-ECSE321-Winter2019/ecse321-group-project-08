@@ -23,6 +23,8 @@ export default new Router({
       path: '/welcome',
       name: 'Welcome',
       component: Welcome
+      
+
     },
     {
       path: '/createAccount',
@@ -65,8 +67,6 @@ export default new Router({
       name: 'DownloadTaxCreditForm',
       component: DownloadTaxCreditForm
     }
-    
-
     
   ]
 })
