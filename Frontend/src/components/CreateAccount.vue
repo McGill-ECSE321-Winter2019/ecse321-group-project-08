@@ -1,5 +1,5 @@
 <template>
-<div id="welcomeno">
+<div id="createAccount">
 <h2> 
 Create Account
 </h2>
