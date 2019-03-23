@@ -1,39 +1,25 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    
-    <h2>Hello</h2>
-    
-  </div>
-</template>
+<div id="confirmStudentCompletion">
+<h2> 
+Create Evaluation Form
+</h2>
+<table align=center>
+<tr>
+<td>Google Drive URL</td>
 
+<td>
+<input type="text" placeholder="URL" v-model="URL">
+</td>
+</tr>
+<tr>
+
+<button @click="createEmployer(newEmployerID,Username,Password)" >Confirm Student Completion</button>
+</tr>
+</table>
+</div>
+</template>
+<style>
+</style>
 <script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
 </script>
 
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
