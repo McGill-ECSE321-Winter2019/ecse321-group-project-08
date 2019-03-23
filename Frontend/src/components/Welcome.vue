@@ -11,9 +11,11 @@
 <td>
 <button @click="loginPage" >Login</button>
 </td>
+
 <td>
 <button @click="createAccountPage" >Create Account</button>
 </td>
+
 </tr>
 </table>
 </div>
