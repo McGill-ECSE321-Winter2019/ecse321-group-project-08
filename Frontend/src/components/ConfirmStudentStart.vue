@@ -1,53 +1,155 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Hello</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
-</template>
+<div id="dashboard">
+  <table id="head" align="left" style="width: 100%">
+    <tr>
+      <td>
+        <h1 align="left" id="dashboard1">Welcome Employer</h1>
+      </td>
+      <td>
+        <h1 align="right" id="dashboard1">Employed ID: XXXX</h1>
+      </td>
+    </tr>
+  </table>
+  <ul>
+    <li>
+      <h5>
+        <a class="active">
+          <router-link to="/dashboard">Dashboard</router-link>
+        </a>
+      </h5>
+    </li>
+    <li>
+      <h5>
+        <a>
+          <router-link to="/ConfirmStudentStart">Confirm Student Start</router-link>
+        </a>
+      </h5>
+    </li>
+    <li>
+      <h5>
+        <a>
+          <router-link to="/ConfirmStudentCompletion">Confirm Student Completion</router-link>
+        </a>
+      </h5>
+    </li>
+    <li>
+      <h5>
+        <a>
+          <router-link to="/DownloadCoopForm">Download Co-op Placement Form</router-link>
+        </a>
+      </h5>
+    </li>
+    <li>
+      <h5>
+        <a>
+          <router-link to="/TaxCreditForm">Create Tax Credit Form</router-link>
+        </a>
+      </h5>
+    </li>
+    <li>
+      <h5>
+        <a>
+          <router-link to="/DownloadTaxCreditForm">Download Tax Credit Form</router-link>
+        </a>
+      </h5>
+    </li>
+  </ul>
 
-<script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+
+  <table id="body">
+    <tr>
+      <th align = "right">
+        <h1 >Confirm Student Start</h1>
+      </th>
+    </tr>
+
+    <tr>
+      <td align="center">
+        <h4 id="task">Confirmation ID</h4>
+        <input type="text" size="25" placeholder="Confirmation ID"></input>
+
+      </td>
+      <td align = "center">
+        <h4 id = "tasks"> Select Student</h4>
+        <select>
+          <option value ="student"> select a student</option>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <td align= "center">
+          <h4 id = "tasks"> Select CoopPosition Name</h4>
+          <select>
+            <option value ="coopposition"> Select a Coop position</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td align = "center">
+          <button type = "button"> Start </button>
+        </td>
+
+        <td align = "center">
+          <button type = "button"> Confirm Student </button>
+        </td>
+      </tr>
+    </table>
+</div>
+  </template>
+
+<style>
+
+  #head{background-color:#696969}
+  #dashboard1{color:white}
+  #dashborard{padding-left:20px}
+  h2{color:white}
+  h2{padding-right:20px}
+
+  #progress{
+  margin-top:150px;
   }
-}
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
+  ul {
   list-style-type: none;
   padding: 0;
-}
+  width: 25%;
+  background-color: grey;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+  border-color: white;
+  margin-top:58px;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  li a {
+  display: block;
+  color: white;
+  padding: 20px 16px;
+  text-decoration: none;
+  border-color: white;
 
-a {
-  color: #42b983;
-}
+  }
+  li a.active {
+  background-color: #4CAF50;
+  color: white;
+  }
+
+  li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  border-color: white;
+  }
+  #box1{
+  margin-top:200%;
+  color:grey;
+  border: black;
+  }
+  #body{
+  margin-top:30px;
+  width: 125%;
+  }
 </style>
+
+<script>
+</script>
+
