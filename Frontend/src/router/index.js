@@ -10,6 +10,8 @@ import DownloadCoopForm from '@/components/DownloadCoopForm'
 import TaxCreditForm from '@/components/TaxCreditForm'
 import DownloadTaxCreditForm from '@/components/DownloadTaxCreditForm'
 import LoginPage from '@/components/LoginPage'
+import ConfirmStudentCompletionSecondPage from '@/components/ConfirmStudentCompletionSecondPage'
+import ConfirmStudentStartSecondPage from '@/components/ConfirmStudentStartSecondPage'
 
 Vue.use(Router)
 
@@ -21,7 +23,7 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/welcome',
+      path: '/',
       name: 'Welcome',
       component: Welcome
       
@@ -74,6 +76,20 @@ export default new Router({
       name: 'LoginPage',
       component: LoginPage
     }
+    ,
+    {
+      path: '/ConfirmStudentCompletionSecondPage',
+      name: 'ConfirmStudentCompletionSecondPage',
+      component: ConfirmStudentCompletionSecondPage
+    }
+    ,
+    {
+      path: '/ConfirmStudentStartSecondPage',
+      name: 'ConfirmStudentStartSecondPage',
+      component: ConfirmStudentStartSecondPage
+    }
+
+
     
   ]
 })

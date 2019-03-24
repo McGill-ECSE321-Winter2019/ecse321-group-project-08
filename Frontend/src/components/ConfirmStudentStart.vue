@@ -69,29 +69,22 @@
         <input type="text" size="25" placeholder="Confirmation ID"></input>
 
       </td>
-      <td align = "center">
-        <h4 id = "tasks"> Select Student</h4>
-        <select>
-          <option value ="student"> select a student</option>
-        </select>
-      </td>
+      
       </tr>
       <tr>
         <td align= "center">
-          <h4 id = "tasks"> Select CoopPosition Name</h4>
+          <h4 id = "tasks"> Select Coop Position </h4>
           <select>
-            <option value ="coopposition"> Select a Coop position</option>
+            <option value ="coopposition"> Select a Coop Position</option>
           </select>
         </td>
       </tr>
       <tr>
         <td align = "center">
-          <button type = "button"> Start </button>
+<button><router-link to="/ConfirmStudentStartSecondPage">Start</router-link></button>
         </td>
 
-        <td align = "center">
-          <button type = "button"> Confirm Student </button>
-        </td>
+        
       </tr>
     </table>
 </div>

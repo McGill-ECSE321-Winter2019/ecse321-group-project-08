@@ -10,7 +10,9 @@
         <h4>
           Enter Employer ID
         </h4>
-        <input type = "text" size= "25"></input>
+        <input type = "number" size= "25"></input>
+        <button><router-link to="/dashboard">Login</router-link></button>
+
       </td>
 
       <td>

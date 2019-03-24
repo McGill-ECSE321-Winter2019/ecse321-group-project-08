@@ -32,7 +32,9 @@ Create Account
 <tr>
 <td></td>
 <td>
-<button @click="createEmployer(newEmployerID,Username,Password)" >Create Account</button>
+        <button><router-link to="/dashboard">Create Account</router-link></button>
+
+<!--<button @click="createEmployer(newEmployerID,Username,Password,Company)" >Create Account</button>-->
 </td>
 </tr>
 </table>

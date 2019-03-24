@@ -63,25 +63,18 @@
       </th>
     </tr>
 
-    <tr>
-      <td align="center">
-        <h4 id="task">Google Drive URL</h4>
-        <input type="text" size="25" placeholder="Google Drive URL"></input>
-
-      </td>
-      
-      </tr>
+    
       <tr>
         <td align= "center">
-          <h4 id = "tasks"> Select Coop Position </h4>
+          <h4 id = "tasks"> Select a Student</h4>
           <select>
-            <option value ="coopposition"> Select a Coop Position</option>
+            <option value ="coopposition"> Select a Student</option>
           </select>
         </td>
       </tr>
       <tr>
         <td align = "center">
-<button><router-link to="/ConfirmStudentCompletionSecondPage">Start</router-link></button>
+          <button type = "button"> Confirm Student </button>
         </td>
 
         
