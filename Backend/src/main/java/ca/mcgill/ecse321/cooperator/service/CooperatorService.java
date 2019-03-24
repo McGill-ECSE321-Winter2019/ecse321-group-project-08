@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ca.mcgill.ecse321.cooperator.dao.CoopPlacementFormRepository;
 import ca.mcgill.ecse321.cooperator.dao.CoopPositionRepository;
+import ca.mcgill.ecse321.cooperator.dao.CooperatorAppRepository;
 import ca.mcgill.ecse321.cooperator.dao.EmployerRepository;
 import ca.mcgill.ecse321.cooperator.dao.EvaluationFormRepository;
 import ca.mcgill.ecse321.cooperator.dao.EventRepository;
@@ -32,6 +33,9 @@ import ca.mcgill.ecse321.cooperator.model.TaxCreditForm;
 
 @Service
 public class CooperatorService {
+	
+	@Autowired
+	CooperatorAppRepository repo;
 	
 	@Autowired
 	private CoopPlacementFormRepository  coopPlacementFormRepository;
@@ -85,6 +89,7 @@ public class CooperatorService {
 	
 	
 	
+	
 // CoopPosition
 	
 	@Transactional
@@ -108,6 +113,13 @@ public class CooperatorService {
 	public List<CoopPosition> getAllCoopPositions() {
 		return toList(coopPositionRepository.findAll());
 	}
+	
+	
+	@Transactional
+	public List<CoopPosition> getAllCoopPositionsWithThisCompanyName(String companyName) {
+		return toList(repo.getCoopPositionWithCompanyName(companyName));
+	}
+	
 	
 	//Add CoopPosition in CoopPlacementForm and CoopPlacementForm in CoopPosition
 	@Transactional 
@@ -162,11 +174,12 @@ public class CooperatorService {
 //	Employer
 	
 	@Transactional
-	public Employer createEmployer(String userName, String password,int ID ) {
+	public Employer createEmployer(String userName, String password,int ID ,String Company) {
 		Employer p = new Employer();
 		p.setUserName(userName);
 		p.setPassword(password);
 		p.setEmployeeID(ID);
+		p.setCompany(Company);
 		employerRepository.save(p);
 		return p;
 	}

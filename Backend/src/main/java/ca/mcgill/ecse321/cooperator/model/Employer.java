@@ -10,6 +10,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Employer{
+private String company;
+   
+   public void setCompany(String value) {
+this.company = value;
+    }
+public String getCompany() {
+return this.company;
+    }
 private Set<Event> invitedTo;
 
 @ManyToMany

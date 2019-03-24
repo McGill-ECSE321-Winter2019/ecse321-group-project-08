@@ -220,7 +220,7 @@ public class ServiceTests {
 		String password= "ecse";
 														
 		try {
-			cooperatorService.createEmployer(userName, password, id);						
+			cooperatorService.createEmployer(userName, password, id, "google");						
 															
 		} catch (IllegalArgumentException e) {
 			// Check that no error occurred
@@ -240,7 +240,7 @@ public class ServiceTests {
 		String password= "ecse";
 									
 		
-		Employer employer= cooperatorService.createEmployer(userName, password, id);	
+		Employer employer= cooperatorService.createEmployer(userName, password, id, "google");	
 		
 		try {
 			cooperatorService.getEmployer(1);
@@ -256,7 +256,7 @@ public class ServiceTests {
 		String password= "ecse";
 									
 		
-		Employer employer= cooperatorService.createEmployer(userName, password, id);	
+		Employer employer= cooperatorService.createEmployer(userName, password, id, "google");	
 		
 		try {
 			cooperatorService.getAllEmployers();

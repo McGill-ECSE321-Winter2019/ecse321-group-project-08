@@ -1,8 +1,10 @@
 package ca.mcgill.ecse321.cooperator.dao;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -62,6 +64,15 @@ public class CooperatorAppRepository {
 		return p;
 	}
 	
+	@Transactional
+	public List<CoopPosition> getCoopPositionWithCompanyName(String companyName) {
+		TypedQuery<CoopPosition> q = 
+				entityManager.createQuery("select c from CoopPosition c where c.companyName = :companyName",CoopPosition.class);
+		q.setParameter("companyName", companyName);
+		List<CoopPosition> resultList = q.getResultList();
+		return resultList;
+	}
+
 	
 	
 //	Employer

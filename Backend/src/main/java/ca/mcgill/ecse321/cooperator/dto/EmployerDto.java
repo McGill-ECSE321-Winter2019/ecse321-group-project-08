@@ -11,6 +11,7 @@ public class EmployerDto {
 	private int id;
 	private String username;
 	private String password;
+	private String company;
 	private List<EventDto> events;
 	private List<EvaluationFormDto> evaluationForms;
 	private List<StartConfirmationDto> startConfirmations;
@@ -21,10 +22,11 @@ public class EmployerDto {
 	}
 	
 	
-	public EmployerDto(int id, String username, String password) {
+	public EmployerDto(int id, String username, String password, String company) {
 		this.id=id;
 		this.username=username;
 		this.password=password;
+		this.company= company;
 	}
 	
 //Get methods
@@ -39,6 +41,10 @@ public class EmployerDto {
 	
 	public String getUserName() {
 		return username;
+	}
+	
+	public String getCompany() {
+		return company;
 	}
 	
 	public List<EventDto> getEvents(){
