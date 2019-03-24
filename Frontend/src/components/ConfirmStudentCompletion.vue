@@ -72,16 +72,27 @@
       
       </tr>
       <tr>
-        <td align= "center">
-          <h4 id = "tasks"> Select Coop Position </h4>
-          <select>
-            <option value ="coopposition"> Select a Coop Position</option>
-          </select>
-        </td>
+      <td align="center">
+        <h4 id="task">Employer ID</h4>
+        <input type="number" size="25" placeholder="Employer ID"></input>
+
+      </td>
+      
+      </tr>
+      <tr>
+      <td align="center">
+        <h4 id="task">Coop Position ID</h4>
+        <input type="number" size="25" placeholder="CoopPosition ID"></input>
+
+      </td>
+      
       </tr>
       <tr>
         <td align = "center">
-<button><router-link to="/ConfirmStudentCompletionSecondPage">Start</router-link></button>
+
+<!--<button><router-link to="/ConfirmStudentCompletionSecondPage">Start</router-link></button> -->
+<button>Confirm</button> 
+
         </td>
 
         

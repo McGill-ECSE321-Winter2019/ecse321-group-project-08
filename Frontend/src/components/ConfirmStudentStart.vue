@@ -66,22 +66,52 @@
     <tr>
       <td align="center">
         <h4 id="task">Confirmation ID</h4>
-        <input type="text" size="25" placeholder="Confirmation ID"></input>
+        <input type="number" size="25" placeholder="Confirmation ID"></input>
+
+      </td>
+      
+      </tr>
+
+      
+      <tr>
+      <td align="center">
+        <h4 id="task">Employer ID</h4>
+        <input type="number" size="25" placeholder="Employer ID"></input>
 
       </td>
       
       </tr>
       <tr>
-        <td align= "center">
-          <h4 id = "tasks"> Select Coop Position </h4>
-          <select>
-            <option value ="coopposition"> Select a Coop Position</option>
-          </select>
-        </td>
+      <td align="center">
+        <h4 id="task">Coop Position ID</h4>
+        <input type="number" size="25" placeholder="CoopPosition ID"></input>
+
+      </td>
+      
       </tr>
       <tr>
+      <td align="center">
+        <h4 id="task">Student ID</h4>
+        <input type="number" size="25" placeholder="Student ID"></input>
+
+      </td>
+      
+      </tr>
+      <tr>
+      <td align="center">
+        <h4 id="task">Evaluation Date</h4>
+        <input type="Date" size="25" placeholder="Evaluation Date"></input>
+
+      </td>
+      </tr>
+      
+      </tr>
+      
+      <tr>
         <td align = "center">
-<button><router-link to="/ConfirmStudentStartSecondPage">Start</router-link></button>
+<!--<button><router-link to="/ConfirmStudentStartSecondPage">Start</router-link></button> -->
+<button>Confirm</button> 
+
         </td>
 
         
