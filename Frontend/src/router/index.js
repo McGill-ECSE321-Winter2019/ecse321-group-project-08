@@ -23,7 +23,7 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/welcome',
+      path: '/',
       name: 'Welcome',
       component: Welcome
       

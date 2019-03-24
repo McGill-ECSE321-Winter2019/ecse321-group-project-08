@@ -9,11 +9,11 @@
 <table align=center>
 
 <td>
-<button @click="loginPage" >Login</button>
+<button><router-link to="/LoginPage">Login</router-link></button>
 </td>
 
 <td>
-<button @click="createAccountPage" >Create Account</button>
+<button><router-link to="/CreateAccount">Create Account</router-link></button>
 </td>
 
 </tr>
