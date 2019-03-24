@@ -80,6 +80,3 @@ border-color: white;
    width: 125%;
 }
 </style>
-
-<script>
-</script>

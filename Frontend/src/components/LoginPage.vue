@@ -10,11 +10,14 @@
         <h4>
           Enter Employer ID
         </h4>
-        <input type = "number" size= "25"></input>
-        <button><router-link to="/dashboard">Login</router-link></button>
+
+        <input type = "number" v-model="employerID" size= "25"></input>
+
+        <button @click="loginEmployer(employerID)"><router-link to="/dashboard">Login</router-link></button>
+      
 
       </td>
-
+    
       <td>
 
       </td>
@@ -25,15 +28,8 @@
 
 </template>
 
-<script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+
+<script src="./LoginPage2.js">
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
