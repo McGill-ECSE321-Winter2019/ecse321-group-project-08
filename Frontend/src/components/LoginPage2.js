@@ -25,12 +25,7 @@ export default {
       response: []
     }
   },
-  // created: function () {
-  //   // Test data
-  //   const p1 = new EmployerLoginDto(1223)
-  //   // Sample initial content
-  //   this.employer = [p1]
-  // },
+  
   methods: {
     loginEmployer: function (employerID) {
       //Create a new person and add it to the list of people

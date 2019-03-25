@@ -3,50 +3,58 @@
 <h2> 
 Create Account
 </h2>
-<table align=center>
-<tr>
-<td>Employer ID</td>
-</td>
-<td>
-<input type="number" v-model="employerID" placeholder="Employer ID" >
-</td>
- <tr v-for="e in employer" >
-      <td>{{ e.employerID }}</td>
-      <td>{{ e.username }}</td>
-      <td>{{ e.password }}</td>
-      <td>{{ e.company }}</td>
-  </tr>
-</tr>
-<tr>
-<td>Username</td>
-<td>
-<input type="text" v-model="username" placeholder="Username" >
-</td>
-</tr>
-<tr>
-<td>Password</td>
-<td>
-<input type="text" v-model="password" placeholder="Password">
-</td>
-<tr>
-<td>Company</td>
-<td>
-<input type="text" v-model="company" placeholder="Company" >
-</td>
-</tr>
-</tr>
-<tr>
-<td></td>
-<td>
-        <button @click="createEmployer(employerID, username,password, company)"><router-link to="/dashboard">Create Account</router-link></button>
 
-<!--<button @click="createEmployer(newEmployerID,Username,Password,Company)" >Create Account</button>-->
-</td>
-</tr>
-</table>
+<form
+id="createForm"
+@submit="checkForm"
+action="javascript:void(0);">
+<p v-if="errors.length">
+<p v-for="error in errors"><b>{{ error }} </b></p>
+</p>
+<p>
+        <label for="number"> Employer ID </label>
+        <input
+        type="number"
+        name="number"
+        v-model="number"
+        id="number"
+        placeholder="EmployerID">
+</p>
+<p>
+        <label for="username"> Username </label>
+        <input
+        type="text"
+        name="username"
+        v-model="username"
+        id="username"
+        placeholder="Username">
+</p>
+<p>
+        <label for="password"> Password </label>
+        <input
+        type="password"
+        name="password"
+        v-model="password"
+        id="password"
+        placeholder="Password">
+</p>
+<p>
+        <label for="company"> Company </label>
+        <input
+        type="text"
+        name="company"
+        v-model="company"
+        id="company"
+        placeholder="Company">
+</p>
+<p>
+        <input
+        type="submit"
+        value="submit">
+</p>
+</form>
 </div>
 </template>
-
 <script src="./CreateAccount2.js">
 </script>
 
