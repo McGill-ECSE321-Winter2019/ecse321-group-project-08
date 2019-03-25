@@ -1,4 +1,9 @@
 import axios from 'axios'
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+
 var config = require('../../config')
 
 var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
@@ -11,7 +16,7 @@ var AXIOS = axios.create({
 
 
 function EmployerDto (employerID, username, password, company) {
-  this.employerID = employerID
+  this.number = employerID
   this.username = username
   this.password = password
   this.company = company
@@ -47,6 +52,7 @@ export default {
         this.employer.push(response.data)
         this.newEmployer= ''
         this.errorEmployer= ''
+        console.log(response.data)
       })
       .catch(e => {
         var errorMsg = e.message
@@ -60,6 +66,9 @@ export default {
       // // Reset the name field for new people
       // this.newEmployer = ''
     },
+    navigate() {
+      router.push({ name: "/Dashboard" });
+     },
     /**
      * Function for form input validation.
      * This function proceeds with HTTP call if no errors are found.
@@ -76,9 +85,13 @@ export default {
       // This prevents the default action of the event from being executed!
       e.preventDefault();
 
-      if(oops){return;}
-      else {this.createEmployer(this.number, this.username, this.password, this.company);}
-
+      if(oops){
+        return;
+      }
+      else {
+        this.createEmployer(this.number, this.username, this.password, this.company); 
+        this.$router.push('Dashboard');
+      }
     }
   }
 }

@@ -3,27 +3,28 @@
     <h1 align = "center">
       Login
     </h1>
-
-    <table align="center">
-
-      <td align = "center">
-        <h4>
-          Enter Employer ID
-        </h4>
-
-        <input type = "number" v-model="employerID" size= "25"></input>
-
-        <button @click="loginEmployer(employerID)"><router-link to="/dashboard">Login</router-link></button>
-      
-
-      </td>
-    
-      <td>
-
-      </td>
-
-
-    </table>
+    <form
+    id="loginForm"
+    @submit="loginEmployer"
+    action="javascript:void(0);">
+    <p v-if="errors.length">
+    <p v-for="error in errors"><b>{{ error }} </b></p>
+    </p>
+    <p>
+            <label for="number"> Employer ID </label>
+            <input
+            type="number"
+            name="number"
+            v-model="number"
+            id="number"
+            placeholder="EmployerID">
+    </p>
+    <p>
+            <input
+            type="submit"
+            value="submit">
+    </p>
+    </form>
   </div>
 
 </template>

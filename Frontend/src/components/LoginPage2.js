@@ -22,7 +22,8 @@ export default {
       employer: [],
       newEmployer: '',
       errorEmployer: '',
-      response: []
+      response: [],
+      employerID: null
     }
   },
   

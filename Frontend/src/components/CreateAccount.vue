@@ -56,5 +56,4 @@ action="javascript:void(0);">
 </div>
 </template>
 <script src="./CreateAccount2.js">
-</script>
 
