@@ -16,7 +16,7 @@ var AXIOS = axios.create({
 
 
 function EmployerDto (employerID, username, password, company) {
-  this.number = employerID
+  this.employerID = employerID
   this.username = username
   this.password = password
   this.company = company
@@ -35,7 +35,7 @@ export default {
       errorEmployer: '',
       username: null,
       password: null,
-      number: null,
+      employerID: null,
       company: null,
       response: [],
       errors: []
@@ -53,6 +53,7 @@ export default {
         this.newEmployer= ''
         this.errorEmployer= ''
         console.log(response.data)
+        this.$router.push({name : 'Dashboard', params: {employerID: employerID}});
       })
       .catch(e => {
         var errorMsg = e.message
@@ -79,7 +80,7 @@ export default {
       var oops = false
       if(!this.username){ this.errors.push("Username is required"); oops=true;}
       if(!this.password){ this.errors.push("Password is required"); oops=true;}
-      if(!this.number){ this.errors.push("Employer ID is required"); oops=true;}
+      if(!this.employerID){ this.errors.push("Employer ID is required"); oops=true;}
       if(!this.company){ this.errors.push("Company is required"); oops=true;}
 
       // This prevents the default action of the event from being executed!
@@ -89,8 +90,7 @@ export default {
         return;
       }
       else {
-        this.createEmployer(this.number, this.username, this.password, this.company); 
-        this.$router.push('Dashboard');
+        this.createEmployer(this.employerID, this.username, this.password, this.company); 
       }
     }
   }

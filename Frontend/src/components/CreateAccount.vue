@@ -12,12 +12,12 @@ action="javascript:void(0);">
 <p v-for="error in errors"><b>{{ error }} </b></p>
 </p>
 <p>
-        <label for="number"> Employer ID </label>
+        <label for="employerID"> Employer ID </label>
         <input
         type="number"
-        name="number"
-        v-model="number"
-        id="number"
+        name="employerID"
+        v-model="employerID"
+        id="employerID"
         placeholder="EmployerID">
 </p>
 <p>
@@ -55,5 +55,5 @@ action="javascript:void(0);">
 </form>
 </div>
 </template>
-<script src="./CreateAccount2.js">
+<script src="./CreateAccount2.js"/>
 

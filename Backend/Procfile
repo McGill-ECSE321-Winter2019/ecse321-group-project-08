@@ -1,1 +1,1 @@
-web: SPRING_DATASOURCE_URL='jdbc:postgresql://ec2-107-20-167-11.compute-1.amazonaws.com:5432/dde5sfrvndjdro?user=hrzbgmnucpblla&password=4f1d00c4d21bf3864f06474f04d236a5745bc5652c3c2c93df4d9bdc1fb7f0eb&sslmode=require' java -jar build/libs/Backend-0.0.1-SNAPSHOT.jar
+web: SPRING_DATASOURCE_URL='jdbc:postgresql://ec2-107-20-167-11.compute-1.amazonaws.com:5432/dde5sfrvndjdro?user=hrzbgmnucpblla&password=4f1d00c4d21bf3864f06474f04d236a5745bc5652c3c2c93df4d9bdc1fb7f0eb&sslmode=require' java -jar Backend/build/libs/Backend-0.0.1-SNAPSHOT.jar

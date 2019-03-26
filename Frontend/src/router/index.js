@@ -36,13 +36,13 @@ export default new Router({
     }
     ,
     {
-      path: '/Dashboard',
+      path: '/Dashboard/:employerID',
       name: 'Dashboard',
       component: Dashboard
     }
     ,
     {
-      path: '/ConfirmStudentStart',
+      path: '/ConfirmStudentStart/:employerID',
       name: 'ConfirmStudentStart',
       component: ConfirmStudentStart
     }
@@ -74,6 +74,11 @@ export default new Router({
     {
       path: '/LoginPage',
       name: 'LoginPage',
+      component: LoginPage
+    },
+    {
+      path: '/LoginPage/:employerID',
+      name: 'LoginPageEmployerID',
       component: LoginPage
     }
     ,

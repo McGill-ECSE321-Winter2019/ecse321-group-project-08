@@ -6,21 +6,21 @@
         <h1 align="left" id="dashboard1">Welcome Employer</h1>
       </td>
       <td>
-        <h1 align="right" id="dashboard1">Employed ID: XXXX</h1>
+        <h1 align="right" id="dashboard1">Employed ID: {{employerID}}</h1>
       </td>
     </tr>
   </table>
   <ul>
     <li>
       <h5>
-        <a class="active">
+        <a>
           <router-link to="/dashboard">Dashboard</router-link>
         </a>
       </h5>
     </li>
     <li>
       <h5>
-        <a>
+        <a class="active">
           <router-link to="/ConfirmStudentStart">Confirm Student Start</router-link>
         </a>
       </h5>
@@ -56,69 +56,38 @@
   </ul>
 
 
-  <table id="body">
-    <tr>
-      <th align = "right">
-        <h1 >Confirm Student Start</h1>
-      </th>
-    </tr>
-
-    <tr>
-      <td align="center">
-        <h4 id="task">Confirmation ID</h4>
-        <input type="number" size="25" placeholder="Confirmation ID"></input>
-
-      </td>
-      
-      </tr>
-
-      
-      <tr>
-      <td align="center">
-        <h4 id="task">Employer ID</h4>
-        <input type="number" size="25" placeholder="Employer ID"></input>
-
-      </td>
-      
-      </tr>
-      <tr>
-      <td align="center">
-        <h4 id="task">Coop Position ID</h4>
-        <input type="number" size="25" placeholder="CoopPosition ID"></input>
-
-      </td>
-      
-      </tr>
-      <tr>
-      <td align="center">
-        <h4 id="task">Student ID</h4>
-        <input type="number" size="25" placeholder="Student ID"></input>
-
-      </td>
-      
-      </tr>
-      <tr>
-      <td align="center">
-        <h4 id="task">Evaluation Date</h4>
-        <input type="Date" size="25" placeholder="Evaluation Date"></input>
-
-      </td>
-      </tr>
-      
-      </tr>
-      
-      <tr>
-        <td align = "center">
-<!--<button><router-link to="/ConfirmStudentStartSecondPage">Start</router-link></button> -->
-<button>Confirm</button> 
-
-        </td>
-
-        
-      </tr>
-    </table>
+  <div id="createAccount">
+  <h2> Register Student</h2>
+  <form
+  id="createForm"
+  @submit="checkForm"
+  action="javascript:void(0);">
+    </p>
+    <p>
+            <label for="coopPositionID"> Coop Position ID</label>
+            <select>
+                  <option  v-for="coopPosition in coopPositions" value ="test" v-model="coopPositionID" > {{coopPosition}}</option>
+            </select>
+    <p>
+            <label for="password"> Start Date </label>
+            <input
+            type="date"
+            name="password"
+            v-model="password"
+            id="password"
+            placeholder="Password">
+    </p>
+    <p>
+            <input
+            type="submit"
+            value="Confirm Start">
+    </p>
+  </form>
+  </div>
 </div>
   </template>
+
+  <script src="./ConfirmStudentStart2.js"/>
 
 <style>
 

@@ -16,7 +16,6 @@
 <button><router-link to="/CreateAccount">Create Account</router-link></button>
 </td>
 
-</tr>
 </table>
 </div>
 </template>
