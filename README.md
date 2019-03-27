@@ -31,5 +31,5 @@ McGill University has a number of co-op programs that are administered by indivi
 |Mashood Ahmed     |  12 hours  |Connecting Backend to Frontend           |
 |Irmak Pakis       |  16 hours |Connecting Backend to Frontend            |
 |Ege Odaci         |  14 hours |Frontend Implementation                   |
-|Jason Rahal       |  14 hours  |Frontend Implementation                  |
-|Edgar Chang       |  12 hours  |Arthitecture Modeling and Documentation  |
+|Jason Rahal       |  12 hours  |Architecture Modeling and Documentation                  |
+|Edgar Chang       |  14 hours  |Frontend Implementation  |
