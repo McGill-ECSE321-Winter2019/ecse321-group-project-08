@@ -5,16 +5,16 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default {
-    name: 'Dashboard',
-    data () {
-      return {
-        employerID: null
-      }
-    },
-    created: function () {
-        this.employerID= this.$route.params.employerID;
-    } 
+  name: 'Dashboard',
+  data() {
+    return {
+      employerID: null
+    }
+  },
+  created: function () {
+    this.employerID = this.$route.params.employerID;
   }
+}
 
 
 

@@ -42,6 +42,8 @@ public class CooperatorAppApplicationController {
 	 * USE CASE 1 - CONFIRM STUDENT'S EMPLOYMENT
 	 */
 
+	
+	// .../StartConfirmation/111?evaluationDate=2020-20-22&employerID=111?coopPositionID=111?studentID=111
 	@PostMapping(value = { "/StartConfirmation/{id}", "/StartConfirmation/{id}/" })
 	public StartConfirmationDto createStartConfirmation(@PathVariable("id") int id,
 			@RequestParam(name = "evaluationDate") Date evaluationDate, @RequestParam(name = "employerID") int eid,

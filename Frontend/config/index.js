@@ -43,5 +43,7 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
-  }
+  },
+  frontendUrl: 'http://localhost:8087',
+  backendUrl :'https://coop-backend-g8.herokuapp.com' //localhost:8080 
 }

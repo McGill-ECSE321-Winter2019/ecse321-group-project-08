@@ -9,7 +9,7 @@ id="createForm"
 @submit="checkForm"
 action="javascript:void(0);">
 <p v-if="errors.length">
-<p v-for="error in errors"><b>{{ error }} </b></p>
+<p v-for="error in errors"> <b>{{ error }} </b></p>
 </p>
 <p>
         <label for="employerID"> Employer ID </label>

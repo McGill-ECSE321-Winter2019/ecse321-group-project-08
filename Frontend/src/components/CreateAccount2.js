@@ -6,12 +6,9 @@ Vue.use(Router)
 
 var config = require('../../config')
 
-var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-var backendUrl = (config.dev.backendPort == "443"? 'https://' : "http://") + config.dev.backendHost + (config.dev.backendPort == "443"? (':' + config.dev.backendPort) : "");
-
 var AXIOS = axios.create({
-  baseURL: backendUrl,
-  headers: { 'Access-Control-Allow-Origin': frontendUrl }
+  baseURL: config.backendUrl,
+  headers: { 'Access-Control-Allow-Origin': config.frontendUrl }
 })
 
 
