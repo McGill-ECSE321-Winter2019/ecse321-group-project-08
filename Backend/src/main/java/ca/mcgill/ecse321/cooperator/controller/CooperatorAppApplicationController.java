@@ -63,6 +63,8 @@ public class CooperatorAppApplicationController {
 	@GetMapping(value = { "/irmak/{id}", "/irmak/{id}" })
 	public List<CoopPositionDto> getCoopPositionByEmployerId(@PathVariable("id") int id) {
 		Employer e = service.getEmployer(id);
+		if (e == null)
+			return new ArrayList<CoopPositionDto>();
 		String name = e.getCompany();
 		List<CoopPositionDto> CoopPositionDtos = new ArrayList<>();
 		for (CoopPosition CoopPosition : service.getAllCoopPositionsWithThisCompanyName(name)) {
