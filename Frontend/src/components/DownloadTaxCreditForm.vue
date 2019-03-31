@@ -74,15 +74,13 @@
       </tr>
       <tr>
         <td align = "center">
-          <button type = "button"> Download </button>
+        <input type="button" onclick="location.href='https://www.revenuquebec.ca/documents/fr/formulaires/co/co-1029.8.33.10%282015-12%29.pdf';" value="English - Form" />
         </td>
-
-        
+        <input type="button" onclick="location.href='https://www.revenuquebec.ca/documents/fr/formulaires/co/co-1029.8.33.10%282015-12%29.pdf';" value="English - Form" />     </td>
       </tr>
     </table>
 </div>
   </template>
-
 <style>
 
   #head{background-color:#696969}

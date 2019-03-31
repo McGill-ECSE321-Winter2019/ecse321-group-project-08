@@ -4,7 +4,7 @@
     Hey employer
     </h1>
 <h2> 
- Welcome to the Cooperator!
+ Welcome to the Cooperator Application!
 </h2>
 <table align=center>
 
