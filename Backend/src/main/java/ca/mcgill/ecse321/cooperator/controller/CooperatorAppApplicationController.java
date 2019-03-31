@@ -42,13 +42,12 @@ public class CooperatorAppApplicationController {
 	 * USE CASE 1 - CONFIRM STUDENT'S EMPLOYMENT
 	 */
 
-	
 	// .../StartConfirmation/111?evaluationDate=2020-20-22&employerID=111?coopPositionID=111?studentID=111
 	@PostMapping(value = { "/StartConfirmation/{id}", "/StartConfirmation/{id}/" })
 	public StartConfirmationDto createStartConfirmation(@PathVariable("id") int id,
 			@RequestParam(name = "evaluationDate") Date evaluationDate, @RequestParam(name = "employerID") int eid,
-			@RequestParam(name = "coopPositionID") int cid,
-			@RequestParam(name = "studentID") int sid) throws InvalidInputException{
+			@RequestParam(name = "coopPositionID") int cid, @RequestParam(name = "studentID") int sid)
+			throws InvalidInputException {
 		if (service.getStartConfirmation(id) != null)
 			throw new InvalidInputException("Start Confirmation with that ID already exists!");
 		StartConfirmation s = service.createStartConfirmation(evaluationDate, id);
@@ -59,6 +58,17 @@ public class CooperatorAppApplicationController {
 		service.updateCoopPositionAndStartConfirmation(c, s);
 		service.updateCoopPositionAndStudent(c, st);
 		return convertToDto(s);
+	}
+
+	@GetMapping(value = { "/irmak/{id}", "/irmak/{id}" })
+	public List<CoopPositionDto> getCoopPositionByEmployerId(@PathVariable("id") int id) {
+		Employer e = service.getEmployer(id);
+		String name = e.getCompany();
+		List<CoopPositionDto> CoopPositionDtos = new ArrayList<>();
+		for (CoopPosition CoopPosition : service.getAllCoopPositionsWithThisCompanyName(name)) {
+			CoopPositionDtos.add(convertToDto(CoopPosition));
+		}
+		return CoopPositionDtos;
 	}
 
 	/*
@@ -110,7 +120,6 @@ public class CooperatorAppApplicationController {
 		return convertToDto(cf);
 	}
 
-
 	/*
 	 * CREATE
 	 */
@@ -125,7 +134,7 @@ public class CooperatorAppApplicationController {
 
 	// localhost:8080/CoopPlacementForm/123
 	@PostMapping(value = { "/CoopPlacementForm/{id}", "/CoopPlacementForm/{id}/" })
-	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws InvalidInputException{
+	public CoopPlacementFormDto createCoopPlacementForm(@PathVariable("id") int id) throws InvalidInputException {
 		CoopPlacementForm f = service.createCoopPlacementForm(id);
 		return convertToDto(f);
 	}
@@ -145,7 +154,8 @@ public class CooperatorAppApplicationController {
 	@PostMapping(value = { "/CoopPosition/{id}", "/CoopPosition/{id}/" })
 	public CoopPositionDto createCoopPosition(@PathVariable("id") int id,
 			@RequestParam(name = "PositionName") String PosName, @RequestParam(name = "CompanyName") String compName,
-			@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) throws InvalidInputException{
+			@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate)
+			throws InvalidInputException {
 		CoopPosition cp = service.createCoopPosition(id, PosName, compName, startDate, endDate);
 		return convertToDto(cp);
 	}
@@ -161,8 +171,8 @@ public class CooperatorAppApplicationController {
 	// localhost:8080/Employer/111?username=person1&password=123&company=google
 	@PostMapping(value = { "/Employer/{id}", "/Employer/{id}/" })
 	public EmployerDto createEmployer(@PathVariable("id") int id, @RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password, 
-			@RequestParam(name = "company") String company) throws InvalidInputException{
+			@RequestParam(name = "password") String password, @RequestParam(name = "company") String company)
+			throws InvalidInputException {
 		Employer e = service.createEmployer(username, password, id, company);
 		return convertToDto(e);
 	}
@@ -178,8 +188,8 @@ public class CooperatorAppApplicationController {
 	 *                               unique.
 	 */
 	@PostMapping(value = { "/Student/{id}", "/Student/{id}/" })
-	public StudentDto createStudentDto(@PathVariable("id") int id, 
-			@RequestParam("name") String name) throws InvalidInputException {
+	public StudentDto createStudentDto(@PathVariable("id") int id, @RequestParam("name") String name)
+			throws InvalidInputException {
 		if (service.getStudent(id) != null)
 			throw new InvalidInputException("Student with that ID already exists!");
 		Student I = service.createStudent(id, name);
@@ -193,7 +203,7 @@ public class CooperatorAppApplicationController {
 	 * @param id - ID to be assigned to the Tax Credit Form
 	 * @return - Newly created Tax Credit Form DTO
 	 */
-	
+
 	// localhost:8080/TaxCreditForm/222
 	@PostMapping(value = { "/TaxCreditForm/{id}", "/TaxCreditForm/{id}/" })
 	public TaxCreditFormDto createTaxCreditForm(@PathVariable("id") int id) {
@@ -212,7 +222,7 @@ public class CooperatorAppApplicationController {
 	 * @return - Employer DTO
 	 */
 	// localhost:8080/Employer/111
-	
+
 	@GetMapping(value = { "/Employer/{id}", "/Employer/{id}/" })
 	public EmployerDto getEmployerById(@PathVariable("id") int id) throws InvalidInputException {
 		if (service.getEmployer(id) == null)
@@ -287,7 +297,6 @@ public class CooperatorAppApplicationController {
 		return coopPlacementFormDtos;
 	}
 
-	
 	@GetMapping(value = { "/CoopPositions", "/CoopPositions/" })
 	public List<CoopPositionDto> getAllCoopPositions() {
 		List<CoopPositionDto> CoopPositionDtos = new ArrayList<>();
@@ -296,7 +305,7 @@ public class CooperatorAppApplicationController {
 		}
 		return CoopPositionDtos;
 	}
-	
+
 	/**
 	 * Receive GET endpoint for getting all Employers
 	 * 
@@ -359,7 +368,7 @@ public class CooperatorAppApplicationController {
 
 	/**
 	 * Receive GET endpoint for getting all Students
-
+	 * 
 	 * 
 	 * @return - All Student DTOs
 	 */
@@ -378,7 +387,6 @@ public class CooperatorAppApplicationController {
 	 * @return - All Tax Credit Form DTOs
 	 */
 
-	
 	@GetMapping(value = { "/TaxCreditFormAll", "/TaxCreditFormAll/" })
 	public List<TaxCreditFormDto> getAllTaxCreditForms() {
 		List<TaxCreditFormDto> TaxCreditFormDtos = new ArrayList<>();
@@ -392,8 +400,8 @@ public class CooperatorAppApplicationController {
 	 * UPDATE INFORMATION
 	 */
 
-//Update CoopPlacementForm in CoopPosition
-	
+	// Update CoopPlacementForm in CoopPosition
+
 	@PostMapping(value = { "/updateCoopPosition", "/updateCoopPosition/" })
 	public CoopPositionDto updateCoopPositionAndCoopPlacementForm(@RequestParam(name = "coopPositionId") int cID,
 			@RequestParam(name = "coopPlacementFormId") int fID) {
@@ -408,8 +416,8 @@ public class CooperatorAppApplicationController {
 		return coopPositionDto;
 	}
 
-//Update StartConfirmation in CoopPosition
-	
+	// Update StartConfirmation in CoopPosition
+
 	@PostMapping(value = { "/updateCP", "/updateCP/" })
 	public StartConfirmationDto updateCoopPositionAndStartConfirmation(@RequestParam(name = "coopPositionID") int cID,
 			@RequestParam(name = "startConfirmationId") int sID) {
@@ -424,8 +432,8 @@ public class CooperatorAppApplicationController {
 		return convertToDto(startConfirmation);
 	}
 
-//Update TaxCredit in CoopPosition
-	
+	// Update TaxCredit in CoopPosition
+
 	@PostMapping(value = { "/updateCoop", "/updateCoop/" })
 	public TaxCreditFormDto updateCoopPositionAndTaxCreditForm(@RequestParam(name = "coopPositionID") int cID,
 			@RequestParam(name = "taxCreditFormID") int sID) {
@@ -440,8 +448,8 @@ public class CooperatorAppApplicationController {
 		return convertToDto(taxCreditForm);
 	}
 
-//Update EvaluationForm in CoopPosition
-	
+	// Update EvaluationForm in CoopPosition
+
 	@PostMapping(value = { "/updateCoopP", "/updateCoopP/" })
 	public EvaluationFormDto updateCoopPositionAndEvaluationForm(@RequestParam(name = "coopPositionID") int cID,
 			@RequestParam(name = "evaluationFormID") int sID) {
@@ -456,8 +464,8 @@ public class CooperatorAppApplicationController {
 		return convertToDto(evaluationForm);
 	}
 
-//Update Student in CoopPosition
-	
+	// Update Student in CoopPosition
+
 	@PostMapping(value = { "/updateCoopStudent", "/updateCoopStudent/" })
 	public StudentDto updateCoopPositionAndStudent(@RequestParam(name = "coopPositionID") int cID,
 			@RequestParam(name = "studentID") int sID) {
@@ -471,7 +479,7 @@ public class CooperatorAppApplicationController {
 		return convertToDto(student);
 	}
 
-//Update StartConfirmation in Employer
+	// Update StartConfirmation in Employer
 
 	@PostMapping(value = { "/updateEmployer", "/updateEmployer/" })
 	public EmployerDto updateEmployerAndStartConfirmation(@RequestParam(name = "employerID") int cID,
@@ -486,7 +494,7 @@ public class CooperatorAppApplicationController {
 		return convertToDto(employer);
 	}
 
-//Update EvaluationForm in Employer
+	// Update EvaluationForm in Employer
 
 	@PostMapping(value = { "/updateEmployerEvaluationForm", "/updateEmployerEvaluationForm/" })
 	public EmployerDto updateEmployerAndEvaluationForm(@RequestParam(name = "employerID") int cID,
@@ -501,36 +509,25 @@ public class CooperatorAppApplicationController {
 		return convertToDto(employer);
 	}
 
-	
-	
-	
-// Some Helper methods
-	
-	@GetMapping (value= {"/getEmployersCompanyName", "/getEmployersCompanyName/"} )
-	public String getEmployersCompanyName(@RequestParam(name="employerID") int employerID) {
-		Employer employer= service.getEmployer(employerID);
+	// Some Helper methods
+
+	@GetMapping(value = { "/getEmployersCompanyName", "/getEmployersCompanyName/" })
+	public String getEmployersCompanyName(@RequestParam(name = "employerID") int employerID) {
+		Employer employer = service.getEmployer(employerID);
 		return employer.getCompany();
 	}
 
-  
 	@GetMapping(value = { "/CoopPositionsWithCompanyName", "/CoopPositionsWithCompanyName/" })
-	public List<CoopPositionDto> getAllCoopPositionsWithCompanyName(@RequestParam(name="companyName") String companyName) {
+	public List<CoopPositionDto> getAllCoopPositionsWithCompanyName(
+			@RequestParam(name = "companyName") String companyName) {
 		List<CoopPositionDto> CoopPositionDtos = new ArrayList<>();
 		for (CoopPosition CoopPosition : service.getAllCoopPositionsWithThisCompanyName(companyName)) {
 			CoopPositionDtos.add(convertToDto(CoopPosition));
 		}
 		return CoopPositionDtos;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	CoopPlacementForm --->  CoopPlacementFormDto 
+
+	// CoopPlacementForm ---> CoopPlacementFormDto
 
 	private CoopPlacementFormDto convertToDto(CoopPlacementForm form) {
 		if (form == null) {
@@ -542,7 +539,7 @@ public class CooperatorAppApplicationController {
 		return coopPlacementFormDto;
 	}
 
-// CoopPosition ----> CoopPositionDto
+	// CoopPosition ----> CoopPositionDto
 
 	private CoopPositionDto convertToDto(CoopPosition position) {
 		if (position == null) {
@@ -570,7 +567,7 @@ public class CooperatorAppApplicationController {
 
 	}
 
-//	Employer ----> EmployerDto
+	// Employer ----> EmployerDto
 
 	private EmployerDto convertToDto(Employer e) {
 		if (e == null) {
@@ -594,7 +591,7 @@ public class CooperatorAppApplicationController {
 		return eDto;
 	}
 
-//	EvaluationForm  ----> EvaluationFormDto
+	// EvaluationForm ----> EvaluationFormDto
 
 	private EvaluationFormDto convertToDto(EvaluationForm e) {
 		if (e == null) {
@@ -608,7 +605,7 @@ public class CooperatorAppApplicationController {
 		return eDto;
 	}
 
-//	Event ---> EventDto
+	// Event ---> EventDto
 
 	private EventDto convertToDto(Event e) {
 		if (e == null) {
@@ -618,7 +615,7 @@ public class CooperatorAppApplicationController {
 		return eDto;
 	}
 
-//	StartConfirmation ----> StartConfirmationDto
+	// StartConfirmation ----> StartConfirmationDto
 
 	private StartConfirmationDto convertToDto(StartConfirmation start) {
 		if (start == null) {
@@ -632,7 +629,7 @@ public class CooperatorAppApplicationController {
 		return sDto;
 	}
 
-//	Student ---> StudentDto
+	// Student ---> StudentDto
 
 	private StudentDto convertToDto(Student e) {
 		if (e == null) {
@@ -649,7 +646,7 @@ public class CooperatorAppApplicationController {
 		return eDto;
 	}
 
-//	TaxCreditForm ---> 	TaxCreditFormDto
+	// TaxCreditForm ---> TaxCreditFormDto
 
 	private TaxCreditFormDto convertToDto(TaxCreditForm e) {
 		if (e == null) {
