@@ -56,6 +56,7 @@ public class CooperatorAppApplicationController {
 		Student st = service.getStudent(sid);
 		service.updateEmployerAndStartConfirmation(e, s);
 		service.updateCoopPositionAndStartConfirmation(c, s);
+		service.updateCoopPositionAndStudent(c, st);
 		return convertToDto(s);
 	}
 
