@@ -4,56 +4,66 @@
     <tr>
       <td>
         <h1 align="left" id="dashboard1">Welcome Employer</h1>
-      </td>
-      <td>
-        <h1 align="right" id="dashboard1">Employed ID: XXXX</h1>
-      </td>
-    </tr>
-  </table>
-  <ul>
-    <li>
-      <h5>
-        <a class="active">
-          <router-link to="/dashboard">Dashboard</router-link>
-        </a>
-      </h5>
-    </li>
-    <li>
-      <h5>
-        <a>
-          <router-link to="/ConfirmStudentStart">Confirm Student Start</router-link>
-        </a>
-      </h5>
-    </li>
-    <li>
-      <h5>
-        <a>
-          <router-link to="/ConfirmStudentCompletion">Confirm Student Completion</router-link>
-        </a>
-      </h5>
-    </li>
-    <li>
-      <h5>
-        <a>
-          <router-link to="/DownloadCoopForm">Download Co-op Placement Form</router-link>
-        </a>
-      </h5>
-    </li>
-    <li>
-      <h5>
-        <a>
-          <router-link to="/TaxCreditForm">Create Tax Credit Form</router-link>
-        </a>
-      </h5>
-    </li>
-    <li>
-      <h5>
-        <a>
-          <router-link to="/DownloadTaxCreditForm">Download Tax Credit Form</router-link>
-        </a>
-      </h5>
-    </li>
-  </ul>
+       </td>
+        <td>
+          <h1 align="right" id="dashboard1">Employed ID: {{employerID}}</h1>
+        </td>
+      </tr>
+    </table>
+    <ul>
+      <li>
+        <h5>
+          <a>
+            <router-link :to="{ name: 'Dashboard', params: {employerID: employerID} }">Dashboard</router-link>
+          </a>
+        </h5>
+      </li>
+      <li>
+        <h5>
+          <a>
+            <router-link
+              :to="{ name: 'ConfirmStudentStart', params: {employerID: employerID} }"
+            >Confirm Student Start</router-link>
+          </a>
+        </h5>
+      </li>
+      <li>
+        <h5>
+          <a>
+            <router-link
+              :to="{ name: 'ConfirmStudentCompletion', params: {employerID: employerID}}"
+            >Confirm Student Completion</router-link>
+          </a>
+        </h5>
+      </li>
+      <li>
+        <h5>
+          <a>
+            <router-link
+              :to="{ name: 'DownloadCoopForm', params: {employerID: employerID} }"
+            >Download Co-op Placement Form</router-link>
+          </a>
+        </h5>
+      </li>
+      <li>
+        <h5>
+          <a class="active">
+            <router-link
+              :to="{ name: 'TaxCreditForm', params: {employerID: employerID} }"
+            >Create Tax Credit Form</router-link>
+          </a>
+        </h5>
+      </li>
+      <li>
+        <h5>
+          <a>
+            <router-link
+              :to="{ name: 'DownloadTaxCreditForm', params: {employerID: employerID} }"
+            >Download Tax Credit Form</router-link>
+          </a>
+        </h5>
+      </li>
+    </ul>
 
 
   <table id="body">
@@ -89,6 +99,12 @@
     </table>
 </div>
   </template>
+
+
+
+<script src="./TaxCreditForm2.js">
+</script>
+
 
 <style>
 
@@ -143,6 +159,5 @@
   }
 </style>
 
-<script>
-</script>
+
 

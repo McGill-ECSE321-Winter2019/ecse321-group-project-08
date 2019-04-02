@@ -13,14 +13,14 @@
     <ul>
       <li>
         <h5>
-          <a class="active">
+          <a>
             <router-link :to="{ name: 'Dashboard', params: {employerID: employerID} }">Dashboard</router-link>
           </a>
         </h5>
       </li>
       <li>
         <h5>
-          <a>
+          <a class="active">
             <router-link
               :to="{ name: 'ConfirmStudentStart', params: {employerID: employerID} }"
             >Confirm Student Start</router-link>
@@ -67,30 +67,16 @@
 
     <div id="createAccount">
       <h2>Register Student</h2>
-      <form id="createForm" @submit="checkForm" action="javascript:void(0);">
-        <!-- <p v-if="errors.length">
-    <p v-for="error in errors"> <b>{{ error }} </b></p>
-        </p>-->
-        <p>
-          <label for="confirmID">Confirmation ID</label>
-          <input
-            type="number"
-            name="Confirmation ID"
-            v-model="startConfirmationID"
-            id="Confirmation ID"
-            placeholder="Confirmation ID"
-          >
-        </p>
-
+      <form id="createForm" @submit="confirm()" action="javascript:void(0);">
         <p>
           <label for="coopPositionID">Coop Position ID</label>
-          <input
-            type="number"
-            name="Coop Position ID"
-            v-model="coopPositionID"
-            id="Coop Position ID"
-            placeholder="Coop Position ID"
-          >
+          <select v-model="irmakselected" required>
+            <option
+              v-bind:key="coop.id"
+              v-for="coop in irmaklist"
+              v-bind:value="coop"
+            >{{coop.id}}-{{coop.companyName}}-{{coop.positionName}}</option>
+          </select>
         </p>
 
         <p>
@@ -98,7 +84,8 @@
           <input
             type="number"
             name="Student ID"
-            v-model="studentID"
+            v-bind:value="irmakselected.student"
+            readonly
             id="Student ID"
             placeholder="Student ID"
           >
@@ -112,6 +99,7 @@
             v-model="evaluationDate"
             id="password"
             placeholder="Start Date"
+            required
           >
         </p>
 

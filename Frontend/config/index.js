@@ -29,7 +29,7 @@ module.exports = {
   dev: {
     port: 8087,
     env: require('./dev.env'),
-    host:'127.0.0.1',
+    host: '127.0.0.1',
     port: 8087,
     backendHost: 'coop-backend-g8.herokuapp.com',
     backendPort: 8080,
@@ -45,5 +45,5 @@ module.exports = {
     cssSourceMap: false
   },
   frontendUrl: 'http://localhost:8087',
-  backendUrl :'https://coop-backend-g8.herokuapp.com' //localhost:8080 
+  backendUrl: 'https://coop-backend-g8.herokuapp.com' //localhost:8080 
 }

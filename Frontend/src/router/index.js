@@ -26,7 +26,7 @@ export default new Router({
       path: '/',
       name: 'Welcome',
       component: Welcome
-      
+
 
     },
     {
@@ -48,25 +48,25 @@ export default new Router({
     }
     ,
     {
-      path: '/ConfirmStudentCompletion',
+      path: '/ConfirmStudentCompletion/:employerID',
       name: 'ConfirmStudentCompletion',
       component: ConfirmStudentCompletion
     }
     ,
     {
-      path: '/DownloadCoopForm',
+      path: '/DownloadCoopForm/:employerID',
       name: 'DownloadCoopForm',
       component: DownloadCoopForm
     }
     ,
     {
-      path: '/TaxCreditForm',
+      path: '/TaxCreditForm/:employerID',
       name: 'TaxCreditForm',
       component: TaxCreditForm
     }
     ,
     {
-      path: '/DownloadTaxCreditForm',
+      path: '/DownloadTaxCreditForm/:employerID',
       name: 'DownloadTaxCreditForm',
       component: DownloadTaxCreditForm
     }
@@ -81,20 +81,5 @@ export default new Router({
       name: 'LoginPageEmployerID',
       component: LoginPage
     }
-    ,
-    {
-      path: '/ConfirmStudentCompletionSecondPage',
-      name: 'ConfirmStudentCompletionSecondPage',
-      component: ConfirmStudentCompletionSecondPage
-    }
-    ,
-    {
-      path: '/ConfirmStudentStartSecondPage',
-      name: 'ConfirmStudentStartSecondPage',
-      component: ConfirmStudentStartSecondPage
-    }
-
-
-    
   ]
 })

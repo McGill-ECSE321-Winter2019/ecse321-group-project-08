@@ -57,16 +57,8 @@ export default {
         this.errors.push(e.message);
         console.log(errorMsg);
       });
-
-      //Create a new person and add it to the list of people
-      // var p = new EmployerDto(employerID, username, password, company)
-      // this.employer.push(p)
-      // // Reset the name field for new people
-      // this.newEmployer = ''
     },
-    navigate() {
-      router.push({ name: "/Dashboard" });
-     },
+  
     /**
      * Function for form input validation.
      * This function proceeds with HTTP call if no errors are found.
