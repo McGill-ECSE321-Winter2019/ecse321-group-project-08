@@ -65,28 +65,37 @@
       </li>
     </ul>
 
-    <table id="body">
-      <tr>
-        <th align="center">
-          <h1>Download Coop Placement Form</h1>
-        </th>
-      </tr>
-
-      <tr>
-        <td align="center">
-          <h4 id="tasks">Select Student</h4>
-          <select>
-            <option value="student">select a student</option>
+    <div id="createAccount">
+      <h2>Register Student</h2>
+      <form id="createForm" @submit="confirm()" action="javascript:void(0);">
+        <p>
+          <label for="coopPositionID">Coop Position ID</label>
+          <select v-model="irmakselected" required>
+            <option
+              v-bind:key="coop.id"
+              v-for="coop in irmaklist"
+              v-bind:value="coop"
+            >{{coop.id}}-{{coop.companyName}}-{{coop.positionName}}</option>
           </select>
-        </td>
-      </tr>
+        </p>
 
-      <tr>
-        <td align="center">
-          <button type="button">Download</button>
-        </td>
-      </tr>
-    </table>
+        <p>
+          <label for="studentID">Student ID</label>
+          <input
+            type="number"
+            name="Student ID"
+            v-bind:value="irmakselected.student"
+            readonly
+            id="Student ID"
+            placeholder="Student ID"
+          >
+        </p>
+
+        <p>
+          <input type="submit" value="Download Co-op Placement Form">
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 

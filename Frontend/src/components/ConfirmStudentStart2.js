@@ -74,7 +74,7 @@ export default {
         })
     },
     confirm: function () {
-      window.alert("Success! Student's Coop Position is confirmed :) ")
+      window.alert("Success! Student's Coop Position is confirmed ")
     }
 
   }

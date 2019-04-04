@@ -15,7 +15,9 @@
             name="employerID"
             v-model="employerID"
             id="employerID"
-            placeholder="EmployerID">
+            placeholder="EmployerID"
+            required>
+  
     </p>
     <p>
             <input

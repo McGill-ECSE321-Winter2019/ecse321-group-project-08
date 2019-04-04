@@ -65,38 +65,54 @@
       </li>
     </ul>
 
-    <table id="body">
-      <tr>
-        <th align="right">
-          <h1>Confirm Student Completion</h1>
-        </th>
-      </tr>
+    <div id="createAccount">
+      <h2>Register Student</h2>
+      <form id="createForm" @submit="confirm()" action="javascript:void(0);">
+        <p>
+          <label for="coopPositionID">Coop Position ID</label>
+          <select v-model="irmakselected" required>
+            <option
+              v-bind:key="coop.id"
+              v-for="coop in irmaklist"
+              v-bind:value="coop"
+            >{{coop.id}}-{{coop.companyName}}-{{coop.positionName}}</option>
+          </select>
+        </p>
 
-      <tr>
-        <td align="center">
-          <h4 id="task">Google Drive URL</h4>
-          <input type="text" size="25" placeholder="Google Drive URL">
-        </td>
-      </tr>
-      <tr>
-        <td align="center">
-          <h4 id="task">Employer ID</h4>
-          <input type="number" size="25" placeholder="Employer ID">
-        </td>
-      </tr>
-      <tr>
-        <td align="center">
-          <h4 id="task">Coop Position ID</h4>
-          <input type="number" size="25" placeholder="CoopPosition ID">
-        </td>
-      </tr>
-      <tr>
-        <td align="center">
-          <!--<button><router-link to="/ConfirmStudentCompletionSecondPage">Start</router-link></button> -->
-          <button>Confirm</button>
-        </td>
-      </tr>
-    </table>
+        <p>
+          <label for="studentID">Student ID</label>
+          <input
+            type="number"
+            name="Student ID"
+            v-bind:value="irmakselected.student"
+            readonly
+            id="Student ID"
+            placeholder="Student ID"
+          >
+        </p>
+
+        <p>
+          <label for="password">Start Date</label>
+          <input
+            type="date"
+            name="password"
+            v-model="evaluationDate"
+            id="password"
+            placeholder="Start Date"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="url">Google Drive Link for Evaluation Form</label>
+          <input type="text" name="URL" id="Url" placeholder="URL">
+        </p>
+
+        <p>
+          <input type="submit" value="Confirm Start">
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 

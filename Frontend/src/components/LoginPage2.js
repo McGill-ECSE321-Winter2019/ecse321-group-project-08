@@ -13,14 +13,14 @@ var AXIOS = axios.create({
 })
 
 
-function EmployerLoginDto (employerID ) {
+function EmployerLoginDto(employerID) {
   this.employerID = employerID
 }
 
 
 export default {
   name: 'employerLogin',
-  data () {
+  data() {
     return {
       employer: [],
       newEmployer: '',
@@ -33,26 +33,27 @@ export default {
   methods: {
     loginEmployer: function (employerID) {
       AXIOS.get('/Employer/' + employerID)
-      .then(response => {
-        // JSON responses are automatically parsed.
-        console.log("GOOD");
-        //name: 'TreeMapResident', params: { resident: loggedin.email }
-        this.$router.push({name : 'Dashboard', params: {employerID: employerID}});
+        .then(response => {
+          // JSON responses are automatically parsed.
+          console.log("GOOD");
+          //name: 'TreeMapResident', params: { resident: loggedin.email }
+          this.$router.push({ name: 'Dashboard', params: { employerID: employerID } });
 
-      })
-      .catch(e => {
-        var errorMsg = e.message
-        console.log(errorMsg);
-      });
+        })
+        .catch(e => {
+          var errorMsg = e.message
+          console.log(errorMsg);
+          window.alert('This employer ID doesnt exist! Please check the Employer ID. If you dont have an account you can create one.')
+        });
     },
-    checkForm: function(e){
+    checkForm: function (e) {
       var oops = false
-      if(!this.employerID){oops=true;}
+      if (!this.employerID) { oops = true; }
 
       // This prevents the default action of the event from being executed!
       e.preventDefault();
 
-      if(oops){
+      if (oops) {
         console.log("WRITE SOMETHING!");
         return;
       }
