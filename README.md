@@ -33,3 +33,23 @@ McGill University has a number of co-op programs that are administered by indivi
 |Ege Odaci         |  14 hours |Frontend Implementation                   |
 |Jason Rahal       |  12 hours  |Architecture Modeling and Documentation                  |
 |Edgar Chang       |  14 hours  |Frontend Implementation  |
+
+## Deliverable 4
+
+|Team member's name|Total hours|Responsibility         |
+|------------------|-----------|-----------------------|
+|Mashood Ahmed     |   hours  |      Documentation    |
+|Irmak Pakis       |   hours |Code improvement           |
+|Ege Odaci         |   hours |Documentation                 |
+|Jason Rahal       |   hours  |Documentation              |
+|Edgar Chang       |   hours  |Documentation  |
+
+## Deliverable 5
+
+|Team member's name|Total hours|Responsibility         |
+|------------------|-----------|-----------------------|
+|Mashood Ahmed     | 8  hours  |Creating Powerpoint and Presentation          |
+|Irmak Pakis       | 5  hours |Creating Powerpoint           |
+|Ege Odaci         | 6  hours |Creating Powerpoint                    |
+|Jason Rahal       | 7  hours  |Creating Powerpoint and Presentation                  |
+|Edgar Chang       | 6  hours  |Creating Powerpoint  |
