@@ -6,7 +6,7 @@
           <h1 align="left" id="dashboard1">Welcome Employer</h1>
         </td>
         <td>
-          <h1 align="right" id="dashboard1">Employed ID: {{employerID}}</h1>
+          <h1 align="right" id="dashboard1">Employer ID: {{employerID}}</h1>
         </td>
       </tr>
     </table>
@@ -45,15 +45,7 @@
           </a>
         </h5>
       </li>
-      <li>
-        <h5>
-          <a>
-            <router-link
-              :to="{ name: 'TaxCreditForm', params: {employerID: employerID} }"
-            >Create Tax Credit Form</router-link>
-          </a>
-        </h5>
-      </li>
+
       <li>
         <h5>
           <a class="active">
@@ -65,31 +57,41 @@
       </li>
     </ul>
 
-    <table id="body">
-      <tr>
-        <th align="right">
-          <h1>Download Tax Credit Form</h1>
-        </th>
-      </tr>
-
-      <tr>
-        <td align="center">
-          <h4 id="tasks">Select Coop Position</h4>
-          <select>
-            <option value="coopposition">Select a Coop Position</option>
+    <div id="createAccount">
+      <h2>Register Student</h2>
+      <form id="createForm" action="javascript:void(0);">
+        <p>
+          <label for="coopPositionID">Coop Position</label>
+          <select v-model="irmakselected" required>
+            <option
+              v-bind:key="coop.id"
+              v-for="coop in irmaklist"
+              v-bind:value="coop"
+            >{{coop.id}}-{{coop.companyName}}-{{coop.positionName}}</option>
           </select>
-        </td>
-      </tr>
-      <tr>
-        <td align="center">
-          <button type="button">Download</button>
-        </td>
-      </tr>
-    </table>
+        </p>
+
+        <p>
+          <label for="studentID">Student ID</label>
+          <input
+            type="number"
+            name="Student ID"
+            v-bind:value="irmakselected.student"
+            readonly
+            id="Student ID"
+            placeholder="Student ID"
+          >
+        </p>
+
+        <p>
+          <input type="submit" @click="redirect()" value="Download Tax Credit Form">
+        </p>
+      </form>
+    </div>
   </div>
 </template>
 
-  <script src="./DownloadTaxCreditForm2.js">
+<script src="./DownloadTaxCreditForm2.js">
 </script>
 
 <style>
@@ -152,5 +154,6 @@ li a:hover:not(.active) {
   width: 125%;
 }
 </style>
+
 
 

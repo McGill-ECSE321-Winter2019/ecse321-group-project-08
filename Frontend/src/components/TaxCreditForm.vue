@@ -1,12 +1,12 @@
 <template>
-<div id="dashboard">
-  <table id="head" align="left" style="width: 100%">
-    <tr>
-      <td>
-        <h1 align="left" id="dashboard1">Welcome Employer</h1>
-       </td>
+  <div id="dashboard">
+    <table id="head" align="left" style="width: 100%">
+      <tr>
         <td>
-          <h1 align="right" id="dashboard1">Employed ID: {{employerID}}</h1>
+          <h1 align="left" id="dashboard1">Welcome Employer</h1>
+        </td>
+        <td>
+          <h1 align="right" id="dashboard1">Employer ID: {{employerID}}</h1>
         </td>
       </tr>
     </table>
@@ -38,7 +38,7 @@
       </li>
       <li>
         <h5>
-          <a>
+          <a class="active">
             <router-link
               :to="{ name: 'DownloadCoopForm', params: {employerID: employerID} }"
             >Download Co-op Placement Form</router-link>
@@ -47,7 +47,7 @@
       </li>
       <li>
         <h5>
-          <a class="active">
+          <a>
             <router-link
               :to="{ name: 'TaxCreditForm', params: {employerID: employerID} }"
             >Create Tax Credit Form</router-link>
@@ -65,60 +65,70 @@
       </li>
     </ul>
 
-
-  <table id="body">
-    <tr>
-      <th align = "right">
-        <h1 >Create Tax Credit Form</h1>
-      </th>
-    </tr>
-
-    <tr>
-      <td align="center">
-        <h4 id="task">Tax Credit URL</h4>
-        <input type="text" size="25" placeholder="Tax Credit URL"></input>
-
-      </td>
-      
-      </tr>
-      <tr>
-        <td align= "center">
-          <h4 id = "tasks"> Select Coop Position </h4>
-          <select>
-            <option value ="coopposition"> Select a Coop Position</option>
+    <div id="createAccount">
+      <h2>Register Student</h2>
+      <form id="createForm" @submit="confirm()" action="javascript:void(0);">
+        <p>
+          <label for="coopPositionID">Coop Position</label>
+          <select v-model="irmakselected" required>
+            <option
+              v-bind:key="coop.id"
+              v-for="coop in irmaklist"
+              v-bind:value="coop"
+            >{{coop.id}}-{{coop.companyName}}-{{coop.positionName}}</option>
           </select>
-        </td>
-      </tr>
-      <tr>
-        <td align = "center">
-          <button type = "button"> Create </button>
-        </td>
+        </p>
 
-        
-      </tr>
-    </table>
-</div>
-  </template>
+        <p>
+          <label for="studentID">Student ID</label>
+          <input
+            type="number"
+            name="Student ID"
+            v-bind:value="irmakselected.student"
+            readonly
+            id="Student ID"
+            placeholder="Student ID"
+          >
+        </p>
 
+        <p>
+          <input type="submit" @click="redirect()" value="Download Co-op Placement Form">
+        </p>
+      </form>
+    </div>
+  </div>
+</template>
 
 
 <script src="./TaxCreditForm2.js">
 </script>
 
 
+
+
+
 <style>
+#head {
+  background-color: #696969;
+}
+#dashboard1 {
+  color: white;
+}
+#dashborard {
+  padding-left: 20px;
+}
+h2 {
+  color: white;
+}
+h2 {
+  padding-right: 20px;
+}
 
-  #head{background-color:#696969}
-  #dashboard1{color:white}
-  #dashborard{padding-left:20px}
-  h2{color:white}
-  h2{padding-right:20px}
+#progress {
+  margin-top: 150px;
+}
 
-  #progress{
-  margin-top:150px;
-  }
-
-  ul {
+ul {
   list-style-type: none;
   padding: 0;
   width: 25%;
@@ -127,37 +137,34 @@
   height: 100%;
   overflow: auto;
   border-color: white;
-  margin-top:58px;
-  }
+  margin-top: 58px;
+}
 
-  li a {
+li a {
   display: block;
   color: white;
   padding: 20px 16px;
   text-decoration: none;
   border-color: white;
-
-  }
-  li a.active {
-  background-color: #4CAF50;
+}
+li a.active {
+  background-color: #4caf50;
   color: white;
-  }
+}
 
-  li a:hover:not(.active) {
+li a:hover:not(.active) {
   background-color: #555;
   color: white;
   border-color: white;
-  }
-  #box1{
-  margin-top:200%;
-  color:grey;
+}
+#box1 {
+  margin-top: 200%;
+  color: grey;
   border: black;
-  }
-  #body{
-  margin-top:30px;
+}
+#body {
+  margin-top: 30px;
   width: 125%;
-  }
+}
 </style>
-
-
 

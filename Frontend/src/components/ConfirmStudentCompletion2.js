@@ -42,7 +42,7 @@ export default {
       console.log('edgar')
       var random = Math.trunc(Math.random() * 100000000)
       //mydate = this.evaluationDate.getFullYear() + '-' + (this.evaluationDate.getMonth() + 1) + '-' + this.evaluationDate.getDate()
-      AXIOS.post('/EvaluationForm/' + random + "&coopPositionID=" + this.irmakselected.id +  "&employerID=" + this.employerID, {}, {})
+      AXIOS.post('/EvaluationForm/' + random + "&coopPositionID=" + this.irmakselected.id + "&employerID=" + this.employerID, {}, {})
 
         .then(response => {
           this.confirmCompletion.push(response.data)

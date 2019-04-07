@@ -6,7 +6,7 @@
           <h1 align="left" id="dashboard1">Welcome Employer</h1>
         </td>
         <td>
-          <h1 align="right" id="dashboard1">Employed ID: {{employerID}}</h1>
+          <h1 align="right" id="dashboard1">Employer ID: {{employerID}}</h1>
         </td>
       </tr>
     </table>
@@ -45,15 +45,7 @@
           </a>
         </h5>
       </li>
-      <li>
-        <h5>
-          <a>
-            <router-link
-              :to="{ name: 'TaxCreditForm', params: {employerID: employerID} }"
-            >Create Tax Credit Form</router-link>
-          </a>
-        </h5>
-      </li>
+
       <li>
         <h5>
           <a>
@@ -69,7 +61,7 @@
       <h2>Register Student</h2>
       <form id="createForm" @submit="confirm()" action="javascript:void(0);">
         <p>
-          <label for="coopPositionID">Coop Position ID</label>
+          <label for="coopPositionID">Coop Position</label>
           <select v-model="irmakselected" required>
             <option
               v-bind:key="coop.id"

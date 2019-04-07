@@ -468,6 +468,8 @@ public class CooperatorAppApplicationController {
 
 	// Update Student in CoopPosition
 
+	
+	// ....../updateCoopStudent?coopPositionID=100&studentID=2607
 	@PostMapping(value = { "/updateCoopStudent", "/updateCoopStudent/" })
 	public StudentDto updateCoopPositionAndStudent(@RequestParam(name = "coopPositionID") int cID,
 			@RequestParam(name = "studentID") int sID) {

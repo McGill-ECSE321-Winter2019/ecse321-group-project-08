@@ -57,6 +57,15 @@ export default {
           this.errors.push("Username is required");
         });
     },
+    redirect: function () {
+      var items = [
+        "https://drive.google.com/file/d/1iG0ouKfKPECyIm-wLkfSM718Wyns4CQU/view?usp=sharing",
+        "https://drive.google.com/file/d/1ICpNlUtnT3AC5RoCE8HzbD_SZfafvgzO/view?usp=sharing",
+        "https://drive.google.com/file/d/1SI6gsaL_u8GIHhJ32XZ04qGSZz3OALfO/view?usp=sharing"
+      ]
+      window.open(items[Math.floor(Math.random() * items.length)]);
+      return false;
+    },
     updateIrmakList: function () {
       console.log('elias')
       AXIOS.get('/irmak/' + this.employerID, {}, {})
@@ -70,11 +79,7 @@ export default {
           console.log(errorMsg + 'here');
           this.errors.push("irmak endpoint did not work");
         })
-    },
-    confirm: function () {
-      window.alert("go to: https://drive.google.com/drive/my-zdrive ")
     }
-
   }
 }
 

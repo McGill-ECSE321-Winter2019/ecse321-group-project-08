@@ -6,7 +6,7 @@
           <h1 align="left" id="dashboard1">Welcome Employer</h1>
         </td>
         <td>
-          <h1 align="right" id="dashboard1">Employed ID: XXXX</h1>
+          <h1 align="right" id="dashboard1">Employer ID: XXXX</h1>
         </td>
       </tr>
     </table>
@@ -39,13 +39,7 @@
           </a>
         </h5>
       </li>
-      <li>
-        <h5>
-          <a>
-            <router-link to="/TaxCreditForm">Create Tax Credit Form</router-link>
-          </a>
-        </h5>
-      </li>
+
       <li>
         <h5>
           <a>
