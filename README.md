@@ -1,4 +1,7 @@
 # ECSE321 Project Group 8
+## About Us
+We are group 8. Our group consist of 5 people: Irmak Pakis, Edgar Chang, Ege Odaci, Jason Rahal and Mashood Ahmed. We have worked very efficiently and planned as a team through this project. 
+
 CO-OP-ERATOR
 
 McGill University has a number of co-op programs that are administered by individual faculties. The number of co-op programs is likely to grow in the near future. This software development project aims to build a software system that will manage these co-op programs and the many different facets associated with them, thereby streamlining the process. 
