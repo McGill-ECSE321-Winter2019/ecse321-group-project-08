@@ -37,9 +37,9 @@ export default {
   },
 
   methods: {
-    createStartConfirmation: function () {
+    downloadCoopPlacementForm: function () {
       this.errors = []
-      console.log('edgar')
+
       var random = Math.trunc(Math.random() * 100000000)
       //mydate = this.evaluationDate.getFullYear() + '-' + (this.evaluationDate.getMonth() + 1) + '-' + this.evaluationDate.getDate()
       AXIOS.post('/CoopPlacementForm' + "?employerID=" + this.employerID + "&coopPositionID" + this.coopPositionID, {}, {})
