@@ -1,6 +1,6 @@
 # ECSE321 Project Group 8
 ## About Us
-We are group 8. Our group consist of 5 people: Irmak Pakis, Edgar Chang, Ege Odaci, Jason Rahal and Mashood Ahmed. We have worked very efficiently and planned as a team through this project. 
+We are group 8. Our group consist of 5 people: Irmak Pakis, Edgar Chang, Ege Odaci, Jason Rahal and Mashood Ahmed. 
 
 CO-OP-ERATOR
 
@@ -41,11 +41,11 @@ McGill University has a number of co-op programs that are administered by indivi
 
 |Team member's name|Total hours|Responsibility         |
 |------------------|-----------|-----------------------|
-|Mashood Ahmed     |   hours  |      Documentation    |
-|Irmak Pakis       |   hours |Code improvement           |
-|Ege Odaci         |   hours |Documentation                 |
-|Jason Rahal       |   hours  |Documentation              |
-|Edgar Chang       |   hours  |Documentation  |
+|Mashood Ahmed     | 3  hours  |      Documentation    |
+|Irmak Pakis       | 4 hours |Code improvement           |
+|Ege Odaci         | 4  hours |Documentation                 |
+|Jason Rahal       | 5  hours  |Documentation              |
+|Edgar Chang       | 4  hours  |Documentation  |
 
 ## Deliverable 5
 
