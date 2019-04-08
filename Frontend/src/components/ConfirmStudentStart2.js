@@ -35,9 +35,8 @@ export default {
   created: function () {
     this.employerID = this.$route.params.employerID;
     this.updateIrmakList();
-    // populate the coopPosition array by querying the database for cooposition matching the employerID
+
   },
-  ///StartConfirmation/111?evaluationDate=2020-20-22&employerID=111?coopPositionID=111?studentID=111
   methods: {
     createStartConfirmation: function () {
       this.errors = []

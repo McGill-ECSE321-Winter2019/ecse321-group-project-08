@@ -57,6 +57,9 @@ export default {
           this.errors.push("Username is required");
         });
     },
+    mashood_debug: function () {
+      console.log("hello");
+    },
     redirect: function () {
       var items = [
         "https://drive.google.com/file/d/1iG0ouKfKPECyIm-wLkfSM718Wyns4CQU/view?usp=sharing",

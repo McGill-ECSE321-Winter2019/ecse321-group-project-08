@@ -58,7 +58,6 @@ export default {
         });
     },
     updateIrmakList: function () {
-      console.log('elias')
       AXIOS.get('/irmak/' + this.employerID, {}, {})
         .then(response => {
           this.irmaklist = response.data

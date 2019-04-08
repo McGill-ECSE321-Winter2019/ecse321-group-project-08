@@ -67,7 +67,6 @@ export default {
       return false;
     },
     updateIrmakList: function () {
-      console.log('elias')
       AXIOS.get('/irmak/' + this.employerID, {}, {})
         .then(response => {
           this.irmaklist = response.data
