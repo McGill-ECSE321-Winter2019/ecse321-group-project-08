@@ -9,12 +9,9 @@ matrix:
         - cd Frontend
         - npm install
 
-      script:
-        - npm run build
 
-      # after_success:
-      #   - git remote add Frontend-heroku https://git.heroku.com/cooperator-frontend-0000.git
-      #   - git push Frontend-heroku master
+      after_success:
+         - git push Frontend-heroku master
 
 language: java
 script:
