@@ -1,3 +1,21 @@
+matrix:
+  include:
+        #Frontend Job
+    - language: node_js
+      node_js:
+        - "6"
+
+      before_install:
+        - cd Frontend
+        - npm install
+
+      script:
+        - npm run build
+
+      # after_success:
+      #   - git remote add Frontend-heroku https://git.heroku.com/cooperator-frontend-0000.git
+      #   - git push Frontend-heroku master
+
 language: java
 script:
 - "./gradlew build -x test"
@@ -6,3 +24,6 @@ deploy:
   api_key:
     secure: bhXEtRqV1x9Y4AYgFbdGfybjUd58By3Yl+fDQHtucWCVnKXSrZfItDEsJzcHbdaLGtPAGHREL8jz7lXSWzIl/xhS2lm6nZriDpIG+0a9xMNeyAvoj1TK6EAvV+U7R+vCGNx6dyUGrCcu1tjaS6EXHymzC64LpfE0jI8o02J9enfsEDijJPd9GKrCxINTBX0IScC0V3HUmZouZU6tch+/b2TUhwdNxkZ2mg99cI4Xq6Ae6fMNnqr5cGLDN7EyD5i5eQuzs4mlPTMpWo8GMyTR/SdGauWHuERbJvGJHsXD5Oj7yd/heO8ybEM9ZMX0iwZ8U1izGsgHVXFaST29BNOyTuWWIov0nzVIy1a7gk4AsGfEcS8DPEBRWdKu7yi6Pg/X0+y8UtyVXkodeEb4qyvyANiY0gCYeveGsC8d0b87JNSOgePXnlUFoNAVP8v4E/U9gg/mnB5S8deOKxewScrewEPDRYJ/p9wFLZS8fHzCT9CTcU09bUDPIPjF5ZkMZm2VaUad+GDi6sVJ0XaQSFVbcq5IAutvUXOZX8iya6YUl3Q1jntZJdnnOrHmKlrWmrxXYvSx5mRGIVKnpgLJbMTznqiH7y0B6CdXbCbsMIyCH7V1sX/yzugeyDC5OaeYFsv6+FMYpPhbclthN4knbjTxEPLjumBFeds/kkX6VCuBqCU=
   app: coop-backend-g8
+  
+  
+ 
