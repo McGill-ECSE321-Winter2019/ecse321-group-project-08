@@ -14,7 +14,7 @@ matrix:
       deploy:
        provider: heroku
        api_key:
-         secure: 8f8af8af-026b-4e93-bde6-2e751938d95a
+         secure: 5630775b-5a5d-4065-9bbc-c38fc8741439
        app: coop-frontend-g8
 
 
