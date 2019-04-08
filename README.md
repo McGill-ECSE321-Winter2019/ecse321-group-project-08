@@ -41,11 +41,11 @@ McGill University has a number of co-op programs that are administered by indivi
 
 |Team member's name|Total hours|Responsibility         |
 |------------------|-----------|-----------------------|
-|Mashood Ahmed     | 3  hours  |      Documentation    |
-|Irmak Pakis       | 4 hours |Code improvement           |
-|Ege Odaci         | 4  hours |Documentation                 |
-|Jason Rahal       | 5  hours  |Documentation              |
-|Edgar Chang       | 4  hours  |Documentation  |
+|Mashood Ahmed     | 12  hours  |      Documentation    |
+|Irmak Pakis       | 18 hours |Code improvement           |
+|Ege Odaci         | 12  hours |Documentation                 |
+|Jason Rahal       | 10  hours  |Documentation              |
+|Edgar Chang       | 10  hours  |Documentation  |
 
 ## Deliverable 5
 
