@@ -1,4 +1,4 @@
-WE would like to make the group project public
+We would like to make the group project public
 
 # ECSE321 Project Group 8
 ## About Us
