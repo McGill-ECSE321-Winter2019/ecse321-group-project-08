@@ -1,3 +1,5 @@
+WE would like to make the group project public
+
 # ECSE321 Project Group 8
 ## About Us
 We are group 8. Our group consist of 5 people: Irmak Pakis, Edgar Chang, Ege Odaci, Jason Rahal and Mashood Ahmed. 
